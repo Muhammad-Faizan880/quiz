@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="container d-flex justify-content-center">
         <a className="navbar-brand mx-auto" href="#">
           <img
-            src="src/assets/images/logo1.png"
+            src="/assets/images/logo1.png"
             alt="Logo"
             className="d-inline-block align-text-top class-logo-padding"
           />

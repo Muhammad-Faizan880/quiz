@@ -11,7 +11,7 @@ const Footer = () => {
 
         <a href="#" className="mx-auto">
           <img
-            src="src/assets/images/footer-logo.png"
+            src="/assets/images/footer-logo.png"
             alt="Logo"
             className="d-inline-block align-text-top class-bottom-paddding"
           />

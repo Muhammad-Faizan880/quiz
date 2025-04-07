@@ -318,7 +318,7 @@ function StepperForm() {
       {/* Image Column - 4 cols */}
       <div className="col-4 d-flex justify-content-center">
         <img
-          src="/src/assets/images/lady1.png"
+          src="/assets/images/lady1.png"
           alt="lady"
           className="img-fluid"
           
