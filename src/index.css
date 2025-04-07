@@ -1,0 +1,302 @@
+
+@font-face {
+  font-family: HelveticaNeue-Bold;
+  src: url("HelveticaNeue-Bold.otf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: HelveticaNeueLight;
+  src: url("HelveticaNeueLight.otf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: QuincyCF-Bold;
+  src: url("QuincyCF-Bold.woff");
+
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: QuincyCF-Medium;
+  src: url("QuincyCF-Medium.woff");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: QuincyCF-Bold;
+}
+
+@font-face {
+  font-family: HelveticaNeue-Medium;
+  src: url("HelveticaNeue-Medium.otf");
+
+  font-weight: 500;
+}
+
+body{
+  background-color: #E5F5F3;
+}
+
+.class-logo-padding{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.text-weight-property{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  padding-top: 14px;
+  padding-bottom: 28px;
+}
+.class-bottom-paddding{
+  padding-bottom: 24px;
+}
+.class-256{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 17px;
+  line-height: 25px;
+  text-align: center;
+  padding-top: 10px;
+}
+.img-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.btn-bg{
+  color: #666666;
+  background-color: #F7F7F7 !important;
+  border-radius: 9999px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+}
+.margin-set{
+  margin-top: -2px;
+}
+.text-set-class{
+  color: #6C6C6C;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 1.4px;
+
+}
+.text-setting{
+  color: #666666;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+}
+.custom-progress-bar{
+  background-color: #B8DFDB !important;
+}
+.padding-class{
+  padding: 50px;
+}
+.btn-setting-class-custom{
+height: 70px;
+background-color: #F5D552;
+color: black;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+width: 100%;
+}
+.btn-setting-class-custom:hover {
+  background-color: #F5D552; 
+  color: black; 
+}
+.ptb-class{
+  padding-bottom: 190px;
+  padding-top: 153px;
+}
+.class-name-style{
+color: #2F827A;
+font-size: 24px;
+line-height: 32px;
+letter-spacing: -0.28px;
+font-weight: 700;
+padding-top: 32px;
+padding-bottom: 27px;
+text-align: start !important;
+}
+.input-style{
+  border: 3px solid #EDEDED;
+  height: 54px;
+  margin-bottom: 50px;
+}
+.input-style::placeholder {
+  color: #DCDCDC; 
+}
+.card{
+  border-radius: 12px;
+}
+
+.custom-radio-button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E5E5E5;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.custom-radio-button:checked {
+  background-color: white; 
+  border-color: #2F766A;
+}
+.custom-radio-button:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.custom-radio-button:checked:before {
+  background-color: #2F766A; 
+}
+
+.text0-clr{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 20px;
+line-height: 28px;
+letter-spacing: -0.23px;
+color: #151515;
+}
+
+.class-bmi-1{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 36px;
+line-height: 40px;
+letter-spacing: -0.2px;
+text-align: center;
+color: #000000;
+}
+
+.class-bmi{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 17px;
+line-height: 22px;
+text-align: center;
+color: #000000;
+}
+.bg-gradient{
+  background: linear-gradient(90deg, #2FB8AA 0%, rgba(60, 75, 158, 0.1) 90%) !important;
+  height: 16px; 
+  width: 100%; 
+  border-radius: 9999px;
+  padding-top: 16px;
+  margin-bottom: 12px;
+}
+.text-start-class{
+  text-align: start !important;
+}
+
+.width-set{
+  width: 100% !important;
+}
+.class-border{
+border: 3px solid #EDEDED;
+margin-bottom: 12px;
+}
+
+.class-border1{
+  border: 3px solid #EDEDED;
+  margin-bottom: 24px;
+  }
+  
+
+.fontyy{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+color: black;
+text-align: start !important;
+display: flex; justify-content: flex-start;
+align-items: flex-start;
+}
+
+.bg-lady{
+  background: linear-gradient(90deg, #2F766A 0%, #2FBAAC 100%);
+border-radius: 24px;
+height: 138px;
+width: 90%;
+margin: auto;
+padding: 20px;
+}
+.CLR-WHITEW{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+color: white; 
+
+}
+.CLR-WHITEW8{
+  font-family: Helvetica Neue;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: right;
+  vertical-align: middle;
+color: white; 
+padding-right: 50px;
+
+}
+
+.class-primary{
+  color: #2F827A;
+}
+
+
+@media screen and (max-width: 545px) {
+
+
+  .ptb-class{
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+ .class-name-style{
+  padding-top: 0px;
+  font-size: 20px;
+ }
+ .padding-class{
+  padding: 20px
+ }
+
+ .bg-lady{
+  background: linear-gradient(90deg, #2F766A 0%, #2FBAAC 100%);
+border-radius: 24px;
+height: 138px;
+width: 100%;
+margin: auto;
+padding: 0px;
+}
+
+}
