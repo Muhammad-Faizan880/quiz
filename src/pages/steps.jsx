@@ -291,22 +291,7 @@ function StepperForm() {
              Alex, we can help you lose up to 45
              pounds by 06/21/2025!
             </h4>
-            <div className="mb-4">
-              <input
-                type="text"
-                className="form-control"
-                id="occupation"
-                name="occupation"
-                placeholder="e.g. Software Developer"
-                value={formData.occupation}
-                onChange={handleChange}
-                style={{
-                  borderColor: "#E5E5E5",
-                  borderRadius: "4px",
-                  padding: "12px",
-                }}
-              />
-            </div>
+           
 
 
             <WeightTrackerChart/>
@@ -320,7 +305,7 @@ function StepperForm() {
         <img
           src="/assets/images/lady1.png"
           alt="lady"
-          className="img-fluid"
+          className="img-fluid img-width-hight-set"
           
         />
       </div>
@@ -476,7 +461,7 @@ function StepperForm() {
                   disabled={currentStep === 1}
                 >
                   <img
-                    src="/src/assets/images/arrow.png"
+                    src="/assets/images/arrow.png"
                     alt=""
                     className="margin-set"
                   />{" "}

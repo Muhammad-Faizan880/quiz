@@ -3,6 +3,7 @@ import React from 'react';
 const WeightTrackerChart = () => {
   // Data points for the weight tracking
   const weightData = [
+   
     { month: '1st month', weight: 238 },
     { month: '2nd month', weight: 235 },
     { month: '3rd month', weight: 225 },
@@ -13,7 +14,7 @@ const WeightTrackerChart = () => {
   // Chart dimensions - reduced padding
   const chartWidth = 800;
   const chartHeight = 400;
-  const padding = { top: 10, right: 30, bottom: 20, left: 40 };
+  const padding = { top: 10, right: 40, bottom: 40, left: 40 };
   const graphWidth = chartWidth - padding.left - padding.right;
   const graphHeight = chartHeight - padding.top - padding.bottom;
   
@@ -43,7 +44,7 @@ const WeightTrackerChart = () => {
 
   return (
     <div className="container p-0">
-      <div className="card border-0">
+      <div className="card ">
         <div className="card-body p-0">
           <h5 className="text-center class-primary mb-2">Your Weight (LBS)</h5>
           
@@ -68,7 +69,7 @@ const WeightTrackerChart = () => {
               x2={padding.left} 
               y2={padding.top + graphHeight}
               stroke="#888787" 
-              strokeWidth="2"
+              strokeWidth="4"
             />
             
             {/* Horizontal axis (bottom) */}
@@ -78,7 +79,7 @@ const WeightTrackerChart = () => {
               x2={padding.left + graphWidth} 
               y2={padding.top + graphHeight}
               stroke="#888787" 
-              strokeWidth="2"
+              strokeWidth="4"
             />
             
             {/* Line graph */}
@@ -86,7 +87,7 @@ const WeightTrackerChart = () => {
               d={createLinePath()} 
               fill="none" 
               stroke="#2FBAAC" 
-              strokeWidth="3"
+              strokeWidth="8"
               strokeLinecap="round"
             />
             
@@ -99,15 +100,15 @@ const WeightTrackerChart = () => {
                   r={index === weightData.length - 1 ? 20 : 8}
                   fill={index === weightData.length - 1 ? "#2FBAAC" : "white"} 
                   stroke="#2FBAAC"
-                  strokeWidth="3"
+                  strokeWidth="8"
                 />
                 <text 
                   x={getXPosition(index)} 
                   y={getYPosition(point.weight) + (index === weightData.length - 1 ? 6 : -15)} 
                   textAnchor="middle" 
                   fill={index === weightData.length - 1 ? "white" : "#2FBAAC"}
-                  fontWeight="bold"
-                  fontSize={index === weightData.length - 1 ? "12px" : "14px"}
+                  fontWeight="medium"
+                  fontSize={index === weightData.length - 1 ? "16px" : "22px"}
                 >
                   {point.weight}
                 </text>
@@ -127,7 +128,7 @@ const WeightTrackerChart = () => {
           
           </svg>
           
-          <div className="text-center mt-1">
+          <div className="text-center mt-class">
             <span className="d-inline-flex align-items-center">
               <span className="badge rounded-circle bg-primary me-2" style={{width: "12px", height: "12px"}}></span>
               EaseMD Patient Journey

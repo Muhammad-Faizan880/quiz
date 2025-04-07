@@ -249,6 +249,7 @@ height: 138px;
 width: 90%;
 margin: auto;
 padding: 20px;
+margin-top: 30px;
 }
 .CLR-WHITEW{
   font-weight: 500;
@@ -269,11 +270,28 @@ color: white;
 padding-right: 50px;
 
 }
+.img-width-hight-set{
+  width: 100%;
+  height: auto;
+}
 
 .class-primary{
   color: #2F827A;
+  margin-bottom: -50px !important;
+  padding-top: 20px;
 }
+.mt-class{
+  margin-top: -40px !important;
+  padding-bottom: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 12px;
+line-height: 24px;
+letter-spacing: 0px;
+vertical-align: middle;
+color: #151515;
 
+}
 
 @media screen and (max-width: 545px) {
 
@@ -296,7 +314,12 @@ border-radius: 24px;
 height: 138px;
 width: 100%;
 margin: auto;
-padding: 0px;
+margin-top: 30px;
+}
+
+.mt-class{
+  margin-top: -90px !important;
+  padding-bottom: 10px;
 }
 
 }
