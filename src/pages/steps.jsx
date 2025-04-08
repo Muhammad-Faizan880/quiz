@@ -9,12 +9,24 @@ function StepperForm() {
     email: "",
     age: "",
     weightGoal: "",
-    occupation: "",
-    interests: "",
-    location: "",
-    experience: "",
-    goals: "",
+    birthDate: "",
+    zipCode: "",
   });
+
+  const [errors, setErrors] = useState({
+    heightFeet: "",
+    heightInches: "",
+    weight: "",
+    email: "",
+    birthDate: "",
+    zipCode: "",
+  });
+
+  const [activeTab, setActiveTab] = useState("home");
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
 
   // Total number of steps
   const totalSteps = 8;
@@ -26,6 +38,50 @@ function StepperForm() {
       ...formData,
       [name]: value,
     });
+
+    // ✅ Auto move from step 2 to step 3 after selecting a weight goal
+    if (currentStep === 2 && name === "weightGoal") {
+      setTimeout(() => {
+        nextStep();
+      }, 300);
+    }
+  };
+
+  const validate = () => {
+    let formErrors = {};
+    let isValid = true;
+
+    // Email validation
+    if (!formData.email) {
+      formErrors.email = "Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      formErrors.email = "Email address is invalid";
+      isValid = false;
+    }
+
+    // Birth Date validation
+    if (!formData.birthDate) {
+      formErrors.birthDate = "Birth date is required";
+      isValid = false;
+    } else if (
+      !/^(0[1-9]|1[0-2])\/([0-2][0-9]|3[01])\/\d{4}$/.test(formData.birthDate)
+    ) {
+      formErrors.birthDate = "Birth date format is invalid. Use MM/DD/YYYY.";
+      isValid = false;
+    }
+
+    // Zip Code validation
+    if (!formData.zipCode) {
+      formErrors.zipCode = "Zip Code is required";
+      isValid = false;
+    } else if (!/^\d{4}$/.test(formData.zipCode)) {
+      formErrors.zipCode = "Zip Code should be 4 digits";
+      isValid = false;
+    }
+
+    setErrors(formErrors);
+    return isValid;
   };
 
   // Navigate to next step
@@ -45,9 +101,55 @@ function StepperForm() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (validate()) {
+      // Submit the form or proceed to next step
+      console.log("Form submitted successfully");
+    }
+
+    // ✅ Validate fullName on Step 1
+    if (currentStep === 1 && formData.fullName.trim() === "") {
+      alert("Please enter your full name.");
+      return;
+    }
+
+    // ✅ Validate height and weight on Step 3
+    if (currentStep === 3) {
+      const newErrors = {};
+      let isValid = true;
+
+      // Validate height (feet and inches)
+      if (!formData.heightFeet || formData.heightFeet <= 0) {
+        newErrors.heightFeet = "Please enter a valid height in feet.";
+        isValid = false;
+      }
+      if (
+        !formData.heightInches ||
+        formData.heightInches < 0 ||
+        formData.heightInches > 12
+      ) {
+        newErrors.heightInches =
+          "Please enter a valid height in inches (0-12).";
+        isValid = false;
+      }
+
+      // Validate weight
+      if (!formData.weight || formData.weight <= 0) {
+        newErrors.weight = "Please enter a valid weight.";
+        isValid = false;
+      }
+
+      setErrors(newErrors);
+
+      // If validation fails, don't proceed
+      if (!isValid) {
+        return;
+      }
+    }
+
+    // ✅ For other steps, just move forward or submit
     if (currentStep === totalSteps) {
       console.log("Form submitted:", formData);
-      // Handle form submission logic here
       alert("Form submitted successfully!");
     } else {
       nextStep();
@@ -227,15 +329,21 @@ function StepperForm() {
                     type="number"
                     className="form-control pe-5 class-border"
                     id="height1"
+                    name="heightFeet"
                     placeholder="5"
+                    value={formData.heightFeet || ""}
+                    onChange={handleChange}
                   />
                   <span
-                    className="position-absolute top-50 translate-middle-y end-0 pe-3 "
+                    className="position-absolute top-50 translate-middle-y end-0 pe-3"
                     style={{ pointerEvents: "none" }}
                   >
                     Ft.
                   </span>
                 </div>
+                {errors.heightFeet && (
+                  <small className="text-danger">{errors.heightFeet}</small>
+                )}
               </div>
 
               {/* Input 2 */}
@@ -248,7 +356,10 @@ function StepperForm() {
                     type="number"
                     className="form-control pe-5 class-border"
                     id="height2"
+                    name="heightInches"
                     placeholder="11"
+                    value={formData.heightInches || ""}
+                    onChange={handleChange}
                   />
                   <span
                     className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted"
@@ -257,19 +368,25 @@ function StepperForm() {
                     In.
                   </span>
                 </div>
+                {errors.heightInches && (
+                  <small className="text-danger">{errors.heightInches}</small>
+                )}
               </div>
             </div>
 
             <div className="flex-grow-1">
-              <label htmlFor="height2" className="form-label fontyy mb-0">
+              <label htmlFor="weight" className="form-label fontyy mb-0">
                 Current weight (lbs.)
               </label>
               <div className="position-relative">
                 <input
                   type="number"
                   className="form-control pe-5 class-border1"
-                  id="height2"
+                  id="weight"
+                  name="weight"
                   placeholder="250"
+                  value={formData.weight || ""}
+                  onChange={handleChange}
                 />
                 <span
                   className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted"
@@ -278,123 +395,246 @@ function StepperForm() {
                   Lbs.
                 </span>
               </div>
+              {errors.weight && (
+                <small className="text-danger">{errors.weight}</small>
+              )}
             </div>
           </>
         );
       case 4:
         return (
           <>
-            <h4
-              className="class-name-style"
-              
-            >
-             Alex, we can help you lose up to 45
-             pounds by 06/21/2025!
+            <h4 className="class-name-style">
+              Alex, we can help you lose up to 45 pounds by 06/21/2025!
             </h4>
-           
 
+            <WeightTrackerChart />
 
-            <WeightTrackerChart/>
+            <div className="container my-4">
+              <div class="bg-lady">
+                <div class="flex-container">
+                  <div class="image-section">
+                    <img
+                      src="/assets/images/lady1.png"
+                      alt="lady"
+                      class="img-fluid img-width-hight-set"
+                    />
+                  </div>
 
-
-            <div className="bg-lady" style={{ height: '160px' }}>
-  <div className="container ">
-    <div className="row align-items-center">
-      {/* Image Column - 4 cols */}
-      <div className="col-4 d-flex justify-content-center">
-        <img
-          src="/assets/images/lady1.png"
-          alt="lady"
-          className="img-fluid img-width-hight-set"
-          
-        />
-      </div>
-
-      {/* Text Column - 8 cols */}
-      <div className="col-8">
-        <h3 className="CLR-WHITEW mb-0">Thanks to EaseMD,</h3>
-        <h4 className="CLR-WHITEW mb-3">I lost weight effortlessly!</h4>
-        <p className="CLR-WHITEW8 mb-0">Anna B, 43</p>
-        <p className="CLR-WHITEW8 mb-0">Los Angeles, CA</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
+                  <div class="text-section">
+                    <h3 class="CLR-WHITEW mb-0">Thanks to EaseMD,</h3>
+                    <h4 class="CLR-WHITEW mb-2">I lost weight effortlessly!</h4>
+                    <p class="CLR-WHITEW8 mb-0">Anna B, 43</p>
+                    <p class="CLR-WHITEW8 mb-0">Los Angeles, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </>
         );
       case 5:
         return (
           <>
-            <h4
-              className="class-name-style"
-              
-            >
-              What are your interests?
+            <h4 className="class-name-style">
+              Find out if you're eligible in your state
             </h4>
+            <p className="paragraph-style-div">
+              This info helps your doctor determine if you're eligible for
+              treatment in your state.
+            </p>
+
+            <p className="class-sex">Please select your sex</p>
             <div className="mb-4">
-              <input
-                type="text"
-                className="form-control"
-                id="interests"
-                name="interests"
-                placeholder="e.g. Hiking, Reading"
-                value={formData.interests}
-                onChange={handleChange}
-                style={{
-                  borderColor: "#E5E5E5",
-                  borderRadius: "4px",
-                  padding: "12px",
-                }}
-              />
+              <div className="container mt-5">
+                <ul className="nav nav-tabs" id="myTabs" role="tablist">
+                  <li className="nav-item" role="presentation">
+                    <div
+                      className={`nav-link ${
+                        activeTab === "home" ? "active-tab" : ""
+                      }`}
+                      id="home-tab"
+                      onClick={() => handleTabChange("home")}
+                      role="tab"
+                      aria-controls="home"
+                      aria-selected={activeTab === "home"}
+                    >
+                      Male
+                    </div>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <div
+                      className={`nav-link ${
+                        activeTab === "profile" ? "active-tab" : ""
+                      }`}
+                      id="profile-tab"
+                      onClick={() => handleTabChange("profile")}
+                      role="tab"
+                      aria-controls="profile"
+                      aria-selected={activeTab === "profile"}
+                    >
+                      Female
+                    </div>
+                  </li>
+                </ul>
+
+                <div className="tab-content" id="myTabsContent">
+                  <div
+                    className={`tab-pane fade ${
+                      activeTab === "home" ? "show active" : ""
+                    }`}
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div className="flex-grow-1 class-padding-22">
+                      <label
+                        htmlFor="height2"
+                        className="form-label fontyy mb-0"
+                      >
+                        Email
+                      </label>
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          className="form-control input-style"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="e.g. John Smith@gmail.com"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-grow-1 class-padding-22">
+                      <label
+                        htmlFor="height2"
+                        className="form-label fontyy mb-0"
+                      >
+                        Birth Date
+                      </label>
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          className="form-control input-style"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="MM / DD / YYYY"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-grow-1 ">
+                      <label
+                        htmlFor="height2"
+                        className="form-label fontyy mb-0"
+                      >
+                        Zip Code
+                      </label>
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          className="form-control input-style"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="####"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`tab-pane fade ${
+                      activeTab === "profile" ? "show active" : ""
+                    }`}
+                    id="profile"
+                    role="tabpanel"
+                    aria-labelledby="profile-tab"
+                  >
+                    <div className="flex-grow-1 class-padding-22">
+                      <label
+                        htmlFor="height2"
+                        className="form-label fontyy mb-0"
+                      >
+                        Email
+                      </label>
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          className="form-control input-style"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="e.g. John Smith@gmail.com"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-grow-1 class-padding-22">
+                      <label
+                        htmlFor="height2"
+                        className="form-label fontyy mb-0"
+                      >
+                        Birth Date
+                      </label>
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          className="form-control input-style"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="MM / DD / YYYY"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-grow-1 ">
+                      <label
+                        htmlFor="height2"
+                        className="form-label fontyy mb-0"
+                      >
+                        Zip Code
+                      </label>
+                      <div className="position-relative">
+                        <input
+                          type="text"
+                          className="form-control input-style"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="####"
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </>
         );
       case 6:
         return (
           <>
-            <h4
-              className="class-name-style"
-              
-            >
-              Where are you located?
+            <h4 className="class-name-style">
+              Your state is eligible! ✅<br />
+              Choose Your GLP-1 Medication
             </h4>
-            <div className="mb-4">
-              <input
-                type="text"
-                className="form-control"
-                id="location"
-                name="location"
-                placeholder="e.g. New York, USA"
-                value={formData.location}
-                onChange={handleChange}
-                style={{
-                  borderColor: "#E5E5E5",
-                  borderRadius: "4px",
-                  padding: "12px",
-                }}
-              />
+            <p className="all-start">
+              All our medications is shipped from FDA regulated 503a and 503b
+              pharmacies.
+            </p>
+            <div className="bg-green-dynamic-div">
+              <div className="d-flex justify-content-between align-items-center">
+                <p className="text-center-divvv">
+                  Claim your discounted GLP-1 now while supplies last!
+                </p>
+                <p className="text-center-divv">00:00</p>
+              </div>
             </div>
           </>
         );
       case 7:
         return (
           <>
-            <h4
-              className="class-name-style"
-             
-            >
-             Alex, we can help you lose up to 45
-             pounds by 06/21/2025!
+            <h4 className="class-name-style">
+              Alex, we can help you lose up to 45 pounds by 06/21/2025!
             </h4>
             <div className="mb-4">
               <input
@@ -499,14 +739,83 @@ function StepperForm() {
                 </div>
 
                 {/* Continue button - styled like reference image */}
-                <div className="d-flex justify-content-center mt-4">
-                  <button
-                    type="submit"
-                    className="btn btn-setting-class-custom rounded-pill py-3"
-                  >
-                    {currentStep === totalSteps ? "Submit" : "Continue"}
-                  </button>
-                </div>
+                {currentStep !== 2 && (
+                  <div className="d-flex justify-content-center mt-4">
+                    <button
+                      type="submit"
+                      className="btn btn-setting-class-custom rounded-pill py-3"
+                    >
+                      {/* ✅ MODIFIED: Conditional button text based on step */}
+                      {currentStep === 3 || currentStep === 5
+                        ? "Next"
+                        : currentStep === totalSteps
+                        ? "Submit"
+                        : "Continue"}
+                    </button>
+                  </div>
+                )}
+
+                {/* Paragraph to show at Step 5 */}
+                {currentStep === 5 && (
+                  <div className="mt-3">
+                    <div className="container container-paddingt">
+                      <div className="d-flex   gap-3 justify-content-center align-items-center">
+                        <div
+                          className="d-flex flex-column align-items-center"
+                          style={{ width: "33.33%" }}
+                        >
+                          <img
+                            src="/assets/images/bg3.png"
+                            alt="Image"
+                            className="img-fluid mb-2"
+                            style={{
+                              maxWidth: "80%",
+                              height: "auto",
+                              margin: "auto",
+                            }}
+                          />
+                          <p className="texty-paragr">100% Data Security</p>
+                        </div>
+
+                        <div
+                          className="d-flex flex-column align-items-center"
+                          style={{ width: "33.33%" }}
+                        >
+                          <img
+                            src="/assets/images/bg2.png"
+                            alt="Image"
+                            className="img-fluid mb-2"
+                            style={{
+                              maxWidth: "80%",
+                              height: "auto",
+                              margin: "auto",
+                            }}
+                          />
+                          <p className="texty-paragr">24/7 Expert Support</p>
+                        </div>
+
+                        <div
+                          className="d-flex flex-column align-items-center"
+                          style={{ width: "33.33%" }}
+                        >
+                          <img
+                            src="/assets/images/bg1.png"
+                            alt="Image"
+                            className="img-fluid mb-2"
+                            style={{
+                              maxWidth: "80%",
+                              height: "auto",
+                              margin: "auto",
+                            }}
+                          />
+                          <p className="texty-paragrq1">
+                            60-Day Money Back Guarantee
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </form>
             </div>
           </div>
