@@ -17,7 +17,7 @@ const Footer = () => {
           />
         </a>
       </div>
-        <img src="/src/assets/images/link.png" alt="" className='img-center'/>
+        <img src="/assets/images/link.png" alt="" className='img-center'/>
         <p className='class-256'>256-BIT TLS SECURITY</p>
     </footer>
     

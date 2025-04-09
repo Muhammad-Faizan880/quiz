@@ -410,10 +410,10 @@ body {
   text-align: start !important;
 }
 .bg-green-dynamic-div {
-  background-color: #2fbaac;  /* Green background */
+  background-color: #2fbaac; 
   display: flex;
-  justify-content: center;  /* Centering content horizontally */
-  align-items: center;  /* Centering content vertically */
+  justify-content: center;  
+  align-items: center;  
   border-radius: 8px;
 
 }
@@ -422,7 +422,7 @@ body {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center;
-  width: 100%;  /* Ensure full width for the inner content */
+  width: 100%;  
 }
 
 .text-center-divvv {
@@ -431,7 +431,9 @@ body {
   font-size: 12px;
   line-height: 16px;
   color: white;
-  padding-top: 10px;
+  padding-top: 15px;
+  padding-left: 10px;
+ 
 }
 
 .text-center-divv {
@@ -441,11 +443,466 @@ body {
   line-height: 16px;
   letter-spacing: 10%;
   color: white;
-  padding-top: 10px;
+  padding-top: 15px;
+  padding-right: 10px;
 
 }
 
+.class-width-testimonials{
+  width: 90%;
+  margin: auto;
+  margin-top: -100px !important;
+}
+.testimonials-cards-style{
+  background-color: white;
+  padding: 25px;
+  height: 400px;
+  border-radius: 12px;
 
+  width: 380px;
+
+
+
+}
+.testimonials-cards-style-2{
+  background-color: white;
+  border-radius: 12px;
+  height: 400px;
+width: 378px;
+}
+
+
+.img-padd-b{
+  padding-bottom: 25px;
+}
+.glad-class{
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 18px;
+line-height: 28px;
+color: #2F766A;
+margin-bottom: -1px;
+}
+
+.glad-class-p{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+  color: #2F766A;
+  width: 80%;
+  padding-bottom: 45px;
+  }
+  
+.clas-flex-img-client{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.class-verify{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+    color: #00B67A;
+}
+.padding-set{
+margin-top: -14px;
+}
+.class-lindsay{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+    color: #2F766A;
+    margin: 0 0 0;
+}
+
+.class-margin{
+  margin-top: 8px;
+}
+.lindsay-margin{
+padding-top: 20px;
+}
+
+.date-class{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 16.2px;
+color: #2F766A;
+}
+
+.border-danger {
+  border: 1px solid red !important;
+}
+
+.date{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16.2px;
+  color: #2F766A;
+}
+.width-setjennni{
+  width: 100%;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.class-margin-2{
+display: flex;
+justify-content: flex-start;
+margin-top: -10px;
+}
+.padding-card-2{
+  padding: 25px;
+}
+
+.jeni-style{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 16px;
+line-height: 16px;
+color: #2F766A;
+padding-bottom: 6px;
+}
+
+.bg-gray-0{
+  background-color: #F2F2F2;
+  width: 100px;
+  height: 33px;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-items: center;
+  padding-top: 16px;
+  margin-top: -20px;
+}
+.loast-class{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: #2FBAAC;
+
+}
+.loast-class-2{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 16px;
+line-height: 24.8px;
+
+
+}
+.CLASS-BG-TAG{
+  background-color: #2FBAAC;
+  width: 75px;
+  display: flex;
+
+justify-content: center;
+align-items: center;
+  bottom: 10px;
+  left: 15px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 16px;
+line-height: 24.8px;
+}
+.CLASS-BG-TAG-1{
+  background-color: #FF9900;
+  width: 75px;
+  display: flex;
+
+justify-content: center;
+align-items: center;
+  bottom: 10px;
+  right: 70px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 16px;
+line-height: 24.8px;
+
+
+}
+
+/* .......................product............... */
+
+.product-selection-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.product-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8fcfc;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  border: 1px solid #e5e5e5;
+  transition: all 0.3s ease;
+}
+
+.product-card.selected {
+  border-color: #2D7567;
+  box-shadow: 0 0 0 1px #2D7567;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.price-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.current-price {
+  font-weight: 600;
+  color: #333;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 12px;
+}
+
+.product-description {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.product-code {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.code-highlight {
+  color: #2D7567;
+  font-weight: 600;
+}
+
+.product-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #2D7567;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #2D7567;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.expiration {
+  color: #999;
+}
+
+.product-image {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.product-image img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.continue-btn {
+ 
+ 
+  transition: background-color 0.3s ease;
+
+  height: 70px;
+  background-color: #f5d552;
+  color: black;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  width: 100%;
+
+
+
+}
+
+.continue-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.continue-btn:hover:not(:disabled) {
+  background-color: #236355;
+}
+
+/* .............................end................................ */
+
+.class-title{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+text-transform: uppercase;
+text-align: start !important;
+color: #000000;
+}
+.class-title-1{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+font-size: 18px;
+line-height: 24px;
+text-transform: uppercase;
+text-align: start !important;
+color: #4A4A4A;
+}
+.class-title-2{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+text-transform: uppercase;
+text-align: start !important;
+color: #4A4A4A;
+text-decoration: line-through;
+}
+.class-title-3{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: start !important;
+  color: #000000;
+  
+}
+.class-title-4{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: start !important;
+  color: #000000;
+
+  
+}
+.clr{
+  color: #FF9900;
+}
+.class-inject{
+  display: flex;
+  justify-content: start;
+}
+.class-bng-1{
+  background-color: #F2F2F2;
+  color: #2FBAAC;
+ border-radius: 9999px;
+ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ font-size: 10px !important;
+ line-height: 24px !important;
+font-weight: 400 !important;
+width: 70px;
+}
+.class-bng{
+  background-color: #D1F0DB;
+  color: #549D66 !important;
+ border-radius: 9999px;
+ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ font-size: 10px !important;
+ line-height: 24px !important;
+font-weight: 400 !important;
+width: 70px;
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dott{
+ 
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #16A34A !important;
+    border-radius: 50%; /* Make the dot circular */
+    display: inline-block;
+    margin-right: 8px; /* Space between the dot and the text */
+    
+ 
+}
+.flex-div{
+  display: flex;
+  justify-content: start;
+}
+
+.class-border-clr{
+  border: 1px solid #2FBAAC !important;
+}
+
+
+
+
+/* Custom class for 1700px and above: 4 columns */
+@media (min-width: 1700px) {
+  .custom-1700 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* For 1400px to 1699px: 3 columns */
+@media (max-width: 1699.98px) and (min-width: 1200px) {
+  .custom-1700 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+
+@media screen and (max-width: 575px) {
+.testimonials-cards-style{
+  width: 100%;
+  }
+  .testimonials-cards-style-2{
+    width: 100%;
+    }
+
+.glad-class-p{
+  padding-bottom: 0px;
+}
+
+
+}
 @media screen and (max-width: 545px) {
   .ptb-class {
     padding-bottom: 80px;
