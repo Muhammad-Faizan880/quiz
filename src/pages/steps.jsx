@@ -111,7 +111,7 @@ function StepperForm() {
       originalPrice: "$56",
       description: "Semaglutide administered via injection.",
       code: "GLP100",
-      image: "/public/assets/images/Background.png",
+      image: "/assets/images/Background.png",
     },
     {
       id: 2,
@@ -120,7 +120,7 @@ function StepperForm() {
       originalPrice: "$279",
       description: "Tirzepatide administered via injection.",
       code: "GLP200",
-      image: "/public/assets/images/Background.png",
+      image: "/assets/images/Background.png",
     },
   ];
 
