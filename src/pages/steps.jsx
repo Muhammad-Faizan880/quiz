@@ -660,18 +660,17 @@ function StepperForm() {
                       style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                     >
                       {isSelected ? (
-                        // Expanded layout
+                        // Expanded layout...................................................
                         <div>
                           <div className="text-center mb-3">
                             <img
                               src={
-                                selectedProduct
-                                  ? selectedProduct.expandedImage
+                                isSelected
+                                  ? product.expandedImage
                                   : "/assets/images/Background.png"
                               }
                               alt={product.name}
-                              className="img-fluid"
-                              style={{ maxHeight: "100px" }}
+                              className="img-fluid CLASS-WIDTH-FULL"
                             />
                           </div>
 
@@ -703,7 +702,7 @@ function StepperForm() {
                             shipping.
                           </p>
 
-                          {/* ✅ Accordion Section */}
+                          {/* Accordion Section ........................*/}
                           <div className="accordion mt-3">
                             {[
                               {
@@ -752,7 +751,7 @@ function StepperForm() {
                             <img
                               src={product.image}
                               alt={product.name}
-                              className="img-fluid mt-2"
+                              className="class-imgg mt-2"
                             />
                           </div>
                           <div className="col-9">
@@ -776,7 +775,9 @@ function StepperForm() {
                               <div className="flex items-center text-center class-bng bg-opacity-10">
                                 <span className="flex items-center">
                                   <div className="dott me-2"></div>
-                                  In Stock
+                                  <span className="dot-class-text">
+                                    In Stock
+                                  </span>
                                 </span>
                               </div>
                               <span className="badge class-bng-1 bg-opacity-10">
@@ -1129,6 +1130,176 @@ function StepperForm() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+              <div className=" testimonials-cards-style-2 ">
+                <div className="position-relative d-inline-block">
+                  <img
+                    src="/assets/images/Jennifer.png"
+                    alt=""
+                    className="width-setjennni"
+                  />
+                  {/* Green box (Right Bottom) */}
+                  <div className="position-absolute CLASS-BG-TAG-1 text-white px-2 py-1 rounded-pill">
+                    After
+                  </div>
+
+                  {/* Red box (Left Bottom) */}
+                  <div className="position-absolute CLASS-BG-TAG text-white px-2 py-1 rounded-pill">
+                    Before
+                  </div>
+                </div>
+                <div className="padding-card-2">
+                  <p className="jeni-style">Jennifer</p>
+                  <div className=" gap-1 class-margin-2">
+                    <img
+                      src="/assets/images/SVG.png"
+                      alt="Verified"
+                      className="padding-set-2"
+                      style={{ width: "17px", height: "17px" }}
+                    />
+                    <p className="class-verify">Verified Buyer</p>
+                  </div>
+                  <div className="d-flex justify-content-between align-items-center w-set">
+                    <p className="date-class">
+                      Date of experience:{" "}
+                      <span className="date">February 07, 2025</span>
+                    </p>
+
+                    <div className="bg-gray-0">
+                      <p className="loast-class">
+                        lost <span className="loast-class-2"> 92lbs</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+              <div className=" testimonials-cards-style ">
+                <img
+                  src="/assets/images/star.png"
+                  alt=""
+                  className="img-padd-b"
+                />
+                <p className="glad-class">Glad I Found Ease MD</p>
+                <p className="glad-class-p">
+                  I am so glad I found Ease MD. At a time when I was struggling
+                  to get in a zone to lose weight, this was the easy answer for
+                  me. It was an easy program and I felt supported...
+                </p>
+
+                <div className="clas-flex-img-client gap-3">
+                  <img
+                    src="/assets/images/client.png"
+                    alt="Client"
+                    className="rounded-circle"
+                    style={{ width: "48px", height: "48px" }}
+                  />
+
+                  <div className="lindsay-margin ">
+                    <p className="class-lindsay">Lindsay</p>
+                    <div className="d-flex align-items-center gap-1 class-margin">
+                      <img
+                        src="/assets/images/SVG.png"
+                        alt="Verified"
+                        className="padding-set"
+                        style={{ width: "17px", height: "17px" }}
+                      />
+                      <p className="class-verify">Verified Buyer</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="date-class">
+                  Date of experience:{" "}
+                  <span className="date">February 07, 2025</span>
+                </p>
+              </div>
+            </div>
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+              <div className=" testimonials-cards-style-2 ">
+                <div className="position-relative d-inline-block">
+                  <img
+                    src="/assets/images/Jennifer.png"
+                    alt=""
+                    className="width-setjennni"
+                  />
+                  {/* Green box (Right Bottom) */}
+                  <div className="position-absolute CLASS-BG-TAG-1 text-white px-2 py-1 rounded-pill">
+                    After
+                  </div>
+
+                  {/* Red box (Left Bottom) */}
+                  <div className="position-absolute CLASS-BG-TAG text-white px-2 py-1 rounded-pill">
+                    Before
+                  </div>
+                </div>
+                <div className="padding-card-2">
+                  <p className="jeni-style">Jennifer</p>
+                  <div className=" gap-1 class-margin-2">
+                    <img
+                      src="/assets/images/SVG.png"
+                      alt="Verified"
+                      className="padding-set-2"
+                      style={{ width: "17px", height: "17px" }}
+                    />
+                    <p className="class-verify">Verified Buyer</p>
+                  </div>
+                  <div className="d-flex justify-content-between align-items-center w-set">
+                    <p className="date-class">
+                      Date of experience:{" "}
+                      <span className="date">February 07, 2025</span>
+                    </p>
+
+                    <div className="bg-gray-0">
+                      <p className="loast-class">
+                        lost <span className="loast-class-2"> 92lbs</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+              <div className=" testimonials-cards-style ">
+                <img
+                  src="/assets/images/star.png"
+                  alt=""
+                  className="img-padd-b"
+                />
+                <p className="glad-class">Glad I Found Ease MD</p>
+                <p className="glad-class-p">
+                  I am so glad I found Ease MD. At a time when I was struggling
+                  to get in a zone to lose weight, this was the easy answer for
+                  me. It was an easy program and I felt supported...
+                </p>
+
+                <div className="clas-flex-img-client gap-3">
+                  <img
+                    src="/assets/images/client.png"
+                    alt="Client"
+                    className="rounded-circle"
+                    style={{ width: "48px", height: "48px" }}
+                  />
+
+                  <div className="lindsay-margin ">
+                    <p className="class-lindsay">Lindsay</p>
+                    <div className="d-flex align-items-center gap-1 class-margin">
+                      <img
+                        src="/assets/images/SVG.png"
+                        alt="Verified"
+                        className="padding-set"
+                        style={{ width: "17px", height: "17px" }}
+                      />
+                      <p className="class-verify">Verified Buyer</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="date-class">
+                  Date of experience:{" "}
+                  <span className="date">February 07, 2025</span>
+                </p>
               </div>
             </div>
           </div>
