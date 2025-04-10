@@ -24,8 +24,7 @@ function StepperForm() {
 
   const [activeTab, setActiveTab] = useState("home");
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [accordionOpen, setAccordionOpen] = useState(null);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -49,43 +48,6 @@ function StepperForm() {
       }, 300);
     }
   };
-
-  // const validate = () => {
-  //   let formErrors = {};
-  //   let isValid = true;
-
-  //   // Email validation
-  //   if (!formData.email) {
-  //     formErrors.email = "Email is required";
-  //     isValid = false;
-  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-  //     formErrors.email = "Email address is invalid";
-  //     isValid = false;
-  //   }
-
-  //   // Birth Date validation
-  //   if (!formData.birthDate) {
-  //     formErrors.birthDate = "Birth date is required";
-  //     isValid = false;
-  //   } else if (
-  //     !/^(0[1-9]|1[0-2])\/([0-2][0-9]|3[01])\/\d{4}$/.test(formData.birthDate)
-  //   ) {
-  //     formErrors.birthDate = "Birth date format is invalid. Use MM/DD/YYYY.";
-  //     isValid = false;
-  //   }
-
-  //   // Zip Code validation
-  //   if (!formData.zipCode) {
-  //     formErrors.zipCode = "Zip Code is required";
-  //     isValid = false;
-  //   } else if (!/^\d{4}$/.test(formData.zipCode)) {
-  //     formErrors.zipCode = "Zip Code should be 4 digits";
-  //     isValid = false;
-  //   }
-
-  //   setErrors(formErrors);
-  //   return isValid;
-  // };
 
   // Navigate to next step
   const nextStep = () => {
@@ -112,6 +74,7 @@ function StepperForm() {
       description: "Semaglutide administered via injection.",
       code: "GLP100",
       image: "/assets/images/Background.png",
+      expandedImage: "/assets/images/big-bg.png",
     },
     {
       id: 2,
@@ -121,23 +84,24 @@ function StepperForm() {
       description: "Tirzepatide administered via injection.",
       code: "GLP200",
       image: "/assets/images/Background.png",
+      expandedImage: "/assets/images/big-bg.png",
     },
   ];
 
   const handleProductSelect = (productId) => {
     const product = products.find((product) => product.id === productId);
     setSelectedProduct(productId);
+    setAccordionOpen(null);
   };
 
   //product end
+  const toggleAccordion = (section) => {
+    setAccordionOpen((prev) => (prev === section ? null : section));
+  };
 
- 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-
- 
 
     // ✅ Validate fullName on Step 1
     if (currentStep === 1 && formData.fullName.trim() === "") {
@@ -548,9 +512,7 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="text"
-                          className={`form-control input-style ${
-                            isSubmitted && !formData.email ? "border-danger" : ""
-                          }`}
+                          className="form-control input-style"
                           id="email"
                           name="email"
                           placeholder="e.g. John Smith@gmail.com"
@@ -568,9 +530,7 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="text"
-                          className={`form-control input-style ${
-                            isSubmitted && !formData.birthDate ? "border-danger" : ""
-                          }`}
+                          className="form-control input-style"
                           id="birthDate"
                           name="birthDate"
                           placeholder="MM / DD / YYYY"
@@ -588,9 +548,7 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="text"
-                          className={`form-control input-style ${
-                            isSubmitted && !formData.zipCode ? "border-danger" : ""
-                          }`}
+                          className="form-control input-style"
                           id="zipCode"
                           name="zipCode"
                           placeholder="####"
@@ -689,64 +647,148 @@ function StepperForm() {
             </div>
             {currentStep === 6 && (
               <div className="product-selection-container">
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    onClick={() => handleProductSelect(product.id)}
-                    className={`card mb-3 p-3 border rounded-4 shadow-sm ${
-                      selectedProduct === product.id
-                        ? "class-border-clr"
-                        : "border-light"
-                    }`}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <div className="row g-3 ">
-                      {/* 20% Column: Image + Circle */}
-                      <div className="col-3 text-center">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="img-fluid mt-2"
-                        />
-                      </div>
+                {products.map((product) => {
+                  const isSelected = selectedProduct === product.id;
 
-                      {/* 80% Column: Product Info */}
-                      <div className="col-9">
-                        <h5 className="class-title">{product.name}</h5>
+                  return (
+                    <div
+                      key={product.id}
+                      onClick={() => handleProductSelect(product.id)}
+                      className={`card mb-3 p-3 border rounded-4 shadow-sm ${
+                        isSelected ? "class-border-clr" : "border-light"
+                      }`}
+                      style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                    >
+                      {isSelected ? (
+                        // Expanded layout
+                        <div>
+                          <div className="text-center mb-3">
+                            <img
+                              src={
+                                selectedProduct
+                                  ? selectedProduct.expandedImage
+                                  : "/assets/images/Background.png"
+                              }
+                              alt={product.name}
+                              className="img-fluid"
+                              style={{ maxHeight: "100px" }}
+                            />
+                          </div>
 
-                        <div className="flex-div">
-                          <p className="class-title-1">
-                            {product.currentPrice}
-                          </p>
-                          <p className="class-title-2 ms-3">
-                            {product.originalPrice}
-                          </p>
-                        </div>
+                          <h5 className="class-compound">{product.name}</h5>
 
-                        <p className="mb-1 class-title-3">
-                          {product.description}
-                        </p>
-
-                        <p className="mb-1 class-title-4">
-                          Code Activated:{" "}
-                          <span className="clr">{product.code}</span>
-                        </p>
-
-                        <div className="class-inject gap-2 mt-2">
-                          <div className="flex items-center text-center class-bng bg-opacity-10">
-                            <span className=" flex items-center">
-                              <div className="dott me-2"></div>
-                              In Stock
+                          <div className="class-flex-expand mb-2">
+                            <span className="class-current">
+                              {product.currentPrice}
+                            </span>
+                            <span className="class-original text-decoration-line-through">
+                              {product.originalPrice}
                             </span>
                           </div>
-                          <span className="badge class-bng-1 bg-opacity-10 ">
-                            Injection
-                          </span>
+
+                          <div className="class-stock gap-2 mb-2">
+                            <span className=" bg-sett ">● In Stock</span>
+                            <span className=" code-class">
+                              Code Activated:{" "}
+                              <span className="class-color">
+                                {product.code}
+                              </span>
+                            </span>
+                          </div>
+
+                          <p className="text-inter-class">
+                            Discover the power of Semaglutide the active
+                            ingredient in Ozempic® & WeGovy® for a fraction of
+                            the cost. All customers also receive free expedited
+                            shipping.
+                          </p>
+
+                          {/* ✅ Accordion Section */}
+                          <div className="accordion mt-3">
+                            {[
+                              {
+                                title: "Details",
+                                content:
+                                  "This product is compounded for effective weight loss.",
+                              },
+                              {
+                                title: "Active Ingredients",
+                                content:
+                                  "Semaglutide (1mg/mL), Preserved Saline, B12.",
+                              },
+                              {
+                                title: "Why Injectable Semaglutide?",
+                                content:
+                                  "Injection delivers the compound directly into the bloodstream for faster absorption and better results.",
+                              },
+                            ].map(({ title, content }, index) => (
+                              <div key={index} className="border-top py-2">
+                                <div
+                                  onClick={(e) => {
+                                    e.stopPropagation(); // prevent triggering card select
+                                    toggleAccordion(title);
+                                  }}
+                                  className="d-flex justify-content-between align-items-center"
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <span className="detail-class">{title}</span>
+                                  <span className="plus-minus">
+                                    {accordionOpen === title ? "−" : "+"}
+                                  </span>
+                                </div>
+                                {accordionOpen === title && (
+                                  <div className="mt-2 class-content">
+                                    {content}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        // Compact layout
+                        <div className="row g-3">
+                          <div className="col-3 text-center">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="img-fluid mt-2"
+                            />
+                          </div>
+                          <div className="col-9">
+                            <h5 className="class-title">{product.name}</h5>
+                            <div className="flex-div">
+                              <p className="class-title-1">
+                                {product.currentPrice}
+                              </p>
+                              <p className="class-title-2 ms-3">
+                                {product.originalPrice}
+                              </p>
+                            </div>
+                            <p className="mb-1 class-title-3">
+                              {product.description}
+                            </p>
+                            <p className="mb-1 class-title-4">
+                              Code Activated:{" "}
+                              <span className="clr">{product.code}</span>
+                            </p>
+                            <div className="class-inject gap-2 mt-2">
+                              <div className="flex items-center text-center class-bng bg-opacity-10">
+                                <span className="flex items-center">
+                                  <div className="dott me-2"></div>
+                                  In Stock
+                                </span>
+                              </div>
+                              <span className="badge class-bng-1 bg-opacity-10">
+                                Injection
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </>
@@ -754,88 +796,13 @@ function StepperForm() {
       case 7:
         return (
           <>
-            {selectedProduct && (
-              <>
-                <h4 className="class-name-style">
-                  Your state is eligible! ✅<br />
-                  Choose Your GLP-1 Medication
-                </h4>
-                <p className="all-start">
-                  All our medications is shipped from FDA regulated 503a and
-                  503b pharmacies.
-                </p>
-                <div className="bg-green-dynamic-div">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <p className="text-center-divvv">
-                      Claim your discounted GLP-1 now while supplies last!
-                    </p>
-                    <p className="text-center-divv">00:00</p>
-                  </div>
-                </div>
-                <div className="product-details">
-                  <h5>
-                    {
-                      products.find((product) => product.id === selectedProduct)
-                        .name
-                    }
-                  </h5>
-                  <p>
-                    {
-                      products.find((product) => product.id === selectedProduct)
-                        .description
-                    }
-                  </p>
-                  <p>
-                    Price:{" "}
-                    {
-                      products.find((product) => product.id === selectedProduct)
-                        .currentPrice
-                    }
-                  </p>
-                  <p>
-                    Original Price:{" "}
-                    {
-                      products.find((product) => product.id === selectedProduct)
-                        .originalPrice
-                    }
-                  </p>
-                  <p>
-                    Code:{" "}
-                    {
-                      products.find((product) => product.id === selectedProduct)
-                        .code
-                    }
-                  </p>
-                </div>
-              </>
-            )}
+            <h4>Case Seven </h4>
           </>
         );
       case 8:
         return (
           <>
-            <h4
-              className="text-success mb-4 fw-normal"
-              style={{ color: "#2D7567" }}
-            >
-              What are your goals?
-            </h4>
-            <div className="mb-4">
-              <input
-                type="text"
-                className="form-control"
-                id="goals"
-                name="goals"
-                placeholder="e.g. Learn new skills"
-                value={formData.goals}
-                onChange={handleChange}
-                style={{
-                  borderColor: "#E5E5E5",
-                  borderRadius: "4px",
-                  padding: "12px",
-                }}
-              />
-            </div>
+            <h4>Case Eight </h4>
           </>
         );
       default:

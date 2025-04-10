@@ -35,6 +35,29 @@ h6 {
 
   font-weight: 500;
 }
+@font-face {
+  font-family: "Inter";
+  src: url("Inter-Regular.woff2") format("woff2"),
+    url("Inter-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("Inter-Bold.woff2") format("woff2"),
+    url("Inter-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("Inter-Medium.woff2") format("woff2"),
+    url("Inter-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
 
 body {
   background-color: #e5f5f3;
@@ -246,7 +269,7 @@ body {
   background: linear-gradient(90deg, #2f766a 0%, #2fbaac 100%);
   border-radius: 24px;
   padding: 20px;
- 
+
   width: 100%;
 }
 
@@ -260,7 +283,6 @@ body {
   flex: 0 0 33.33%; /* 4 columns out of 12 */
   display: flex;
   justify-content: center;
-  
 }
 
 .text-section {
@@ -289,7 +311,6 @@ body {
   line-height: 16px;
   color: white;
 }
-
 
 .class-primary {
   color: #2f827a;
@@ -410,19 +431,18 @@ body {
   text-align: start !important;
 }
 .bg-green-dynamic-div {
-  background-color: #2fbaac; 
+  background-color: #2fbaac;
   display: flex;
-  justify-content: center;  
-  align-items: center;  
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
-
 }
 
 .d-flex {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center;
-  width: 100%;  
+  width: 100%;
 }
 
 .text-center-divvv {
@@ -433,7 +453,6 @@ body {
   color: white;
   padding-top: 15px;
   padding-left: 10px;
- 
 }
 
 .text-center-divv {
@@ -445,132 +464,127 @@ body {
   color: white;
   padding-top: 15px;
   padding-right: 10px;
-
 }
 
-.class-width-testimonials{
+.class-width-testimonials {
   width: 90%;
   margin: auto;
   margin-top: -100px !important;
 }
-.testimonials-cards-style{
+.testimonials-cards-style {
   background-color: white;
   padding: 25px;
   height: 400px;
   border-radius: 12px;
 
   width: 380px;
-
-
-
 }
-.testimonials-cards-style-2{
+.testimonials-cards-style-2 {
   background-color: white;
   border-radius: 12px;
   height: 400px;
-width: 378px;
+  width: 378px;
 }
 
-
-.img-padd-b{
+.img-padd-b {
   padding-bottom: 25px;
 }
-.glad-class{
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 18px;
-line-height: 28px;
-color: #2F766A;
-margin-bottom: -1px;
+.glad-class {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  color: #2f766a;
+  margin-bottom: -1px;
 }
 
-.glad-class-p{
+.glad-class-p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-  color: #2F766A;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2f766a;
   width: 80%;
   padding-bottom: 45px;
-  }
-  
-.clas-flex-img-client{
+}
+
+.clas-flex-img-client {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.class-verify{
+.class-verify {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
-    color: #00B67A;
+  color: #00b67a;
 }
-.padding-set{
-margin-top: -14px;
+.padding-set {
+  margin-top: -14px;
 }
-.class-lindsay{
+.class-lindsay {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
-    color: #2F766A;
-    margin: 0 0 0;
+  color: #2f766a;
+  margin: 0 0 0;
 }
 
-.class-margin{
+.class-margin {
   margin-top: 8px;
 }
-.lindsay-margin{
-padding-top: 20px;
+.lindsay-margin {
+  padding-top: 20px;
 }
 
-.date-class{
+.date-class {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 12px;
-line-height: 16.2px;
-color: #2F766A;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16.2px;
+  color: #2f766a;
 }
 
 .border-danger {
   border: 1px solid red !important;
 }
 
-.date{
+.date {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 16.2px;
-  color: #2F766A;
+  color: #2f766a;
 }
-.width-setjennni{
+.width-setjennni {
   width: 100%;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
 }
 
-.class-margin-2{
-display: flex;
-justify-content: flex-start;
-margin-top: -10px;
+.class-margin-2 {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -10px;
 }
-.padding-card-2{
+.padding-card-2 {
   padding: 25px;
 }
 
-.jeni-style{
+.jeni-style {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 16px;
-line-height: 16px;
-color: #2F766A;
-padding-bottom: 6px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #2f766a;
+  padding-bottom: 6px;
 }
 
-.bg-gray-0{
-  background-color: #F2F2F2;
+.bg-gray-0 {
+  background-color: #f2f2f2;
   width: 100px;
   height: 33px;
   border-radius: 9999px;
@@ -582,51 +596,46 @@ padding-bottom: 6px;
   padding-top: 16px;
   margin-top: -20px;
 }
-.loast-class{
+.loast-class {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-color: #2FBAAC;
-
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2fbaac;
 }
-.loast-class-2{
+.loast-class-2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 16px;
-line-height: 24.8px;
-
-
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24.8px;
 }
-.CLASS-BG-TAG{
-  background-color: #2FBAAC;
+.CLASS-BG-TAG {
+  background-color: #2fbaac;
   width: 75px;
   display: flex;
 
-justify-content: center;
-align-items: center;
+  justify-content: center;
+  align-items: center;
   bottom: 10px;
   left: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 16px;
-line-height: 24.8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24.8px;
 }
-.CLASS-BG-TAG-1{
-  background-color: #FF9900;
+.CLASS-BG-TAG-1 {
+  background-color: #ff9900;
   width: 75px;
   display: flex;
 
-justify-content: center;
-align-items: center;
+  justify-content: center;
+  align-items: center;
   bottom: 10px;
   right: 70px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 16px;
-line-height: 24.8px;
-
-
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24.8px;
 }
 
 /* .......................product............... */
@@ -650,8 +659,8 @@ line-height: 24.8px;
 }
 
 .product-card.selected {
-  border-color: #2D7567;
-  box-shadow: 0 0 0 1px #2D7567;
+  border-color: #2d7567;
+  box-shadow: 0 0 0 1px #2d7567;
 }
 
 .product-info {
@@ -700,7 +709,7 @@ line-height: 24.8px;
 }
 
 .code-highlight {
-  color: #2D7567;
+  color: #2d7567;
   font-weight: 600;
 }
 
@@ -714,13 +723,13 @@ line-height: 24.8px;
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #2D7567;
+  color: #2d7567;
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
-  background-color: #2D7567;
+  background-color: #2d7567;
   border-radius: 50%;
   display: inline-block;
 }
@@ -742,8 +751,6 @@ line-height: 24.8px;
 }
 
 .continue-btn {
- 
- 
   transition: background-color 0.3s ease;
 
   height: 70px;
@@ -754,9 +761,6 @@ line-height: 24.8px;
   font-size: 20px;
   line-height: 30px;
   width: 100%;
-
-
-
 }
 
 .continue-btn:disabled {
@@ -770,107 +774,193 @@ line-height: 24.8px;
 
 /* .............................end................................ */
 
-.class-title{
+.class-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-text-transform: uppercase;
-text-align: start !important;
-color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  text-align: start !important;
+  color: #000000;
 }
-.class-title-1{
+.class-title-1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 700;
-font-size: 18px;
-line-height: 24px;
-text-transform: uppercase;
-text-align: start !important;
-color: #4A4A4A;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: uppercase;
+  text-align: start !important;
+  color: #4a4a4a;
 }
-.class-title-2{
+.class-title-2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-text-transform: uppercase;
-text-align: start !important;
-color: #4A4A4A;
-text-decoration: line-through;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  text-align: start !important;
+  color: #4a4a4a;
+  text-decoration: line-through;
 }
-.class-title-3{
+.class-title-3 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: start !important;
   color: #000000;
-  
 }
-.class-title-4{
+.class-title-4 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   text-align: start !important;
   color: #000000;
-
-  
 }
-.clr{
-  color: #FF9900;
+.clr {
+  color: #ff9900;
 }
-.class-inject{
+.class-inject {
   display: flex;
   justify-content: start;
 }
-.class-bng-1{
-  background-color: #F2F2F2;
-  color: #2FBAAC;
- border-radius: 9999px;
- font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
- font-size: 10px !important;
- line-height: 24px !important;
-font-weight: 400 !important;
-width: 70px;
+.class-bng-1 {
+  background-color: #f2f2f2;
+  color: #2fbaac;
+  border-radius: 9999px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+  width: 70px;
 }
-.class-bng{
-  background-color: #D1F0DB;
-  color: #549D66 !important;
- border-radius: 9999px;
- font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
- font-size: 10px !important;
- line-height: 24px !important;
-font-weight: 400 !important;
-width: 70px;
-display: flex;
-    justify-content: center;
-    align-items: center;
+.class-bng {
+  background-color: #d1f0db;
+  color: #549d66 !important;
+  border-radius: 9999px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.dott{
- 
-    width: 10px !important;
-    height: 10px !important;
-    background-color: #16A34A !important;
-    border-radius: 50%; /* Make the dot circular */
-    display: inline-block;
-    margin-right: 8px; /* Space between the dot and the text */
-    
- 
+.dott {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #16a34a !important;
+  border-radius: 50%; /* Make the dot circular */
+  display: inline-block;
+  margin-right: 8px; /* Space between the dot and the text */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 24px;
 }
-.flex-div{
+.flex-div {
   display: flex;
   justify-content: start;
 }
 
-.class-border-clr{
-  border: 1px solid #2FBAAC !important;
+.class-border-clr {
+  border: 1px solid #2fbaac !important;
 }
 
+.class-flex-expand {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+.class-compound {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: start;
+}
 
+.class-stock {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.bg-sett {
+  background-color: #dcfce7;
+  color: #16a34a;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 9999px;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.code-class {
+  background-color: white;
+  color: black;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: 1px solid #8e8e92;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 
+  border-radius: 9999px;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.class-color {
+  color: #ff9900;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+.class-current {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #4a4a4a;
+}
+.class-original {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.text-inter-class {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  padding-top: 14px;
+  text-align: start;
+}
+.detail-class {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: black;
+}
+.plus-minus {
+  width: 20px;
+  height: 20px;
+  color: black;
+  font-size: 33px;
+  margin-top: -33px;
+}
+.class-content {
+  text-align: start;
+}
 
 /* Custom class for 1700px and above: 4 columns */
 @media (min-width: 1700px) {
@@ -888,20 +978,17 @@ display: flex;
   }
 }
 
-
 @media screen and (max-width: 575px) {
-.testimonials-cards-style{
-  width: 100%;
-  }
-  .testimonials-cards-style-2{
+  .testimonials-cards-style {
     width: 100%;
-    }
+  }
+  .testimonials-cards-style-2 {
+    width: 100%;
+  }
 
-.glad-class-p{
-  padding-bottom: 0px;
-}
-
-
+  .glad-class-p {
+    padding-bottom: 0px;
+  }
 }
 @media screen and (max-width: 545px) {
   .ptb-class {
@@ -954,14 +1041,13 @@ display: flex;
     display: none;
   }
 
-
   .CLR-WHITEW {
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: white;
   }
-  
+
   .CLR-WHITEW8 {
     font-family: "Helvetica Neue", sans-serif;
     font-weight: 500;
@@ -970,12 +1056,4 @@ display: flex;
     color: white;
     padding-top: -40px;
   }
-
-
-
-
-
-
-
-
 }
