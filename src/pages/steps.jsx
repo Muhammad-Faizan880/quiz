@@ -31,7 +31,7 @@ function StepperForm() {
   };
 
   // Total number of steps
-  const totalSteps = 8;
+  const totalSteps = 6;
 
   // Handle input changes
   const handleChange = (e) => {
@@ -152,8 +152,37 @@ function StepperForm() {
     }
 
     // ...step 5 validation......
+    if (currentStep === 5) {
+      const newErrors = {};
+      let isValid = true;
 
-    
+      // Validate height (feet and inches)
+      if (!formData.email || formData.email <= 0) {
+        newErrors.email = true; // Just track as true if there's an error
+        isValid = false;
+      }
+      if (
+        !formData.birthDate ||
+        formData.birthDate < 0 ||
+        formData.birthDate > 12
+      ) {
+        newErrors.birthDate = true; // Just track as true if there's an error
+        isValid = false;
+      }
+
+      // Validate weight
+      if (!formData.zipCode || formData.zipCode <= 0) {
+        newErrors.zipCode = true; // Just track as true if there's an error
+        isValid = false;
+      }
+
+      setErrors(newErrors);
+
+      // If validation fails, don't proceed
+      if (!isValid) {
+        return;
+      }
+    }
 
     // ...step 5 validation. end.....
 
@@ -514,7 +543,9 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="text"
-                          className="form-control input-style"
+                          className={`form-control pe-5 input-style ${
+                            errors.email ? "border-danger" : ""
+                          }`}
                           id="email"
                           name="email"
                           placeholder="e.g. John Smith@gmail.com"
@@ -531,8 +562,10 @@ function StepperForm() {
                       </label>
                       <div className="position-relative">
                         <input
-                          type="text"
-                          className="form-control input-style"
+                          type="date"
+                          className={`form-control input-style ${
+                            errors.birthDate ? "border-danger" : ""
+                          }`}
                           id="birthDate"
                           name="birthDate"
                           placeholder="MM / DD / YYYY"
@@ -550,7 +583,9 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="text"
-                          className="form-control input-style"
+                          className={`form-control pe-5 input-style ${
+                            errors.zipCode ? "border-danger" : ""
+                          }`}
                           id="zipCode"
                           name="zipCode"
                           placeholder="####"
@@ -572,14 +607,16 @@ function StepperForm() {
                         htmlFor="height2"
                         className="form-label fontyy mb-0"
                       >
-                        Email Female
+                        Email
                       </label>
                       <div className="position-relative">
                         <input
                           type="text"
-                          className="form-control input-style"
-                          id="fullName"
-                          name="fullName"
+                          className={`form-control pe-5 input-style ${
+                            errors.email ? "border-danger" : ""
+                          }`}
+                          id="email"
+                          name="email"
                           placeholder="e.g. John Smith@gmail.com"
                           onChange={handleChange}
                         />
@@ -590,14 +627,16 @@ function StepperForm() {
                         htmlFor="height2"
                         className="form-label fontyy mb-0"
                       >
-                        Birth Date Female
+                        Birth Date
                       </label>
                       <div className="position-relative">
                         <input
-                          type="text"
-                          className="form-control input-style"
-                          id="fullName"
-                          name="fullName"
+                          type="date"
+                          className={`form-control input-style ${
+                            errors.birthDate ? "border-danger" : ""
+                          }`}
+                          id="birthDate"
+                          name="birthDate"
                           placeholder="MM / DD / YYYY"
                           onChange={handleChange}
                         />
@@ -608,14 +647,16 @@ function StepperForm() {
                         htmlFor="height2"
                         className="form-label fontyy mb-0"
                       >
-                        Zip Code Female
+                        Zip Code
                       </label>
                       <div className="position-relative">
                         <input
                           type="text"
-                          className="form-control input-style"
-                          id="fullName"
-                          name="fullName"
+                          className={`form-control pe-5 input-style ${
+                            errors.zipCode ? "border-danger" : ""
+                          }`}
+                          id="zipCode"
+                          name="zipCode"
                           placeholder="####"
                           onChange={handleChange}
                         />
@@ -796,18 +837,7 @@ function StepperForm() {
             )}
           </>
         );
-      case 7:
-        return (
-          <>
-            <h4>Case Seven </h4>
-          </>
-        );
-      case 8:
-        return (
-          <>
-            <h4>Case Eight </h4>
-          </>
-        );
+
       default:
         return null;
     }
@@ -867,31 +897,32 @@ function StepperForm() {
                   </div>
 
                   {/* Continue button - styled like reference image */}
-                  {currentStep !== 2 && currentStep === 6 ? (
-                    <div className="d-flex justify-content-center mt-4">
-                      <button
-                        type="submit"
-                        className="btn btn-setting-class-custom rounded-pill py-3"
-                        disabled={selectedProduct === null} // Disable button if no product is selected
-                      >
-                        {currentStep === 6 ? "Continue" : "Next"}
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="d-flex justify-content-center mt-4">
-                      <button
-                        type="submit"
-                        className="btn btn-setting-class-custom rounded-pill py-3"
-                      >
-                        {/* Conditional button text based on step */}
-                        {currentStep === 3 || currentStep === 5
-                          ? "Next"
-                          : currentStep === totalSteps
-                          ? "Submit"
-                          : "Continue"}
-                      </button>
-                    </div>
-                  )}
+                  {currentStep !== 2 &&
+                    (currentStep === 6 ? (
+                      <div className="d-flex justify-content-center mt-4">
+                        <button
+                          type="submit"
+                          className="btn btn-setting-class-custom rounded-pill py-3"
+                          disabled={selectedProduct === null} // Disable button if no product is selected
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="d-flex justify-content-center mt-4">
+                        <button
+                          type="submit"
+                          className="btn btn-setting-class-custom rounded-pill py-3"
+                        >
+                          {/* Conditional button text based on step */}
+                          {currentStep === 3 || currentStep === 5
+                            ? "Next"
+                            : currentStep === totalSteps
+                            ? "Submit"
+                            : "Continue"}
+                        </button>
+                      </div>
+                    ))}
 
                   {/* Paragraph to show at Step 5 */}
                   {currentStep === 5 && (
