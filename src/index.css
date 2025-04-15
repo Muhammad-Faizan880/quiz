@@ -143,6 +143,9 @@ body {
   background-color: #f5d552;
   color: black;
 }
+.selected-product {
+  border: 2px solid red !important;  /* Red border for selected product */
+}
 .ptb-class {
   padding-bottom: 190px;
   padding-top: 153px;

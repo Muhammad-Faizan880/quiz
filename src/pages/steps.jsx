@@ -26,12 +26,23 @@ function StepperForm() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [accordionOpen, setAccordionOpen] = useState(null);
 
+  const [medicationAnswer, setMedicationAnswer] = useState(null);
+
+  const handleSelection = (answer) => {
+    setMedicationAnswer(answer);
+    setCurrentStep(7);
+  };  
+ 
+
+
+
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
   // Total number of steps
-  const totalSteps = 6;
+  const totalSteps = 9;
 
   // Handle input changes
   const handleChange = (e) => {
@@ -74,7 +85,7 @@ function StepperForm() {
       description: "Semaglutide administered via injection.",
       code: "GLP100",
       image: "/assets/images/Background.png",
-      expandedImage: "/assets/images/big-bg.png",
+     
     },
     {
       id: 2,
@@ -84,13 +95,13 @@ function StepperForm() {
       description: "Tirzepatide administered via injection.",
       code: "GLP200",
       image: "/assets/images/Background.png",
-      expandedImage: "/assets/images/big-bg.png",
+    
     },
   ];
 
   const handleProductSelect = (productId) => {
     const product = products.find((product) => product.id === productId);
-    setSelectedProduct(productId);
+    setSelectedProduct(product);
     setAccordionOpen(null);
   };
 
@@ -673,9 +684,54 @@ function StepperForm() {
         return (
           <>
             <h4 className="class-name-style">
-              Your state is eligible! ✅<br />
-              Choose Your GLP-1 Medication
+            Are you taking any prescription medication?
             </h4>
+            <div className="card mb-3" style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}>
+        <div className="card-body p-3">
+          <div className="form-check">
+            <input
+              className="form-check-input custom-radio-button"
+              type="radio"
+              name="medication"
+              id="yes"
+              onChange={() => handleSelection("yes")}
+            />
+            <label className="form-check-label text0-clr" htmlFor="yes">
+              Yes
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div className="card mb-3" style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}>
+        <div className="card-body p-3">
+          <div className="form-check">
+            <input
+              className="form-check-input custom-radio-button"
+              type="radio"
+              name="medication"
+              id="no"
+              onChange={() => handleSelection("no")}
+            />
+            <label className="form-check-label text0-clr" htmlFor="no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+           
+          </>
+        );
+
+        case 7:
+        return (
+          <>
+           {medicationAnswer === "yes" && (
+  <h4 className="class-name-style">
+    Your state is eligible! ✅<br />
+    Choose Your GLP-1 Medication
+  </h4>
+)}
             <p className="all-start">
               All our medications is shipped from FDA regulated 503a and 503b
               pharmacies.
@@ -688,155 +744,187 @@ function StepperForm() {
                 <p className="text-center-divv">00:00</p>
               </div>
             </div>
-            {currentStep === 6 && (
-              <div className="product-selection-container">
-                {products.map((product) => {
-                  const isSelected = selectedProduct === product.id;
+           
+  <div className="product-selection-container">
+    <div
+      className="mb-3 p-3 rounded-4"
+     
+    >
+      <div>
+        <div className="text-center mb-3">
+          <img
+            src= "/assets/images/big-bg.png"
+            alt="Selected Product"
+            className="img-fluid CLASS-WIDTH-FULL"
+          />
+        </div>
 
-                  return (
-                    <div
-                      key={product.id}
-                      onClick={() => handleProductSelect(product.id)}
-                      className={`card mb-3 p-3 border rounded-4 shadow-sm ${
-                        isSelected ? "class-border-clr" : "border-light"
-                      }`}
-                      style={{ cursor: "pointer", transition: "all 0.3s ease" }}
-                    >
-                      {isSelected ? (
-                        // Expanded layout...................................................
-                        <div>
-                          <div className="text-center mb-3">
-                            <img
-                              src={
-                                isSelected
-                                  ? product.expandedImage
-                                  : "/assets/images/Background.png"
-                              }
-                              alt={product.name}
-                              className="img-fluid CLASS-WIDTH-FULL"
-                            />
-                          </div>
+        <h5 className="class-compound">COMPOUNDED TIRZEPATIDE
+        </h5>
 
-                          <h5 className="class-compound">{product.name}</h5>
+        <div className="class-flex-expand mb-2">
+          <span className="class-current">$179</span>
+          <span className="class-original text-decoration-line-through">
+          $279
+          </span>
+        </div>
 
-                          <div className="class-flex-expand mb-2">
-                            <span className="class-current">
-                              {product.currentPrice}
-                            </span>
-                            <span className="class-original text-decoration-line-through">
-                              {product.originalPrice}
-                            </span>
-                          </div>
+        <div className="class-stock gap-2 mb-2">
+          <span className="bg-sett">● In Stock</span>
+          <span className="code-class">
+            Code Activated:{" "}
+            <span className="class-color"> GLP200</span>
+          </span>
+        </div>
 
-                          <div className="class-stock gap-2 mb-2">
-                            <span className=" bg-sett ">● In Stock</span>
-                            <span className=" code-class">
-                              Code Activated:{" "}
-                              <span className="class-color">
-                                {product.code}
-                              </span>
-                            </span>
-                          </div>
+        <p className="text-inter-class">
+          Discover the power of Semaglutide, the active ingredient in Ozempic® &
+          WeGovy® for a fraction of the cost. All customers also receive free
+          expedited shipping.
+        </p>
 
-                          <p className="text-inter-class">
-                            Discover the power of Semaglutide the active
-                            ingredient in Ozempic® & WeGovy® for a fraction of
-                            the cost. All customers also receive free expedited
-                            shipping.
-                          </p>
-
-                          {/* Accordion Section ........................*/}
-                          <div className="accordion mt-3">
-                            {[
-                              {
-                                title: "Details",
-                                content:
-                                  "This product is compounded for effective weight loss.",
-                              },
-                              {
-                                title: "Active Ingredients",
-                                content:
-                                  "Semaglutide (1mg/mL), Preserved Saline, B12.",
-                              },
-                              {
-                                title: "Why Injectable Semaglutide?",
-                                content:
-                                  "Injection delivers the compound directly into the bloodstream for faster absorption and better results.",
-                              },
-                            ].map(({ title, content }, index) => (
-                              <div key={index} className="border-top py-2">
-                                <div
-                                  onClick={(e) => {
-                                    e.stopPropagation(); // prevent triggering card select
-                                    toggleAccordion(title);
-                                  }}
-                                  className="d-flex justify-content-between align-items-center"
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <span className="detail-class">{title}</span>
-                                  <span className="plus-minus">
-                                    {accordionOpen === title ? "−" : "+"}
-                                  </span>
-                                </div>
-                                {accordionOpen === title && (
-                                  <div className="mt-2 class-content">
-                                    {content}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        // Compact layout
-                        <div className="row g-3">
-                          <div className="col-3 text-center">
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              className="class-imgg mt-2"
-                            />
-                          </div>
-                          <div className="col-9">
-                            <h5 className="class-title">{product.name}</h5>
-                            <div className="flex-div">
-                              <p className="class-title-1">
-                                {product.currentPrice}
-                              </p>
-                              <p className="class-title-2 ms-3">
-                                {product.originalPrice}
-                              </p>
-                            </div>
-                            <p className="mb-1 class-title-3">
-                              {product.description}
-                            </p>
-                            <p className="mb-1 class-title-4">
-                              Code Activated:{" "}
-                              <span className="clr">{product.code}</span>
-                            </p>
-                            <div className="class-inject gap-2 mt-2">
-                              <div className="flex items-center text-center class-bng bg-opacity-10">
-                                <span className="flex items-center">
-                                  <div className="dott me-2"></div>
-                                  <span className="dot-class-text">
-                                    In Stock
-                                  </span>
-                                </span>
-                              </div>
-                              <span className="badge class-bng-1 bg-opacity-10">
-                                Injection
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+        {/* Accordion Section */}
+        <div className="accordion mt-3">
+          {[{
+              title: "Details",
+              content: "This product is compounded for effective weight loss.",
+            },
+            {
+              title: "Active Ingredients",
+              content: "Semaglutide (1mg/mL), Preserved Saline, B12.",
+            },
+            {
+              title: "Why Injectable Semaglutide?",
+              content: "Injection delivers the compound directly into the bloodstream for faster absorption and better results.",
+            },
+          ].map(({ title, content }, index) => (
+            <div key={index} className="border-top py-2">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleAccordion(title);
+                }}
+                className="d-flex justify-content-between align-items-center"
+                style={{ cursor: "pointer" }}
+              >
+                <span className="detail-class">{title}</span>
+                <span className="plus-minus">
+                  {accordionOpen === title ? "−" : "+"}
+                </span>
               </div>
-            )}
+              {accordionOpen === title && (
+                <div className="mt-2 class-content">{content}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
           </>
         );
+
+case 8: 
+return (
+  <>
+  <h3>helloo</h3>
+  {currentStep === 8 && (
+  <div className="product-selection-container">
+  {products.map((product) => (
+    <div
+      key={product.id}
+      onClick={() => handleProductSelect(product.id)} 
+      className={`card mb-3 p-3 rounded-4 shadow-sm ${
+        selectedProduct === product.id ? 'selected-product' : ''
+      }`} 
+    >
+      <div className="row g-3">
+        <div className="col-3 text-center">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="class-imgg mt-2"
+          />
+        </div>
+        <div className="col-9">
+          <h5 className="class-title">{product.name}</h5>
+          <div className="flex-div">
+            <p className="class-title-1">{product.currentPrice}</p>
+            <p className="class-title-2 ms-3">{product.originalPrice}</p>
+          </div>
+          <p className="mb-1 class-title-3">{product.description}</p>
+          <p className="mb-1 class-title-4">
+            Code Activated: <span className="clr">{product.code}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+)}
+
+
+  
+  </>
+);
+
+case 9:
+  return (
+    <>
+    
+    
+   
+
+    {currentStep === 9 && selectedProduct && (
+  <div className="product-selection-container">
+    <div
+      className="mb-3 p-3 rounded-4"
+      style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+    >
+      <div>
+        <div className="text-center mb-3">
+          <img
+            src={selectedProduct.expandedImage || "/assets/images/big-bg.png"}
+            alt="Selected Product"
+            className="img-fluid CLASS-WIDTH-FULL"
+          />
+        </div>
+
+        <h5 className="class-compound">{selectedProduct.name}</h5>
+
+        <div className="class-flex-expand mb-2">
+          <span className="class-current">{selectedProduct.currentPrice}</span>
+          <span className="class-original text-decoration-line-through">
+            {selectedProduct.originalPrice}
+          </span>
+        </div>
+
+        <div className="class-stock gap-2 mb-2">
+          <span className="bg-sett">● In Stock</span>
+          <span className="code-class">
+            Code Activated:{" "}
+            <span className="class-color">{selectedProduct.code}</span>
+          </span>
+        </div>
+
+        <p className="text-inter-class">
+          Discover the power of Semaglutide, the active ingredient in Ozempic® &
+          WeGovy® for a fraction of the cost. All customers also receive free
+          expedited shipping.
+        </p>
+
+       
+      </div>
+    </div>
+  </div>
+)}
+
+    
+    </>
+  )
 
       default:
         return null;
@@ -898,7 +986,7 @@ function StepperForm() {
 
                   {/* Continue button - styled like reference image */}
                   {currentStep !== 2 &&
-                    (currentStep === 6 ? (
+                    (currentStep === 8 ? (
                       <div className="d-flex justify-content-center mt-4">
                         <button
                           type="submit"
@@ -992,7 +1080,7 @@ function StepperForm() {
         </div>
       </div>
 
-      {currentStep === 6 && (
+      {currentStep === 7 && (
         <div className="mt-4 class-width-testimonials">
           <div className="row">
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
