@@ -879,8 +879,8 @@ function StepperForm() {
                         <img
                           src={
                             isOpen
-                              ? "/public/assets/images/Vectorr.png"
-                              : "/public/assets/images/Vector.png"
+                              ? "/assets/images/Vectorr.png"
+                              : "/assets/images/Vector.png"
                           }
                           alt="Dropdown arrow"
                           style={{
