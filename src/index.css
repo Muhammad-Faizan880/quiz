@@ -1,23 +1,23 @@
 @font-face {
   font-family: HelveticaNeue-Bold;
-  src: url("HelveticaNeue-Bold.otf");
+  src: url("/assets/images/HelveticaNeue-Bold.woff");
   font-weight: 700;
 }
 @font-face {
   font-family: HelveticaNeueLight;
-  src: url("HelveticaNeueLight.otf");
+  src: url("/assets/images/HelveticaNeueLight.woff");
   font-weight: 400;
 }
 @font-face {
   font-family: QuincyCF-Bold;
-  src: url("QuincyCF-Bold.woff");
+  src: url("/assets/images/QuincyCF-Bold.woff");
 
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @font-face {
   font-family: QuincyCF-Medium;
-  src: url("QuincyCF-Medium.woff");
+  src: url("/assets/images/QuincyCF-Medium.woff");
 }
 
 h1,
@@ -31,7 +31,7 @@ h6 {
 
 @font-face {
   font-family: HelveticaNeue-Medium;
-  src: url("HelveticaNeue-Medium.otf");
+  src: url("/assets/images/HelveticaNeue-Medium.woff");
 
   font-weight: 500;
 }
@@ -62,15 +62,16 @@ h6 {
 body {
   background-color: #e5f5f3;
 }
-
+.class-name-style {
+  font-family: QuincyCF-Bold;
+}
 .class-logo-padding {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
 .text-weight-property {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: HelveticaNeueLight;
   color: white;
   font-size: 15px;
   line-height: 20px;
@@ -82,7 +83,7 @@ body {
   padding-bottom: 24px;
 }
 .class-256 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   color: white;
   font-size: 17px;
@@ -100,7 +101,7 @@ body {
   color: #666666;
   background-color: #f7f7f7 !important;
   border-radius: 9999px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -110,7 +111,7 @@ body {
 }
 .text-set-class {
   color: #6c6c6c;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -118,7 +119,7 @@ body {
 }
 .text-setting {
   color: #666666;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
@@ -133,7 +134,7 @@ body {
   height: 70px;
   background-color: #f5d552;
   color: black;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
@@ -144,7 +145,7 @@ body {
   color: black;
 }
 .selected-product {
-  border: 2px solid red !important;  /* Red border for selected product */
+  border: 2px solid #2fbaac !important;
 }
 .ptb-class {
   padding-bottom: 190px;
@@ -156,8 +157,8 @@ body {
   line-height: 32px;
   letter-spacing: -0.28px;
   font-weight: 700;
-  padding-top: 32px;
-  padding-bottom: 27px;
+  padding-top: 10px;
+  padding-bottom: 18px;
   text-align: start !important;
 }
 .input-style {
@@ -199,9 +200,23 @@ body {
 .custom-radio-button:checked:before {
   background-color: #2f766a;
 }
+.dose-class {
+  font-family: HelveticaNeueLight;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
 
+  color: black;
+}
+.option-clr {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #555555;
+}
 .text0-clr {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
@@ -210,7 +225,7 @@ body {
 }
 
 .class-bmi-1 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 36px;
   line-height: 40px;
@@ -220,7 +235,7 @@ body {
 }
 
 .class-bmi {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 17px;
   line-height: 22px;
@@ -257,7 +272,7 @@ body {
 }
 
 .fontyy {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -323,7 +338,7 @@ body {
 .mt-class {
   margin-top: -40px !important;
   padding-bottom: 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 12px;
   line-height: 24px;
@@ -332,7 +347,7 @@ body {
   color: #151515;
 }
 .paragraph-style-div {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -341,7 +356,7 @@ body {
   text-align: start !important;
 }
 .class-sex {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -375,7 +390,7 @@ body {
   width: 100%; /* Ensure the tab spans the full width of its container */
   text-align: center; /* Center the text inside the tab */
   cursor: pointer;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
@@ -399,7 +414,7 @@ body {
 }
 
 .texty-paragr {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -409,7 +424,7 @@ body {
 }
 
 .texty-paragrq1 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -425,7 +440,7 @@ body {
 }
 
 .all-start {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 17px;
   line-height: 22px;
@@ -449,7 +464,7 @@ body {
 }
 
 .text-center-divvv {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
@@ -459,7 +474,7 @@ body {
 }
 
 .text-center-divv {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -493,7 +508,7 @@ body {
   padding-bottom: 25px;
 }
 .glad-class {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 18px;
   line-height: 28px;
@@ -502,7 +517,7 @@ body {
 }
 
 .glad-class-p {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -518,7 +533,7 @@ body {
 }
 
 .class-verify {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
@@ -528,7 +543,7 @@ body {
   margin-top: -14px;
 }
 .class-lindsay {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -544,7 +559,7 @@ body {
 }
 
 .date-class {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 12px;
   line-height: 16.2px;
@@ -556,7 +571,7 @@ body {
 }
 
 .date {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 12px;
   line-height: 16.2px;
@@ -578,7 +593,7 @@ body {
 }
 
 .jeni-style {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -600,14 +615,14 @@ body {
   margin-top: -20px;
 }
 .loast-class {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #2fbaac;
 }
 .loast-class-2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 24.8px;
@@ -621,7 +636,7 @@ body {
   align-items: center;
   bottom: 10px;
   left: 15px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 24.8px;
@@ -635,7 +650,7 @@ body {
   align-items: center;
   bottom: 10px;
   right: 70px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 24.8px;
@@ -646,8 +661,9 @@ body {
 .product-selection-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 6px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .product-card {
@@ -759,7 +775,7 @@ body {
   height: 70px;
   background-color: #f5d552;
   color: black;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
@@ -778,7 +794,7 @@ body {
 /* .............................end................................ */
 
 .class-title {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -787,7 +803,7 @@ body {
   color: #000000;
 }
 .class-title-1 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
@@ -796,7 +812,7 @@ body {
   color: #4a4a4a;
 }
 .class-title-2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -806,16 +822,16 @@ body {
   text-decoration: line-through;
 }
 .class-title-3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: start !important;
   color: #000000;
- margin-top: -10px;
+  margin-top: -10px;
 }
 .class-title-4 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -833,7 +849,7 @@ body {
   background-color: #f2f2f2;
   color: #2fbaac;
   border-radius: 9999px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-size: 10px !important;
   line-height: 24px !important;
   font-weight: 400 !important;
@@ -843,7 +859,7 @@ body {
   background-color: #d1f0db;
   color: #549d66 !important;
   border-radius: 9999px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-size: 10px !important;
   line-height: 24px !important;
   font-weight: 400 !important;
@@ -860,22 +876,18 @@ body {
   border-radius: 50%; /* Make the dot circular */
   display: inline-block;
   margin-right: 8px; /* Space between the dot and the text */
- 
 }
-.dot-class-text{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+.dot-class-text {
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 10px;
   line-height: 24px;
 }
 
-.class-imgg{
+.class-imgg {
   width: 100%;
   height: auto;
 }
-
-
-
 
 .flex-div {
   display: flex;
@@ -921,7 +933,7 @@ body {
 .code-class {
   background-color: white;
   color: black;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   border: 1px solid #8e8e92;
   font-weight: 400;
   font-size: 16px;
@@ -935,20 +947,20 @@ body {
 
 .class-color {
   color: #ff9900;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
 }
 .class-current {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
   color: #4a4a4a;
 }
 .class-original {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -979,8 +991,181 @@ body {
   text-align: start;
 }
 
-.CLASS-WIDTH-FULL{
+.CLASS-WIDTH-FULL {
   width: 100%;
+}
+.bg-clr-#E5F5F3 {
+  background-color: #e5f5f3;
+}
+
+.img-tick-set {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.class-title-new {
+  font-family: HelveticaNeue-Bold;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+  text-align: start !important;
+  color: #333333;
+  margin-top: 25px;
+}
+.bg-div-dark {
+  background-color: #2f827a !important;
+  font-family: HelveticaNeue-Medium;
+
+  font-size: 10px;
+  line-height: 14.03px;
+  letter-spacing: 0.23px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  border-radius: 50px;
+  width: 60%;
+  padding: 4px;
+  margin-top: -8px;
+}
+
+.class-details {
+  font-family: HelveticaNeue-Bold;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: start !important;
+  color: #000000;
+}
+.class-details-new {
+  font-family: HelveticaNeue-Bold;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: start !important;
+  color: #000000;
+  padding-left: 16px;
+}
+.class-details-new1 {
+  font-family: HelveticaNeue-Bold;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: start !important;
+  color: #000000;
+  padding-left: 16px;
+  padding-top: 9px;
+}
+.flex-class-div {
+  display: flex;
+  justify-content: start;
+  margin-top: 10px;
+  margin-bottom: -20px;
+}
+.class-title-price {
+  font-family: HelveticaNeue-Bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2f827a !important;
+  margin-top: 25px;
+}
+.class-title-price-1 {
+  font-family: HelveticaNeue-Bold;
+  font-size: 16px;
+  line-height: 28px;
+  color: #2f827a !important;
+}
+.cancel-class {
+  font-family: HelveticaNeueLight;
+  font-size: 7px;
+  line-height: 12px;
+  color: black;
+  margin-top: 5px;
+}
+.selected-button-red {
+  background-color: #2fbaac;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-family: HelveticaNeue-Bold;
+  font-size: 11.42px;
+  line-height: 20.7px;
+  text-align: center;
+  width: 110px;
+}
+.default-color {
+  background-color: #cbcbcb;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-family: HelveticaNeue-Bold;
+  font-size: 11.42px;
+  line-height: 20.7px;
+  text-align: center;
+  width: 110px;
+}
+.checkk {
+  font-family: HelveticaNeueLight;
+  font-size: 26px;
+  line-height: 46px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: #000000;
+}
+
+.licensed {
+  font-family: HelveticaNeueLight;
+  font-size: 26px;
+  line-height: 46px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  padding-top: 20px;
+}
+.licensed-1 {
+  font-family: HelveticaNeue-Bold;
+  font-size: 26px;
+  line-height: 46px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: #2f766a;
+}
+.licensed-11 {
+  font-family: HelveticaNeueLight;
+  font-size: 26px;
+  line-height: 46px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.loader {
+  position: relative;
+  width: 40%;
+  margin: auto;
+  height: 16px;
+  background: #e0e0e0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #2f766a, #2fbaac);
+  animation: loadAnimation 3s infinite;
+}
+
+@keyframes loadAnimation {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 /* Custom class for 1700px and above: 4 columns */
@@ -1038,7 +1223,7 @@ body {
     padding-bottom: 10px;
   }
   .texty-paragr {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: HelveticaNeueLight;
     font-weight: 700;
     font-size: 12px;
     line-height: 17px;
@@ -1048,7 +1233,7 @@ body {
   }
 
   .texty-paragrq1 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: HelveticaNeueLight;
     font-weight: 700;
     font-size: 12px;
     line-height: 17px;
@@ -1086,11 +1271,10 @@ body {
   }
 }
 @media screen and (max-width: 545px) {
-
   .class-compound {
     font-family: "Inter", sans-serif;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 32px;
     text-align: start;
   }
@@ -1104,83 +1288,81 @@ body {
     border-radius: 9999px;
     padding-left: 8px;
     padding-right: 8px;
-}
-.code-class {
-  background-color: white;
-  color: black;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border: 1px solid #8e8e92;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  border-radius: 9999px;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-.class-title-1 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-transform: uppercase;
-  text-align: start !important;
-  color: #4a4a4a;
-}
-.class-title-2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  text-transform: uppercase;
-  text-align: start !important;
-  color: #4a4a4a;
-  text-decoration: line-through;
-}
-.class-title {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 24px;
-  text-transform: uppercase;
-  text-align: start !important;
-  color: #000000;
-}
-.class-title-3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: start !important;
-  color: #000000;
-  margin-top: -15px;
-}
-.class-flex-expand {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
- 
-}
-.class-title-4 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: start !important;
-  color: #000000;
-}
-.testimonials-cards-style {
-  background-color: white;
-  padding: 25px;
-  height: auto;
-  border-radius: 12px;
-  width: 100%;
-  margin-top: 50px;
-}
-.class-width-testimonials container {
-  width: 100%;
-  margin: auto;
-  margin-top: 10px !important;
-}
+  }
+  .code-class {
+    background-color: white;
+    color: black;
+    font-family: HelveticaNeueLight;
+    border: 1px solid #8e8e92;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 9999px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .class-title-1 {
+    font-family: HelveticaNeueLight;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: start !important;
+    color: #4a4a4a;
+  }
+  .class-title-2 {
+    font-family: HelveticaNeueLight;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: start !important;
+    color: #4a4a4a;
+    text-decoration: line-through;
+  }
+  .class-title {
+    font-family: HelveticaNeueLight;
 
+    font-size: 12px;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: start !important;
+    color: #000000;
+  }
+
+  .class-title-3 {
+    font-family: HelveticaNeueLight;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: start !important;
+    color: #000000;
+    margin-top: -15px;
+  }
+  .class-flex-expand {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+  }
+  .class-title-4 {
+    font-family: HelveticaNeueLight;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: start !important;
+    color: #000000;
+  }
+  .testimonials-cards-style {
+    background-color: white;
+    padding: 25px;
+    height: auto;
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 50px;
+  }
+  .class-width-testimonials container {
+    width: 100%;
+    margin: auto;
+    margin-top: 10px !important;
+  }
 }

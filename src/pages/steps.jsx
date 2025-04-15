@@ -28,21 +28,42 @@ function StepperForm() {
 
   const [medicationAnswer, setMedicationAnswer] = useState(null);
 
+  const [isOpen, setIsOpen] = useState(false); // To control dropdown visibility
+  const [selectedOption, setSelectedOption] = useState(null); // To store selected option
+  const [loading, setLoading] = useState(false);
+
+  const toggleDropdown = () => setIsOpen(!isOpen); // Toggle the dropdown visibility
+
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false); // Close dropdown after selection
+  };
+
+  const options = [
+    "Semaglutide 0.25 mg/wk for $XXX",
+    "Semaglutide 0.5 mg/wk for $XXX",
+    "Semaglutide 1 mg/wk for $XXX",
+    "Semaglutide 1.5 mg/wk for $XXX",
+    "Semaglutide 2 mg/wk for $XXX",
+    "Semaglutide 2.5 mg/wk for $XXX",
+  ];
+
   const handleSelection = (answer) => {
     setMedicationAnswer(answer);
-    setCurrentStep(7);
-  };  
- 
+    setLoading(true); // show loading
 
-
-
+    setTimeout(() => {
+      setLoading(false); // hide loading
+      setCurrentStep(7); // move to next step
+    }, 3000); // 5 seconds
+  };
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
   // Total number of steps
-  const totalSteps = 9;
+  const totalSteps = 8;
 
   // Handle input changes
   const handleChange = (e) => {
@@ -79,30 +100,59 @@ function StepperForm() {
   const products = [
     {
       id: 1,
-      name: "COMPOUNDED SEMAGLUTIDE",
-      currentPrice: "$39",
-      originalPrice: "$56",
-      description: "Semaglutide administered via injection.",
-      code: "GLP100",
-      image: "/assets/images/Background.png",
-     
+      title: "6 Month Plan",
+      price: "$39",
+      bottle: "/bottle",
+      save: "Save $660 Instantly",
+      para: "3 bottles shipped every 3 months",
+      para1: "Access to Dr. Sam’s VIP Community",
+      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
+      para3: "Save an EXTRA 10%",
+      image: "/assets/images/6.png",
+      buttonLabel: "SELECT PLAN",
+      cancel: "Cancel or Change plan anytime",
     },
     {
       id: 2,
-      name: "COMPOUNDED TIRZEPATIDE",
-      currentPrice: "$179",
-      originalPrice: "$279",
-      description: "Tirzepatide administered via injection.",
-      code: "GLP200",
-      image: "/assets/images/Background.png",
-    
+      title: "3 Month Plan",
+      price: "$239",
+      bottle: "/bottle",
+      save: "Save $660 Instantly",
+      para: "3 bottles shipped every 3 months",
+      para1: "Access to Dr. Sam’s VIP Community",
+      para2: "Includes: Personalized Diet Plans, ",
+      para3: "Workshops, Community Support ",
+      para4: "Save an EXTRA 10%",
+      image: "/assets/images/3.png",
+      buttonLabel: "SELECTED",
+      cancel: "Cancel or Change plan anytime",
+    },
+    {
+      id: 3,
+      title: "1 Month Plan",
+      price: "$439",
+      bottle: "/bottle",
+      save: "Save $660 Instantly",
+      para: "1 Bottle Only",
+      para1: "Great for trying it out risk-free",
+      para2: "Includes: Personalized Diet Plans, ",
+      para3: "Workshops, Community Support ",
+      image: "/assets/images/1.png",
+      buttonLabel: "SELECT PLAN",
+      cancel: "Cancel or Change plan anytime",
     },
   ];
 
+  // const handleProductSelect = (productId) => {
+  //   const product = products.find((product) => product.id === productId);
+  //   setSelectedProduct(product);
+  //   setAccordionOpen(null);
+  // };
+
   const handleProductSelect = (productId) => {
     const product = products.find((product) => product.id === productId);
-    setSelectedProduct(product);
-    setAccordionOpen(null);
+    setSelectedProduct(product.id); // store just the id
+    setAccordionOpen(null); // if needed
   };
 
   //product end
@@ -684,54 +734,92 @@ function StepperForm() {
         return (
           <>
             <h4 className="class-name-style">
-            Are you taking any prescription medication?
+              Are you taking any prescription medication?
             </h4>
-            <div className="card mb-3" style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}>
-        <div className="card-body p-3">
-          <div className="form-check">
-            <input
-              className="form-check-input custom-radio-button"
-              type="radio"
-              name="medication"
-              id="yes"
-              onChange={() => handleSelection("yes")}
-            />
-            <label className="form-check-label text0-clr" htmlFor="yes">
-              Yes
-            </label>
-          </div>
-        </div>
-      </div>
+            <div className="medication-step-container">
+              {loading ? (
+                <div className="text-center my-4">
+                  <p className="checkk">Checking our database…</p>
 
-      <div className="card mb-3" style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}>
-        <div className="card-body p-3">
-          <div className="form-check">
-            <input
-              className="form-check-input custom-radio-button"
-              type="radio"
-              name="medication"
-              id="no"
-              onChange={() => handleSelection("no")}
-            />
-            <label className="form-check-label text0-clr" htmlFor="no">
-              No
-            </label>
-          </div>
-        </div>
-      </div>
-           
+                  <div className="loader">
+                    <div className="loader-bar"></div>
+                  </div>
+
+                  <p className="licensed">
+                    We only work with{" "}
+                    <span className="licensed-1">
+                      licensed providers in your state
+                    </span>{" "}
+                    who specialize in weight loss.
+                  </p>
+
+                  <p className="licensed-11 text-center">
+                    We found <span className="licensed-1">providers</span> near
+                    you.. Lose up to{" "}
+                    <span className="licensed-1">1.5% of your body weight</span>{" "}
+                    per week on Semaglutide.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <div
+                    className="card mb-3"
+                    style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                  >
+                    <div className="card-body p-3">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input custom-radio-button"
+                          type="radio"
+                          name="medication"
+                          id="yes"
+                          onChange={() => handleSelection("yes")}
+                        />
+                        <label
+                          className="form-check-label text0-clr"
+                          htmlFor="yes"
+                        >
+                          Yes
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="card mb-3"
+                    style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                  >
+                    <div className="card-body p-3">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input custom-radio-button"
+                          type="radio"
+                          name="medication"
+                          id="no"
+                          onChange={() => handleSelection("no")}
+                        />
+                        <label
+                          className="form-check-label text0-clr"
+                          htmlFor="no"
+                        >
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </>
         );
 
-        case 7:
+      case 7:
         return (
           <>
-           {medicationAnswer === "yes" && (
-  <h4 className="class-name-style">
-    Your state is eligible! ✅<br />
-    Choose Your GLP-1 Medication
-  </h4>
-)}
+            <h4 className="class-name-style">
+              Your state is eligible! ✅<br />
+              Choose Your GLP-1 Medication
+            </h4>
             <p className="all-start">
               All our medications is shipped from FDA regulated 503a and 503b
               pharmacies.
@@ -744,187 +832,314 @@ function StepperForm() {
                 <p className="text-center-divv">00:00</p>
               </div>
             </div>
-           
-  <div className="product-selection-container">
-    <div
-      className="mb-3 p-3 rounded-4"
-     
-    >
-      <div>
-        <div className="text-center mb-3">
-          <img
-            src= "/assets/images/big-bg.png"
-            alt="Selected Product"
-            className="img-fluid CLASS-WIDTH-FULL"
-          />
-        </div>
 
-        <h5 className="class-compound">COMPOUNDED TIRZEPATIDE
-        </h5>
+            <div className="product-selection-container">
+              <div className="mb-3 p-3 rounded-4">
+                <div>
+                  <div className="text-center mb-3">
+                    <img
+                      src="/assets/images/big-bg.png"
+                      alt="Selected Product"
+                      className="img-fluid CLASS-WIDTH-FULL"
+                    />
+                  </div>
 
-        <div className="class-flex-expand mb-2">
-          <span className="class-current">$179</span>
-          <span className="class-original text-decoration-line-through">
-          $279
-          </span>
-        </div>
+                  <h5 className="class-compound">
+                    Compounded Semaglutide 0.25 mg/wk
+                  </h5>
 
-        <div className="class-stock gap-2 mb-2">
-          <span className="bg-sett">● In Stock</span>
-          <span className="code-class">
-            Code Activated:{" "}
-            <span className="class-color"> GLP200</span>
-          </span>
-        </div>
+                  <h4 className="class-name-style">Choose Your GLP-1 Dosage</h4>
 
-        <p className="text-inter-class">
-          Discover the power of Semaglutide, the active ingredient in Ozempic® &
-          WeGovy® for a fraction of the cost. All customers also receive free
-          expedited shipping.
-        </p>
+                  {medicationAnswer === "yes" && (
+                    <div
+                      style={{
+                        width: "100%",
+                        position: "relative",
+                        marginBottom: "40px",
+                      }}
+                    >
+                      {/* Dropdown button */}
+                      <div
+                        onClick={toggleDropdown}
+                        style={{
+                          padding: "10px",
+                          border: "2px solid #2FBAAC",
+                          borderRadius: "16px",
+                          cursor: "pointer",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <span className="dose-class">
+                          {selectedOption || "Select Dose"}
+                        </span>
 
-        {/* Accordion Section */}
-        <div className="accordion mt-3">
-          {[{
-              title: "Details",
-              content: "This product is compounded for effective weight loss.",
-            },
-            {
-              title: "Active Ingredients",
-              content: "Semaglutide (1mg/mL), Preserved Saline, B12.",
-            },
-            {
-              title: "Why Injectable Semaglutide?",
-              content: "Injection delivers the compound directly into the bloodstream for faster absorption and better results.",
-            },
-          ].map(({ title, content }, index) => (
-            <div key={index} className="border-top py-2">
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleAccordion(title);
-                }}
-                className="d-flex justify-content-between align-items-center"
-                style={{ cursor: "pointer" }}
-              >
-                <span className="detail-class">{title}</span>
-                <span className="plus-minus">
-                  {accordionOpen === title ? "−" : "+"}
-                </span>
+                        {/* Dropdown image icon */}
+                        <img
+                          src={
+                            isOpen
+                              ? "/public/assets/images/Vectorr.png"
+                              : "/public/assets/images/Vector.png"
+                          }
+                          alt="Dropdown arrow"
+                          style={{
+                            width: "18px",
+                            height: "11px",
+                            transition: "transform 0.3s ease",
+                          }}
+                        />
+                      </div>
+
+                      {/* Dropdown menu */}
+                      {isOpen && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "40px",
+                            left: "0",
+                            width: "100%",
+                            border: "1px solid #ccc",
+                            borderRadius: "4px",
+                            background: "#fff",
+                            boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          {options.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSelect(option)}
+                              className="option-clr"
+                              style={{
+                                padding: "10px",
+                                cursor: "pointer",
+                                borderBottom: "1px solid #ddd",
+                              }}
+                            >
+                              {option}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="class-flex-expand mb-2">
+                    <span className="class-current">$179</span>
+                    <span className="class-original text-decoration-line-through">
+                      $279
+                    </span>
+                  </div>
+
+                  <div className="class-stock gap-2 mb-2">
+                    <span className="bg-sett">● In Stock</span>
+                    <span className="code-class">
+                      Code Activated:{" "}
+                      <span className="class-color"> GLP200</span>
+                    </span>
+                  </div>
+
+                  <p className="text-inter-class">
+                    Discover the power of Semaglutide, the active ingredient in
+                    Ozempic® & WeGovy® for a fraction of the cost. All customers
+                    also receive free expedited shipping.
+                  </p>
+
+                  {/* Accordion Section */}
+                  <div className="accordion mt-3">
+                    {[
+                      {
+                        title: "Details",
+                        content:
+                          "This product is compounded for effective weight loss.",
+                      },
+                      {
+                        title: "Active Ingredients",
+                        content: "Semaglutide (1mg/mL), Preserved Saline, B12.",
+                      },
+                      {
+                        title: "Why Injectable Semaglutide?",
+                        content:
+                          "Injection delivers the compound directly into the bloodstream for faster absorption and better results.",
+                      },
+                    ].map(({ title, content }, index) => (
+                      <div key={index} className="border-top py-2">
+                        <div
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleAccordion(title);
+                          }}
+                          className="d-flex justify-content-between align-items-center"
+                          style={{ cursor: "pointer" }}
+                        >
+                          <span className="detail-class">{title}</span>
+                          <span className="plus-minus">
+                            {accordionOpen === title ? "−" : "+"}
+                          </span>
+                        </div>
+                        {accordionOpen === title && (
+                          <div className="mt-2 class-content">{content}</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              {accordionOpen === title && (
-                <div className="mt-2 class-content">{content}</div>
-              )}
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-
-
           </>
         );
 
-case 8: 
-return (
-  <>
-  <h3>helloo</h3>
-  {currentStep === 8 && (
-  <div className="product-selection-container">
-  {products.map((product) => (
-    <div
-      key={product.id}
-      onClick={() => handleProductSelect(product.id)} 
-      className={`card mb-3 p-3 rounded-4 shadow-sm ${
-        selectedProduct === product.id ? 'selected-product' : ''
-      }`} 
-    >
-      <div className="row g-3">
-        <div className="col-3 text-center">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="class-imgg mt-2"
-          />
-        </div>
-        <div className="col-9">
-          <h5 className="class-title">{product.name}</h5>
-          <div className="flex-div">
-            <p className="class-title-1">{product.currentPrice}</p>
-            <p className="class-title-2 ms-3">{product.originalPrice}</p>
-          </div>
-          <p className="mb-1 class-title-3">{product.description}</p>
-          <p className="mb-1 class-title-4">
-            Code Activated: <span className="clr">{product.code}</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+      case 8:
+        return (
+          <>
+            {currentStep === 8 && (
+              <div className="product-selection-container">
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    onClick={() => handleProductSelect(product.id)}
+                    className={`card mb-3 rounded-4 shadow-sm  ${
+                      selectedProduct === product.id ? "selected-product" : ""
+                    }`}
+                  >
+                    <div className="container">
+                      <div className="row">
+                        <div
+                          className="col-4 flex justify-content-center align-items-center"
+                          style={{
+                            backgroundColor: "#E5F5F3",
+                            borderRadius: "16px",
+                            display:"flex"
+                          }}
+                        >
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="class-imgg justify-content-center align-items-center text-align-center"
+                          />
+                        </div>
+                        <div className="col-5 ">
+                          <h5 className="class-title-new">{product.title}</h5>
 
-)}
+                          <div className="bg-div-dark">{product.save}</div>
+                          <div className="flex-class-div gap-1">
+                            <img
+                              src="/assets/images/SVG.svg"
+                              alt=""
+                              className="img-tick-set"
+                            />
+                            <p className="class-details">{product.para}</p>
+                          </div>
+                          <div className="flex-class-div gap-1">
+                            <img
+                              src="/assets/images/SVG.svg"
+                              alt=""
+                              className="img-tick-set"
+                            />
+                            <p className="class-details">{product.para1}</p>
+                          </div>
+                          <div className="flex-class-div gap-1">
+                            <img
+                              src="/assets/images/SVG.svg"
+                              alt=""
+                              className="img-tick-set"
+                            />
+                            <p className="class-details">{product.para2}</p>
+                          </div>
+                          <div className="flex-class-div gap-1">
+                            <img
+                              src="/assets/images/SVG.svg"
+                              alt=""
+                              className="img-tick-set"
+                            />
+                            <p className="class-details">{product.para3}</p>
+                          </div>
+                          <p className="class-details-new1">{product.para4}</p>
+                        </div>
+                        <div className="col-3">
+                          <p className="class-title-price">
+                            {product.price}
+                            <span className="class-title-price-1">
+                              {product.bottle}
+                            </span>
+                          </p>
+                          <div className="button-class-gray">
+                            <button
+                              className={`button-class-gray-text ${
+                                selectedProduct === product.id
+                                  ? "selected-button-red"
+                                  : "default-color"
+                              }`}
+                            >
+                              {selectedProduct === product.id
+                                ? "SELECTED"
+                                : "SELECT PLAN"}
+                            </button>
+                          </div>
+                          <p className="cancel-class">{product.cancel}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        );
 
+      // case 9:
+      //   return (
+      //     <>
+      //       {currentStep === 9 && selectedProduct && (
+      //         <div className="product-selection-container">
+      //           <div
+      //             className="mb-3 p-3 rounded-4"
+      //             style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+      //           >
+      //             <div>
+      //               <div className="text-center mb-3">
+      //                 <img
+      //                   src={
+      //                     selectedProduct.expandedImage ||
+      //                     "/assets/images/big-bg.png"
+      //                   }
+      //                   alt="Selected Product"
+      //                   className="img-fluid CLASS-WIDTH-FULL"
+      //                 />
+      //               </div>
 
-  
-  </>
-);
+      //               <h5 className="class-compound">{selectedProduct.name}</h5>
 
-case 9:
-  return (
-    <>
-    
-    
-   
+      //               <div className="class-flex-expand mb-2">
+      //                 <span className="class-current">
+      //                   {selectedProduct.currentPrice}
+      //                 </span>
+      //                 <span className="class-original text-decoration-line-through">
+      //                   {selectedProduct.originalPrice}
+      //                 </span>
+      //               </div>
 
-    {currentStep === 9 && selectedProduct && (
-  <div className="product-selection-container">
-    <div
-      className="mb-3 p-3 rounded-4"
-      style={{ cursor: "pointer", transition: "all 0.3s ease" }}
-    >
-      <div>
-        <div className="text-center mb-3">
-          <img
-            src={selectedProduct.expandedImage || "/assets/images/big-bg.png"}
-            alt="Selected Product"
-            className="img-fluid CLASS-WIDTH-FULL"
-          />
-        </div>
+      //               <div className="class-stock gap-2 mb-2">
+      //                 <span className="bg-sett">● In Stock</span>
+      //                 <span className="code-class">
+      //                   Code Activated:{" "}
+      //                   <span className="class-color">
+      //                     {selectedProduct.code}
+      //                   </span>
+      //                 </span>
+      //               </div>
 
-        <h5 className="class-compound">{selectedProduct.name}</h5>
-
-        <div className="class-flex-expand mb-2">
-          <span className="class-current">{selectedProduct.currentPrice}</span>
-          <span className="class-original text-decoration-line-through">
-            {selectedProduct.originalPrice}
-          </span>
-        </div>
-
-        <div className="class-stock gap-2 mb-2">
-          <span className="bg-sett">● In Stock</span>
-          <span className="code-class">
-            Code Activated:{" "}
-            <span className="class-color">{selectedProduct.code}</span>
-          </span>
-        </div>
-
-        <p className="text-inter-class">
-          Discover the power of Semaglutide, the active ingredient in Ozempic® &
-          WeGovy® for a fraction of the cost. All customers also receive free
-          expedited shipping.
-        </p>
-
-       
-      </div>
-    </div>
-  </div>
-)}
-
-    
-    </>
-  )
+      //               <p className="text-inter-class">
+      //                 Discover the power of Semaglutide, the active ingredient
+      //                 in Ozempic® & WeGovy® for a fraction of the cost. All
+      //                 customers also receive free expedited shipping.
+      //               </p>
+      //             </div>
+      //           </div>
+      //         </div>
+      //       )}
+      //     </>
+      //   );
 
       default:
         return null;
@@ -980,12 +1195,11 @@ case 9:
 
                 <form onSubmit={handleSubmit}>
                   {/* Form content - styled like reference image */}
-                  <div className="form-step text-center">
-                    {renderStepContent()}
-                  </div>
+                  <div className="form-step ">{renderStepContent()}</div>
 
                   {/* Continue button - styled like reference image */}
                   {currentStep !== 2 &&
+                    currentStep !== 6 &&
                     (currentStep === 8 ? (
                       <div className="d-flex justify-content-center mt-4">
                         <button
