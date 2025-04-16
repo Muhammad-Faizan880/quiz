@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WeightTrackerChart from "../components/chart";
 
@@ -31,6 +31,7 @@ function StepperForm() {
   const [isOpen, setIsOpen] = useState(false); // To control dropdown visibility
   const [selectedOption, setSelectedOption] = useState(null); // To store selected option
   const [loading, setLoading] = useState(false);
+  const [bmi, setBmi] = useState(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen); // Toggle the dropdown visibility
 
@@ -38,6 +39,29 @@ function StepperForm() {
     setSelectedOption(option);
     setIsOpen(false); // Close dropdown after selection
   };
+
+   // BMI Calculation
+   useEffect(() => {
+    const feet = parseFloat(formData.heightFeet);
+    const inches = parseFloat(formData.heightInches);
+    const weight = parseFloat(formData.weight);
+
+    if (!isNaN(feet) && !isNaN(inches) && !isNaN(weight)) {
+      const totalInches = feet * 12 + inches;
+      if (totalInches > 0) {
+        const bmiValue = (weight / (totalInches * totalInches)) * 703;
+        setBmi(bmiValue.toFixed(2));
+      }
+    } else {
+      setBmi(null);
+    }
+  }, [formData]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   const options = [
     "Semaglutide 0.25 mg/wk for $XXX",
@@ -412,101 +436,93 @@ function StepperForm() {
       case 3:
         return (
           <>
-            <h4 className="class-name-style">
-              What is your current height & weight?
-            </h4>
+             <h4 className="class-name-style">
+        What is your current height & weight?
+      </h4>
 
-            <p className="class-bmi">Your BMI</p>
-            <p className="class-bmi-1">34.86</p>
-            <div className="bg-gradient"></div>
+      <p className="class-bmi">Your BMI</p>
+      <p className="class-bmi-1">{bmi ? bmi : "--"}</p>
+      <div className="bg-gradient"></div>
 
-            <div className="d-flex gap-3">
-              {/* Input 1 */}
-              <div className="flex-grow-1">
-                <label htmlFor="height1" className="form-label fontyy mb-0">
-                  Feet
-                </label>
-                <div className="position-relative">
-                  <input
-                    type="number"
-                    className={`form-control pe-5 class-border ${
-                      errors.heightFeet ? "border-danger" : ""
-                    }`}
-                    id="height1"
-                    name="heightFeet"
-                    placeholder="5"
-                    value={formData.heightFeet || ""}
-                    onChange={handleChange}
-                  />
-                  <span
-                    className="position-absolute top-50 translate-middle-y end-0 pe-3"
-                    style={{ pointerEvents: "none" }}
-                  >
-                    Ft.
-                  </span>
-                </div>
-                {errors.heightFeet && (
-                  <small className="text-danger">{errors.heightFeet}</small>
-                )}
-              </div>
+      <div className="d-flex gap-3">
+        {/* Height - Feet */}
+        <div className="flex-grow-1">
+          <label htmlFor="height1" className="form-label fontyy mb-0">
+            Feet
+          </label>
+          <div className="position-relative">
+            <input
+              type="number"
+              className={`form-control pe-5 class-border ${
+                errors.heightFeet ? "border-danger" : ""
+              }`}
+              id="height1"
+              name="heightFeet"
+              placeholder="5"
+              value={formData.heightFeet}
+              onChange={handleChange}
+            />
+            <span className="position-absolute top-50 translate-middle-y end-0 pe-3">
+              Ft.
+            </span>
+          </div>
+          {errors.heightFeet && (
+            <small className="text-danger">{errors.heightFeet}</small>
+          )}
+        </div>
 
-              {/* Input 2 */}
-              <div className="flex-grow-1">
-                <label htmlFor="height2" className="form-label fontyy mb-0">
-                  Inches
-                </label>
-                <div className="position-relative">
-                  <input
-                    type="number"
-                    className={`form-control pe-5 class-border ${
-                      errors.heightInches ? "border-danger" : ""
-                    }`}
-                    id="height2"
-                    name="heightInches"
-                    placeholder="11"
-                    value={formData.heightInches || ""}
-                    onChange={handleChange}
-                  />
-                  <span
-                    className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted"
-                    style={{ pointerEvents: "none" }}
-                  >
-                    In.
-                  </span>
-                </div>
-                {errors.heightInches && (
-                  <small className="text-danger">{errors.heightInches}</small>
-                )}
-              </div>
-            </div>
+        {/* Height - Inches */}
+        <div className="flex-grow-1">
+          <label htmlFor="height2" className="form-label fontyy mb-0">
+            Inches
+          </label>
+          <div className="position-relative">
+            <input
+              type="number"
+              className={`form-control pe-5 class-border ${
+                errors.heightInches ? "border-danger" : ""
+              }`}
+              id="height2"
+              name="heightInches"
+              placeholder="11"
+              value={formData.heightInches}
+              onChange={handleChange}
+            />
+            <span className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted">
+              In.
+            </span>
+          </div>
+          {errors.heightInches && (
+            <small className="text-danger">{errors.heightInches}</small>
+          )}
+        </div>
+      </div>
 
-            <div className="flex-grow-1">
-              <label htmlFor="weight" className="form-label fontyy mb-0">
-                Current weight (lbs.)
-              </label>
-              <div className="position-relative">
-                <input
-                  type="number"
-                  className={`form-control pe-5 class-border1 ${
-                    errors.weight ? "border-danger" : ""
-                  }`}
-                  id="weight"
-                  name="weight"
-                  placeholder="250"
-                  value={formData.weight || ""}
-                  onChange={handleChange}
-                />
-                <span
-                  className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted"
-                  style={{ pointerEvents: "none" }}
-                >
-                  Lbs.
-                </span>
-              </div>
-              {errors.weight && (
-                <small className="text-danger">{errors.weight}</small>
-              )}
-            </div>
+      {/* Weight */}
+      <div className="flex-grow-1">
+        <label htmlFor="weight" className="form-label fontyy mb-0">
+          Current weight (lbs.)
+        </label>
+        <div className="position-relative">
+          <input
+            type="number"
+            className={`form-control pe-5 class-border1 ${
+              errors.weight ? "border-danger" : ""
+            }`}
+            id="weight"
+            name="weight"
+            placeholder="250"
+            value={formData.weight}
+            onChange={handleChange}
+          />
+          <span className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted">
+            Lbs.
+          </span>
+        </div>
+        {errors.weight && (
+          <small className="text-danger">{errors.weight}</small>
+        )}
+      </div>
           </>
         );
       case 4:
@@ -1294,7 +1310,7 @@ function StepperForm() {
         </div>
       </div>
 
-      {currentStep === 7 && (
+      {(currentStep === 7 || currentStep === 8) && (
         <div className="mt-4 class-width-testimonials">
           <div className="row">
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
@@ -1427,7 +1443,7 @@ function StepperForm() {
               <div className=" testimonials-cards-style-2 ">
                 <div className="position-relative d-inline-block">
                   <img
-                    src="/assets/images/Jennifer.png"
+                    src="/assets/images/healthy.png"
                     alt=""
                     className="width-setjennni"
                   />
@@ -1471,7 +1487,7 @@ function StepperForm() {
               <div className=" testimonials-cards-style-2 ">
                 <div className="position-relative d-inline-block">
                   <img
-                    src="/assets/images/Jennifer.png"
+                    src="/assets/images/Jennifer1.png"
                     alt=""
                     className="width-setjennni"
                   />
@@ -1556,7 +1572,7 @@ function StepperForm() {
               <div className=" testimonials-cards-style-2 ">
                 <div className="position-relative d-inline-block">
                   <img
-                    src="/assets/images/Jennifer.png"
+                    src="/assets/images/Jennifer3.png"
                     alt=""
                     className="width-setjennni"
                   />
