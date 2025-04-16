@@ -34,7 +34,7 @@ function StepperForm() {
   const [bmi, setBmi] = useState(null);
   const [timeLeft, setTimeLeft] = useState(600);
   const [showFirstPara, setShowFirstPara] = useState(false);
-const [showSecondPara, setShowSecondPara] = useState(false);
+  const [showSecondPara, setShowSecondPara] = useState(false);
 
   const toggleDropdown = () => setIsOpen(!isOpen); // Toggle the dropdown visibility
 
@@ -81,12 +81,11 @@ const [showSecondPara, setShowSecondPara] = useState(false);
     return `${m}:${s}`;
   };
 
-
   useEffect(() => {
     if (loading) {
       const firstTimeout = setTimeout(() => setShowFirstPara(true), 1000); // 2 sec
       const secondTimeout = setTimeout(() => setShowSecondPara(true), 2000); // 4 sec
-  
+
       return () => {
         clearTimeout(firstTimeout);
         clearTimeout(secondTimeout);
@@ -640,7 +639,7 @@ const [showSecondPara, setShowSecondPara] = useState(false);
                     }`}
                     id="height1"
                     name="heightFeet"
-                    placeholder="5"
+                    placeholder=""
                     value={formData.heightFeet}
                     onChange={handleChange}
                   />
@@ -666,7 +665,7 @@ const [showSecondPara, setShowSecondPara] = useState(false);
                     }`}
                     id="height2"
                     name="heightInches"
-                    placeholder="11"
+                    placeholder=""
                     value={formData.heightInches}
                     onChange={handleChange}
                   />
@@ -693,7 +692,7 @@ const [showSecondPara, setShowSecondPara] = useState(false);
                   }`}
                   id="weight"
                   name="weight"
-                  placeholder="250"
+                  placeholder=""
                   value={formData.weight}
                   onChange={handleChange}
                 />
@@ -947,21 +946,23 @@ const [showSecondPara, setShowSecondPara] = useState(false);
                     <div className="loader-bar"></div>
                   </div>
                   {showFirstPara && (
-                  <p className="licensed">
-                    We only work with{" "}
-                    <span className="licensed-1">
-                      licensed providers in your state
-                    </span>{" "}
-                    who specialize in weight loss.
-                  </p>
+                    <p className="licensed">
+                      We only work with{" "}
+                      <span className="licensed-1">
+                        licensed providers in your state
+                      </span>{" "}
+                      who specialize in weight loss.
+                    </p>
                   )}
                   {showSecondPara && (
-                  <p className="licensed-11 text-center">
-                    We found <span className="licensed-1">providers</span> near
-                    you.. Lose up to{" "}
-                    <span className="licensed-1">1.5% of your body weight</span>{" "}
-                    per week on Semaglutide.
-                  </p>
+                    <p className="licensed-11 text-center">
+                      We found <span className="licensed-1">providers</span>{" "}
+                      near you.. Lose up to{" "}
+                      <span className="licensed-1">
+                        1.5% of your body weight
+                      </span>{" "}
+                      per week on Semaglutide.
+                    </p>
                   )}
                 </div>
               ) : (
@@ -1040,18 +1041,19 @@ const [showSecondPara, setShowSecondPara] = useState(false);
               )}
             </div>
             {!loading && (
-  <img src="/assets/images/frame.png" alt="" className="img-width-doctor" />
-)}
+              <img
+                src="/assets/images/frame.png"
+                alt=""
+                className="img-width-doctor"
+              />
+            )}
           </>
         );
 
       case 7:
         return (
           <>
-            <h4 className="class-name-style">
-              Your state is eligible! ✅
-             
-            </h4>
+            <h4 className="class-name-style">Your state is eligible! ✅</h4>
             <p className="all-start">
               All our medications is shipped from FDA regulated 503a and 503b
               pharmacies.
@@ -1062,7 +1064,7 @@ const [showSecondPara, setShowSecondPara] = useState(false);
                   Claim your discounted GLP-1 now while supplies last!
                 </p>
                 {currentStep === 7 && (
-                <p className="text-center-divv">{formatTime(timeLeft)}</p>
+                  <p className="text-center-divv">{formatTime(timeLeft)}</p>
                 )}
               </div>
             </div>
@@ -1082,81 +1084,82 @@ const [showSecondPara, setShowSecondPara] = useState(false);
                     Compounded Semaglutide 0.25 mg/wk
                   </h5>
 
-
                   {medicationAnswer === "yes" && (
                     <>
-                  <h4 className="class-name-style">Choose Your GLP-1 Dosage</h4>
-                    <div
-                      style={{
-                        width: "100%",
-                        position: "relative",
-                        marginBottom: "40px",
-                      }}
-                    >
-                      {/* Dropdown button */}
+                      <h4 className="class-name-style">
+                        Choose Your GLP-1 Dosage
+                      </h4>
                       <div
-                        onClick={toggleDropdown}
                         style={{
-                          padding: "10px",
-                          border: "2px solid #2FBAAC",
-                          borderRadius: "16px",
-                          cursor: "pointer",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
+                          width: "100%",
+                          position: "relative",
+                          marginBottom: "40px",
                         }}
                       >
-                        <span className="dose-class">
-                          {selectedOption || "Select Dose"}
-                        </span>
-
-                        {/* Dropdown image icon */}
-                        <img
-                          src={
-                            isOpen
-                              ? "/assets/images/Vectorr.png"
-                              : "/assets/images/Vector.png"
-                          }
-                          alt="Dropdown arrow"
-                          style={{
-                            width: "18px",
-                            height: "11px",
-                            transition: "transform 0.3s ease",
-                          }}
-                        />
-                      </div>
-
-                      {/* Dropdown menu */}
-                      {isOpen && (
+                        {/* Dropdown button */}
                         <div
+                          onClick={toggleDropdown}
                           style={{
-                            position: "absolute",
-                            top: "40px",
-                            left: "0",
-                            width: "100%",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            background: "#fff",
-                            boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                            padding: "10px",
+                            border: "2px solid #2FBAAC",
+                            borderRadius: "16px",
+                            cursor: "pointer",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
                           }}
                         >
-                          {options.map((option, index) => (
-                            <div
-                              key={index}
-                              onClick={() => handleSelect(option)}
-                              className="option-clr"
-                              style={{
-                                padding: "10px",
-                                cursor: "pointer",
-                                borderBottom: "1px solid #ddd",
-                              }}
-                            >
-                              {option}
-                            </div>
-                          ))}
+                          <span className="dose-class">
+                            {selectedOption || "Select Dose"}
+                          </span>
+
+                          {/* Dropdown image icon */}
+                          <img
+                            src={
+                              isOpen
+                                ? "/assets/images/Vectorr.png"
+                                : "/assets/images/Vector.png"
+                            }
+                            alt="Dropdown arrow"
+                            style={{
+                              width: "18px",
+                              height: "11px",
+                              transition: "transform 0.3s ease",
+                            }}
+                          />
                         </div>
-                      )}
-                    </div>
+
+                        {/* Dropdown menu */}
+                        {isOpen && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "40px",
+                              left: "0",
+                              width: "100%",
+                              border: "1px solid #ccc",
+                              borderRadius: "4px",
+                              background: "#fff",
+                              boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                            }}
+                          >
+                            {options.map((option, index) => (
+                              <div
+                                key={index}
+                                onClick={() => handleSelect(option)}
+                                className="option-clr"
+                                style={{
+                                  padding: "10px",
+                                  cursor: "pointer",
+                                  borderBottom: "1px solid #ddd",
+                                }}
+                              >
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </>
                   )}
 
@@ -1511,23 +1514,22 @@ const [showSecondPara, setShowSecondPara] = useState(false);
               <div className="card-body padding-class">
                 {/* Header with back button and title in flex layout */}
                 <div className="d-flex justify-content-between align-items-center mb-3 ">
-
-                {currentStep === 1 ? (
-    <div style={{ width: "100px" }} /> // placeholder to keep space
-  ) : (
-    <button
-      type="button"
-      className="btn btn-link btn-bg text-decoration-none"
-      onClick={prevStep}
-    >
-      <img
-        src="/assets/images/arrow.png"
-        alt=""
-        className="margin-set"
-      />{" "}
-      Back
-    </button>
-  )}
+                  {currentStep === 1 ? (
+                    <div style={{ width: "100px" }} /> 
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-link btn-bg text-decoration-none no-hover-color"
+                      onClick={prevStep}
+                    >
+                      <img
+                        src="/assets/images/arrow.png"
+                        alt=""
+                        className="margin-set"
+                      />{" "}
+                      Back
+                    </button>
+                  )}
                   <h6 className="text-center text-set-class m-0">
                     {stepHeadings[currentStep - 1] || ""}
                   </h6>
