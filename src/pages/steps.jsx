@@ -64,14 +64,14 @@ function StepperForm() {
     });
   }, []);
   useEffect(() => {
-    if (timeLeft <= 0) return;
+    if (currentStep !== 7 || timeLeft <= 0) return;
 
     const interval = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
+      setTimeLeft((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timeLeft]);
+  }, [currentStep, timeLeft]);
 
   const formatTime = (seconds) => {
     const m = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -386,7 +386,7 @@ function StepperForm() {
                 }`}
                 id="fullName"
                 name="fullName"
-                placeholder="e.g. John Smith"
+                placeholder="e.g. Jane Smith"
                 value={formData.fullName}
                 onChange={handleChange}
               />
@@ -734,7 +734,7 @@ function StepperForm() {
 
             <p className="class-sex">Please select your sex</p>
             <div className="mb-4">
-              <div className="container mt-5">
+              <div className=" mt-5">
                 <ul className="nav nav-tabs" id="myTabs" role="tablist">
                   <li className="nav-item" role="presentation">
                     <div
@@ -1025,8 +1025,8 @@ function StepperForm() {
         return (
           <>
             <h4 className="class-name-style">
-              Your state is eligible! ✅<br />
-              Choose Your GLP-1 Medication
+              Your state is eligible! ✅
+             
             </h4>
             <p className="all-start">
               All our medications is shipped from FDA regulated 503a and 503b
@@ -1037,12 +1037,14 @@ function StepperForm() {
                 <p className="text-center-divvv">
                   Claim your discounted GLP-1 now while supplies last!
                 </p>
+                {currentStep === 7 && (
                 <p className="text-center-divv">{formatTime(timeLeft)}</p>
+                )}
               </div>
             </div>
 
             <div className="product-selection-container">
-              <div className="mb-3 p-3 rounded-4">
+              <div className="mb-3 rounded-4">
                 <div>
                   <div className="text-center mb-3">
                     <img
@@ -1056,9 +1058,10 @@ function StepperForm() {
                     Compounded Semaglutide 0.25 mg/wk
                   </h5>
 
-                  <h4 className="class-name-style">Choose Your GLP-1 Dosage</h4>
 
                   {medicationAnswer === "yes" && (
+                    <>
+                  <h4 className="class-name-style">Choose Your GLP-1 Dosage</h4>
                     <div
                       style={{
                         width: "100%",
@@ -1130,6 +1133,7 @@ function StepperForm() {
                         </div>
                       )}
                     </div>
+                    </>
                   )}
 
                   <div className="class-flex-expand mb-2">
@@ -1215,17 +1219,17 @@ function StepperForm() {
 
             {currentStep === 8 && (
               <>
-                <div className="product-selection-container d-none d-lg-block">
+                <div className="product-selection-container  d-none d-lg-block">
                   {products.map((product) => (
                     <div
                       key={product.id}
                       onClick={() => handleProductSelect(product.id)}
-                      className={`card mb-3 rounded-4 shadow-sm  ${
+                      className={`card mb-3  rounded-4 shadow-sm  ${
                         selectedProduct === product.id ? "selected-product" : ""
                       }`}
                     >
-                      <div className="container">
-                        <div className="row">
+                      <div className="container ">
+                        <div className="row ">
                           <div
                             className="col-4   "
                             style={{
@@ -1697,13 +1701,13 @@ function StepperForm() {
                     />
                     <p className="class-verify">Verified Buyer</p>
                   </div>
-                  <div className="d-flex justify-content-between align-items-center w-set">
+                  <div className="d-flex justify-content-between align-items-center w-set class-mb-sett">
                     <p className="date-class">
                       Date of experience:{" "}
                       <span className="date">February 07, 2025</span>
                     </p>
 
-                    <div className="bg-gray-0">
+                    <div className="bg-gray-0 ">
                       <p className="loast-class">
                         lost <span className="loast-class-2"> 92lbs</span>
                       </p>

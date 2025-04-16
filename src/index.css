@@ -271,11 +271,13 @@ body {
 .class-border {
   border: 3px solid #ededed;
   margin-bottom: 12px;
+  height: 58px !important;
 }
 
 .class-border1 {
   border: 3px solid #ededed;
   margin-bottom: 24px;
+  height: 58px !important;
 }
 
 .fontyy {
@@ -362,7 +364,7 @@ body {
   font-size: 16px;
   line-height: 22px;
   color: #000000;
-  margin-top: -30px;
+  margin-top: -15px;
   text-align: start !important;
 }
 .class-sex {
@@ -459,6 +461,8 @@ body {
   width: 82% !important;
   height: 42px;
   padding-left: 20px;
+  margin-top: 31px;
+  margin-bottom: 24px;
 }
 
 .all-start {
@@ -514,15 +518,15 @@ body {
 .testimonials-cards-style {
   background-color: white;
   padding: 25px;
-  height: 400px;
+  min-height: 420px;
   border-radius: 12px;
-
   width: 100%;
+  
 }
 .testimonials-cards-style-2 {
   background-color: white;
   border-radius: 12px;
-  height: 400px;
+  min-height: 420px;
   width: 100%;
 }
 
@@ -555,8 +559,7 @@ body {
 }
 
 .class-verify {
-  font-family: HelveticaNeueLight;
-  font-weight: 700;
+  font-family: HelveticaNeue-Bold;
   font-size: 12px;
   line-height: 16px;
   color: #00b67a;
@@ -611,17 +614,17 @@ body {
   margin-top: -10px;
 }
 .padding-card-2 {
-  padding: 25px;
+  padding:20px 20px 20px 20px; 
 }
 
 .jeni-style {
-  font-family: HelveticaNeueLight;
-  font-weight: 700;
+  font-family: HelveticaNeue-Bold;
   font-size: 16px;
   line-height: 16px;
   color: #2f766a;
-  padding-bottom: 6px;
+  padding-bottom: 0px;
 }
+
 
 .bg-gray-0 {
   background-color: #f2f2f2;
@@ -635,6 +638,7 @@ body {
   align-items: center;
   padding-top: 16px;
   margin-top: -20px;
+
 }
 .loast-class {
   font-family: HelveticaNeueLight;
@@ -1560,7 +1564,7 @@ body {
   }
   .testimonials-cards-style {
     background-color: white;
-    padding: 25px;
+    /* padding: 85px; */
     height: auto;
     border-radius: 12px;
     width: 100%;
