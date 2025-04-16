@@ -33,6 +33,8 @@ function StepperForm() {
   const [loading, setLoading] = useState(false);
   const [bmi, setBmi] = useState(null);
   const [timeLeft, setTimeLeft] = useState(600);
+  const [showFirstPara, setShowFirstPara] = useState(false);
+const [showSecondPara, setShowSecondPara] = useState(false);
 
   const toggleDropdown = () => setIsOpen(!isOpen); // Toggle the dropdown visibility
 
@@ -78,6 +80,23 @@ function StepperForm() {
     const s = String(seconds % 60).padStart(2, "0");
     return `${m}:${s}`;
   };
+
+
+  useEffect(() => {
+    if (loading) {
+      const firstTimeout = setTimeout(() => setShowFirstPara(true), 1000); // 2 sec
+      const secondTimeout = setTimeout(() => setShowSecondPara(true), 2000); // 4 sec
+  
+      return () => {
+        clearTimeout(firstTimeout);
+        clearTimeout(secondTimeout);
+      };
+    } else {
+      // reset when loading ends
+      setShowFirstPara(false);
+      setShowSecondPara(false);
+    }
+  }, [loading]);
 
   const options = [
     "Semaglutide 0.25 mg/wk for $XXX",
@@ -927,7 +946,7 @@ function StepperForm() {
                   <div className="loader">
                     <div className="loader-bar"></div>
                   </div>
-
+                  {showFirstPara && (
                   <p className="licensed">
                     We only work with{" "}
                     <span className="licensed-1">
@@ -935,13 +954,15 @@ function StepperForm() {
                     </span>{" "}
                     who specialize in weight loss.
                   </p>
-
+                  )}
+                  {showSecondPara && (
                   <p className="licensed-11 text-center">
                     We found <span className="licensed-1">providers</span> near
                     you.. Lose up to{" "}
                     <span className="licensed-1">1.5% of your body weight</span>{" "}
                     per week on Semaglutide.
                   </p>
+                  )}
                 </div>
               ) : (
                 <>
@@ -1018,6 +1039,9 @@ function StepperForm() {
                 </>
               )}
             </div>
+            {!loading && (
+  <img src="/assets/images/frame.png" alt="" className="img-width-doctor" />
+)}
           </>
         );
 
@@ -1487,19 +1511,23 @@ function StepperForm() {
               <div className="card-body padding-class">
                 {/* Header with back button and title in flex layout */}
                 <div className="d-flex justify-content-between align-items-center mb-3 ">
-                  <button
-                    type="button"
-                    className="btn btn-link btn-bg text-decoration-none"
-                    onClick={prevStep}
-                    disabled={currentStep === 1}
-                  >
-                    <img
-                      src="/assets/images/arrow.png"
-                      alt=""
-                      className="margin-set"
-                    />{" "}
-                    Back
-                  </button>
+
+                {currentStep === 1 ? (
+    <div style={{ width: "100px" }} /> // placeholder to keep space
+  ) : (
+    <button
+      type="button"
+      className="btn btn-link btn-bg text-decoration-none"
+      onClick={prevStep}
+    >
+      <img
+        src="/assets/images/arrow.png"
+        alt=""
+        className="margin-set"
+      />{" "}
+      Back
+    </button>
+  )}
                   <h6 className="text-center text-set-class m-0">
                     {stepHeadings[currentStep - 1] || ""}
                   </h6>

@@ -99,13 +99,21 @@ body {
 }
 .btn-bg {
   color: #666666;
-  background-color: #f7f7f7 !important;
   border-radius: 9999px;
   font-family: HelveticaNeueLight;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }
+.btn-bg:hover{
+  background-color: #f7f7f7 !important;
+
+}
+.img-width-doctor{
+  width: 100%;
+}
+
+
 .margin-set {
   margin-top: -2px;
 }
