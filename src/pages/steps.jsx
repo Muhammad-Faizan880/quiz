@@ -1670,7 +1670,7 @@ function StepperForm() {
             </div>
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
               <div className=" testimonials-cards-style-2 ">
-                <div className="position-relative d-inline-block">
+                <div className="position-relative ">
                   <img
                     src="/assets/images/Jennifer.png"
                     alt=""
@@ -1755,7 +1755,7 @@ function StepperForm() {
             </div>
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style-2 ">
-                <div className="position-relative d-inline-block">
+                <div className="position-relative ">
                   <img
                     src="/assets/images/healthy.png"
                     alt=""
@@ -1799,7 +1799,7 @@ function StepperForm() {
             </div>
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style-2 ">
-                <div className="position-relative d-inline-block">
+                <div className="position-relative">
                   <img
                     src="/assets/images/Jennifer1.png"
                     alt=""
@@ -1884,7 +1884,7 @@ function StepperForm() {
             </div>
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style-2 ">
-                <div className="position-relative d-inline-block">
+                <div className="position-relative ">
                   <img
                     src="/assets/images/Jennifer3.png"
                     alt=""

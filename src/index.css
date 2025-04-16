@@ -517,13 +517,13 @@ body {
   height: 400px;
   border-radius: 12px;
 
-  width: 380px;
+  width: 100%;
 }
 .testimonials-cards-style-2 {
   background-color: white;
   border-radius: 12px;
   height: 400px;
-  width: 378px;
+  width: 100%;
 }
 
 .img-padd-b {
@@ -1339,7 +1339,9 @@ body {
     text-align: center;
     margin-top: 10px;
   }
-
+  .glad-class-p {
+    padding-bottom: 0px;
+  }
   /* .class-imgg {
     padding-top: 20px;
   } */
