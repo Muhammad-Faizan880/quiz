@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WeightTrackerChart from "../components/chart";
 
@@ -32,6 +32,7 @@ function StepperForm() {
   const [selectedOption, setSelectedOption] = useState(null); // To store selected option
   const [loading, setLoading] = useState(false);
   const [bmi, setBmi] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(600);
 
   const toggleDropdown = () => setIsOpen(!isOpen); // Toggle the dropdown visibility
 
@@ -40,8 +41,8 @@ function StepperForm() {
     setIsOpen(false); // Close dropdown after selection
   };
 
-   // BMI Calculation
-   useEffect(() => {
+  // BMI Calculation
+  useEffect(() => {
     const feet = parseFloat(formData.heightFeet);
     const inches = parseFloat(formData.heightInches);
     const weight = parseFloat(formData.weight);
@@ -62,6 +63,23 @@ function StepperForm() {
       behavior: "smooth",
     });
   }, []);
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [timeLeft]);
+
+  const formatTime = (seconds) => {
+    const m = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const s = String(seconds % 60).padStart(2, "0");
+    return `${m}:${s}`;
+  };
+
+
 
   const options = [
     "Semaglutide 0.25 mg/wk for $XXX",
@@ -121,6 +139,13 @@ function StepperForm() {
 
   //product start//
 
+  const handleMedicationChange = (value) => {
+    handleChange({
+      target: { name: "medication", value },
+    });
+    handleSelection(value); // if you have any other logic
+  };
+
   const products = [
     {
       id: 1,
@@ -166,7 +191,16 @@ function StepperForm() {
       cancel: "Cancel or Change plan anytime",
     },
   ];
-
+  const stepHeadings = [
+    "GOALS",             // Step 1
+    "GOALS",         // Step 2
+    "GOALS",     // Step 3
+    "GOALS",         // Step 4
+    "ELIGIBILITY",         // Step 5
+    "GOALS",            // Step 6
+    "CHOOSE MEDICATION",          // Step 7Package Selection
+    "PACKAGE SELECTION",          // Step 7Package Selection
+  ];
   // const handleProductSelect = (productId) => {
   //   const product = products.find((product) => product.id === productId);
   //   setSelectedProduct(product);
@@ -241,23 +275,37 @@ function StepperForm() {
       const newErrors = {};
       let isValid = true;
 
-      // Validate height (feet and inches)
+      // Validate email
       if (!formData.email || formData.email <= 0) {
-        newErrors.email = true; // Just track as true if there's an error
+        newErrors.email = true;
         isValid = false;
       }
-      if (
-        !formData.birthDate ||
-        formData.birthDate < 0 ||
-        formData.birthDate > 12
-      ) {
-        newErrors.birthDate = true; // Just track as true if there's an error
+      if (!formData.birthDate) {
+        newErrors.birthDate = "Birth Date is required";
         isValid = false;
+      } else {
+        const dateParts = formData.birthDate.split("-");
+        const year = dateParts[0];
+
+        if (!/^\d{4}$/.test(year)) {
+          newErrors.birthDate = "Year must be exactly 4 digits";
+          isValid = false;
+        } else if (
+          Number(year) < 1900 ||
+          Number(year) > new Date().getFullYear()
+        ) {
+          newErrors.birthDate = `Year must be between 1900 and ${new Date().getFullYear()}`;
+          isValid = false;
+        }
       }
 
-      // Validate weight
-      if (!formData.zipCode || formData.zipCode <= 0) {
-        newErrors.zipCode = true; // Just track as true if there's an error
+      // Validate zipcode
+      if (
+        !formData.zipCode ||
+        formData.zipCode <= 0 ||
+        formData.zipCode.toString().length > 5
+      ) {
+        newErrors.zipCode = true;
         isValid = false;
       }
 
@@ -309,10 +357,29 @@ function StepperForm() {
             <div className="mb-3">
               <div
                 className="card mb-3"
-                style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                onClick={() =>
+                  handleChange({
+                    target: { name: "weightGoal", value: "lose1-20" },
+                  })
+                }
+                style={{
+                  borderColor: "#8E8E8E",
+                  borderRadius: "6px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  cursor: "pointer", // Optional: show pointer on hover
+                }}
               >
                 <div className="card-body p-3">
-                  <div className="form-check">
+                  <div
+                    className="form-check"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
                     <input
                       className="form-check-input custom-radio-button"
                       type="radio"
@@ -321,6 +388,7 @@ function StepperForm() {
                       value="lose1-20"
                       checked={formData.weightGoal === "lose1-20"}
                       onChange={handleChange}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     <label
                       className="form-check-label text0-clr"
@@ -334,7 +402,19 @@ function StepperForm() {
 
               <div
                 className="card mb-3"
-                style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                onClick={() =>
+                  handleChange({
+                    target: { name: "weightGoal", value: "lose21-50" },
+                  })
+                }
+                style={{
+                  borderColor: "#8E8E8E",
+                  borderRadius: "6px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                }}
               >
                 <div className="card-body p-3">
                   <div className="form-check">
@@ -346,6 +426,7 @@ function StepperForm() {
                       value="lose21-50"
                       checked={formData.weightGoal === "lose21-50"}
                       onChange={handleChange}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     <label
                       className="form-check-label text0-clr"
@@ -359,7 +440,19 @@ function StepperForm() {
 
               <div
                 className="card mb-3"
-                style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                onClick={() =>
+                  handleChange({
+                    target: { name: "weightGoal", value: "loseOver50" },
+                  })
+                }
+                style={{
+                  borderColor: "#8E8E8E",
+                  borderRadius: "6px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                }}
               >
                 <div className="card-body p-3">
                   <div className="form-check">
@@ -371,6 +464,7 @@ function StepperForm() {
                       value="loseOver50"
                       checked={formData.weightGoal === "loseOver50"}
                       onChange={handleChange}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     <label
                       className="form-check-label text0-clr"
@@ -384,7 +478,19 @@ function StepperForm() {
 
               <div
                 className="card mb-3"
-                style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                onClick={() =>
+                  handleChange({
+                    target: { name: "weightGoal", value: "maintain" },
+                  })
+                }
+                style={{
+                  borderColor: "#8E8E8E",
+                  borderRadius: "6px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                }}
               >
                 <div className="card-body p-3">
                   <div className="form-check">
@@ -396,6 +502,7 @@ function StepperForm() {
                       value="maintain"
                       checked={formData.weightGoal === "maintain"}
                       onChange={handleChange}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     <label
                       className="form-check-label text0-clr"
@@ -408,7 +515,19 @@ function StepperForm() {
               </div>
               <div
                 className="card mb-3"
-                style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
+                onClick={() =>
+                  handleChange({
+                    target: { name: "weightGoal", value: "sure" },
+                  })
+                }
+                style={{
+                  borderColor: "#8E8E8E",
+                  borderRadius: "6px",
+                  height: "78px",
+                  display: "flex",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                }}
               >
                 <div className="card-body p-3">
                   <div className="form-check">
@@ -416,14 +535,15 @@ function StepperForm() {
                       className="form-check-input custom-radio-button"
                       type="radio"
                       name="weightGoal"
-                      id="goal4"
+                      id="goal5"
                       value="sure"
                       checked={formData.weightGoal === "sure"}
                       onChange={handleChange}
+                      onClick={(e) => e.stopPropagation()}
                     />
                     <label
                       className="form-check-label text0-clr"
-                      htmlFor="goal4"
+                      htmlFor="goal5"
                     >
                       I'm not really sure
                     </label>
@@ -436,100 +556,103 @@ function StepperForm() {
       case 3:
         return (
           <>
-             <h4 className="class-name-style">
-        What is your current height & weight?
-      </h4>
+            <h4 className="class-name-style">
+             
+              What is your current height & weight?
+            </h4>
 
-      <p className="class-bmi">Your BMI</p>
-      <p className="class-bmi-1">{bmi ? bmi : "--"}</p>
-      <div className="bg-gradient"></div>
+            <p className="class-bmi">Your BMI</p>
+            <p className="class-bmi-1">{bmi ? bmi : "00.00"}</p>
+            <div className="bg-gradient"></div>
 
-      <div className="d-flex gap-3">
-        {/* Height - Feet */}
-        <div className="flex-grow-1">
-          <label htmlFor="height1" className="form-label fontyy mb-0">
-            Feet
-          </label>
-          <div className="position-relative">
-            <input
-              type="number"
-              className={`form-control pe-5 class-border ${
-                errors.heightFeet ? "border-danger" : ""
-              }`}
-              id="height1"
-              name="heightFeet"
-              placeholder="5"
-              value={formData.heightFeet}
-              onChange={handleChange}
-            />
-            <span className="position-absolute top-50 translate-middle-y end-0 pe-3">
-              Ft.
-            </span>
-          </div>
-          {errors.heightFeet && (
-            <small className="text-danger">{errors.heightFeet}</small>
-          )}
-        </div>
+            <div className="d-flex gap-3">
+              {/* Height - Feet */}
+              <div className="flex-grow-1">
+                <label htmlFor="height1" className="form-label fontyy mb-0">
+                  Feet
+                </label>
+                <div className="position-relative">
+                  <input
+                    type="number"
+                    className={`form-control pe-5 class-border ${
+                      errors.heightFeet ? "border-danger" : ""
+                    }`}
+                    id="height1"
+                    name="heightFeet"
+                    placeholder="5"
+                    value={formData.heightFeet}
+                    onChange={handleChange}
+                  />
+                  <span className="position-absolute top-50 translate-middle-y end-0 pe-3">
+                    Ft.
+                  </span>
+                </div>
+                {errors.heightFeet && (
+                  <small className="text-danger">{errors.heightFeet}</small>
+                )}
+              </div>
 
-        {/* Height - Inches */}
-        <div className="flex-grow-1">
-          <label htmlFor="height2" className="form-label fontyy mb-0">
-            Inches
-          </label>
-          <div className="position-relative">
-            <input
-              type="number"
-              className={`form-control pe-5 class-border ${
-                errors.heightInches ? "border-danger" : ""
-              }`}
-              id="height2"
-              name="heightInches"
-              placeholder="11"
-              value={formData.heightInches}
-              onChange={handleChange}
-            />
-            <span className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted">
-              In.
-            </span>
-          </div>
-          {errors.heightInches && (
-            <small className="text-danger">{errors.heightInches}</small>
-          )}
-        </div>
-      </div>
+              {/* Height - Inches */}
+              <div className="flex-grow-1">
+                <label htmlFor="height2" className="form-label fontyy mb-0">
+                  Inches
+                </label>
+                <div className="position-relative">
+                  <input
+                    type="number"
+                    className={`form-control pe-5 class-border ${
+                      errors.heightInches ? "border-danger" : ""
+                    }`}
+                    id="height2"
+                    name="heightInches"
+                    placeholder="11"
+                    value={formData.heightInches}
+                    onChange={handleChange}
+                  />
+                  <span className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted">
+                    In.
+                  </span>
+                </div>
+                {errors.heightInches && (
+                  <small className="text-danger">{errors.heightInches}</small>
+                )}
+              </div>
+            </div>
 
-      {/* Weight */}
-      <div className="flex-grow-1">
-        <label htmlFor="weight" className="form-label fontyy mb-0">
-          Current weight (lbs.)
-        </label>
-        <div className="position-relative">
-          <input
-            type="number"
-            className={`form-control pe-5 class-border1 ${
-              errors.weight ? "border-danger" : ""
-            }`}
-            id="weight"
-            name="weight"
-            placeholder="250"
-            value={formData.weight}
-            onChange={handleChange}
-          />
-          <span className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted">
-            Lbs.
-          </span>
-        </div>
-        {errors.weight && (
-          <small className="text-danger">{errors.weight}</small>
-        )}
-      </div>
+            {/* Weight */}
+            <div className="flex-grow-1">
+              <label htmlFor="weight" className="form-label fontyy mb-0">
+                Current weight (lbs.)
+              </label>
+              <div className="position-relative">
+                <input
+                  type="number"
+                  className={`form-control pe-5 class-border1 ${
+                    errors.weight ? "border-danger" : ""
+                  }`}
+                  id="weight"
+                  name="weight"
+                  placeholder="250"
+                  value={formData.weight}
+                  onChange={handleChange}
+                />
+                <span className="position-absolute top-50 translate-middle-y end-0 pe-3 text-muted">
+                  Lbs.
+                </span>
+              </div>
+              {errors.weight && (
+                <small className="text-danger">{errors.weight}</small>
+              )}
+            </div>
           </>
         );
       case 4:
         return (
           <>
             <h4 className="class-name-style">
-              Alex, we can help you lose up to 45 pounds by 06/21/2025!
+              {formData.fullName
+                ? `${formData.fullName}, we can help you lose up to 45 pounds by 06/21/2025!`
+                : "We can help you lose up to 45 pounds by 06/21/2025!"}
             </h4>
 
             <WeightTrackerChart />
@@ -640,12 +763,13 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="date"
+                          max={new Date().toISOString().split("T")[0]} // restrict future dates
                           className={`form-control input-style ${
                             errors.birthDate ? "border-danger" : ""
                           }`}
                           id="birthDate"
                           name="birthDate"
-                          placeholder="MM / DD / YYYY"
+                          value={formData.birthDate}
                           onChange={handleChange}
                         />
                       </div>
@@ -707,14 +831,15 @@ function StepperForm() {
                         Birth Date
                       </label>
                       <div className="position-relative">
-                        <input
+                      <input
                           type="date"
+                          max={new Date().toISOString().split("T")[0]} // restrict future dates
                           className={`form-control input-style ${
                             errors.birthDate ? "border-danger" : ""
                           }`}
                           id="birthDate"
                           name="birthDate"
-                          placeholder="MM / DD / YYYY"
+                          value={formData.birthDate}
                           onChange={handleChange}
                         />
                       </div>
@@ -779,50 +904,75 @@ function StepperForm() {
               ) : (
                 <>
                   <div
-                    className="card mb-3"
-                    style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
-                  >
-                    <div className="card-body p-3">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input custom-radio-button"
-                          type="radio"
-                          name="medication"
-                          id="yes"
-                          onChange={() => handleSelection("yes")}
-                        />
-                        <label
-                          className="form-check-label text0-clr"
-                          htmlFor="yes"
-                        >
-                          Yes
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+  className="card mb-3"
+  onClick={() => handleMedicationChange("yes")}
+  style={{
+    borderColor: "#8E8E8E",
+    borderRadius: "6px",
+    height: "78px",
+    display: "flex",
+    justifyContent: "center",
+    cursor: "pointer",
+  }}
+>
+  <div className="card-body p-3">
+    <div className="form-check">
+      <input
+        className="form-check-input custom-radio-button"
+        type="radio"
+        name="medication"
+        id="yes"
+        value="yes"
+        checked={formData.medication === "yes"}
+        onChange={() => handleMedicationChange("yes")}
+        onClick={(e) => e.stopPropagation()}
+      />
+      <label
+        className="form-check-label text0-clr"
+        htmlFor="yes"
+        style={{ cursor: "pointer" }}
+      >
+        Yes
+      </label>
+    </div>
+  </div>
+</div>
 
-                  <div
-                    className="card mb-3"
-                    style={{ borderColor: "#8E8E8E", borderRadius: "6px" }}
-                  >
-                    <div className="card-body p-3">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input custom-radio-button"
-                          type="radio"
-                          name="medication"
-                          id="no"
-                          onChange={() => handleSelection("no")}
-                        />
-                        <label
-                          className="form-check-label text0-clr"
-                          htmlFor="no"
-                        >
-                          No
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+{/* NO CARD */}
+<div
+  className="card mb-3"
+  onClick={() => handleMedicationChange("no")}
+  style={{
+    borderColor: "#8E8E8E",
+    borderRadius: "6px",
+    height: "78px",
+    display: "flex",
+    justifyContent: "center",
+    cursor: "pointer",
+  }}
+>
+  <div className="card-body p-3">
+    <div className="form-check">
+      <input
+        className="form-check-input custom-radio-button"
+        type="radio"
+        name="medication"
+        id="no"
+        value="no"
+        checked={formData.medication === "no"}
+        onChange={() => handleMedicationChange("no")}
+        onClick={(e) => e.stopPropagation()}
+      />
+      <label
+        className="form-check-label text0-clr"
+        htmlFor="no"
+        style={{ cursor: "pointer" }}
+      >
+        No
+      </label>
+    </div>
+  </div>
+</div>
                 </>
               )}
             </div>
@@ -845,7 +995,7 @@ function StepperForm() {
                 <p className="text-center-divvv">
                   Claim your discounted GLP-1 now while supplies last!
                 </p>
-                <p className="text-center-divv">00:00</p>
+                <p className="text-center-divv">{formatTime(timeLeft)}</p>
               </div>
             </div>
 
@@ -941,9 +1091,9 @@ function StepperForm() {
                   )}
 
                   <div className="class-flex-expand mb-2">
-                    <span className="class-current">$179</span>
+                    <span className="class-current">$199</span>
                     <span className="class-original text-decoration-line-through">
-                      $279
+                      $399
                     </span>
                   </div>
 
@@ -1025,7 +1175,7 @@ function StepperForm() {
                           style={{
                             backgroundColor: "#E5F5F3",
                             borderRadius: "16px",
-                            display:"flex"
+                            display: "flex",
                           }}
                         >
                           <img
@@ -1184,7 +1334,9 @@ function StepperForm() {
                     />{" "}
                     Back
                   </button>
-                  <h6 className="text-center text-set-class m-0">GOALS</h6>
+                  <h6 className="text-center text-set-class m-0">
+    {stepHeadings[currentStep - 1] || ""}
+  </h6>
                   <span className="text-setting">
                     {currentStep}/{totalSteps}
                   </span>

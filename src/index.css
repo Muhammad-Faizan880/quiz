@@ -223,7 +223,12 @@ body {
   letter-spacing: -0.23px;
   color: #151515;
 }
-
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 40px !important; /* adjust as needed */
+  cursor: "pointer",
+}
 .class-bmi-1 {
   font-family: HelveticaNeueLight;
   font-weight: 400;
@@ -233,7 +238,9 @@ body {
   text-align: center;
   color: #000000;
 }
-
+.card-body{
+  flex: none;
+}
 .class-bmi {
   font-family: HelveticaNeueLight;
   font-weight: 400;
