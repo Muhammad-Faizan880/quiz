@@ -79,8 +79,6 @@ function StepperForm() {
     return `${m}:${s}`;
   };
 
-
-
   const options = [
     "Semaglutide 0.25 mg/wk for $XXX",
     "Semaglutide 0.5 mg/wk for $XXX",
@@ -150,7 +148,7 @@ function StepperForm() {
     {
       id: 1,
       title: "6 Month Plan",
-      price: "$39",
+      price: "$149",
       bottle: "/bottle",
       save: "Save $660 Instantly",
       para: "3 bottles shipped every 3 months",
@@ -164,7 +162,7 @@ function StepperForm() {
     {
       id: 2,
       title: "3 Month Plan",
-      price: "$239",
+      price: "$179",
       bottle: "/bottle",
       save: "Save $660 Instantly",
       para: "3 bottles shipped every 3 months",
@@ -179,7 +177,7 @@ function StepperForm() {
     {
       id: 3,
       title: "1 Month Plan",
-      price: "$439",
+      price: "$199",
       bottle: "/bottle",
       save: "Save $660 Instantly",
       para: "1 Bottle Only",
@@ -191,15 +189,60 @@ function StepperForm() {
       cancel: "Cancel or Change plan anytime",
     },
   ];
+  const productsMob = [
+    {
+      id: 1,
+      title: "6 Month Plan",
+      price: "$149",
+      bottle: "/bottle",
+      save: "Save $660 Instantly",
+      para: "3 bottles shipped every 3 months",
+      para1: "Access to Dr. Sam’s VIP Community",
+      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
+      para3: "Save an EXTRA 10%",
+      image: "/assets/images/6.png",
+      buttonLabel: "SELECT PLAN",
+      cancel: "Cancel or Change plan anytime",
+    },
+    {
+      id: 2,
+      title: "3 Month Plan",
+      price: "$179",
+      bottle: "/bottle",
+      save: "Save $660 Instantly",
+      para: "3 bottles shipped every 3 months",
+      para1: "Access to Dr. Sam’s VIP Community",
+      para2: "Includes: Personalized Diet Plans, ",
+      para3: "Workshops, Community Support ",
+      para4: "Save an EXTRA 10%",
+      image: "/assets/images/3.png",
+      buttonLabel: "SELECTED",
+      cancel: "Cancel or Change plan anytime",
+    },
+    {
+      id: 3,
+      title: "1 Month Plan",
+      price: "$199",
+      bottle: "/bottle",
+      save: "Save $660 Instantly",
+      para: "1 Bottle Only",
+      para1: "Great for trying it out risk-free",
+      para2: "Includes: Personalized Diet Plans, ",
+      para3: "Workshops, Community Support ",
+      image: "/assets/images/6.png",
+      buttonLabel: "SELECT PLAN",
+      cancel: "Cancel or Change plan anytime",
+    },
+  ];
   const stepHeadings = [
-    "GOALS",             // Step 1
-    "GOALS",         // Step 2
-    "GOALS",     // Step 3
-    "GOALS",         // Step 4
-    "ELIGIBILITY",         // Step 5
-    "GOALS",            // Step 6
-    "CHOOSE MEDICATION",          // Step 7Package Selection
-    "PACKAGE SELECTION",          // Step 7Package Selection
+    "GOALS", // Step 1
+    "GOALS", // Step 2
+    "GOALS", // Step 3
+    "GOALS", // Step 4
+    "ELIGIBILITY", // Step 5
+    "GOALS", // Step 6
+    "CHOOSE MEDICATION", // Step 7Package Selection
+    "PACKAGE SELECTION", // Step 7Package Selection
   ];
   // const handleProductSelect = (productId) => {
   //   const product = products.find((product) => product.id === productId);
@@ -368,7 +411,7 @@ function StepperForm() {
                   height: "78px",
                   display: "flex",
                   justifyContent: "center",
-                  cursor: "pointer", // Optional: show pointer on hover
+                  cursor: "pointer",
                 }}
               >
                 <div className="card-body p-3">
@@ -557,7 +600,6 @@ function StepperForm() {
         return (
           <>
             <h4 className="class-name-style">
-             
               What is your current height & weight?
             </h4>
 
@@ -831,7 +873,7 @@ function StepperForm() {
                         Birth Date
                       </label>
                       <div className="position-relative">
-                      <input
+                        <input
                           type="date"
                           max={new Date().toISOString().split("T")[0]} // restrict future dates
                           className={`form-control input-style ${
@@ -904,75 +946,75 @@ function StepperForm() {
               ) : (
                 <>
                   <div
-  className="card mb-3"
-  onClick={() => handleMedicationChange("yes")}
-  style={{
-    borderColor: "#8E8E8E",
-    borderRadius: "6px",
-    height: "78px",
-    display: "flex",
-    justifyContent: "center",
-    cursor: "pointer",
-  }}
->
-  <div className="card-body p-3">
-    <div className="form-check">
-      <input
-        className="form-check-input custom-radio-button"
-        type="radio"
-        name="medication"
-        id="yes"
-        value="yes"
-        checked={formData.medication === "yes"}
-        onChange={() => handleMedicationChange("yes")}
-        onClick={(e) => e.stopPropagation()}
-      />
-      <label
-        className="form-check-label text0-clr"
-        htmlFor="yes"
-        style={{ cursor: "pointer" }}
-      >
-        Yes
-      </label>
-    </div>
-  </div>
-</div>
+                    className="card mb-3"
+                    onClick={() => handleMedicationChange("yes")}
+                    style={{
+                      borderColor: "#8E8E8E",
+                      borderRadius: "6px",
+                      height: "78px",
+                      display: "flex",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div className="card-body p-3">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input custom-radio-button"
+                          type="radio"
+                          name="medication"
+                          id="yes"
+                          value="yes"
+                          checked={formData.medication === "yes"}
+                          onChange={() => handleMedicationChange("yes")}
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                        <label
+                          className="form-check-label text0-clr"
+                          htmlFor="yes"
+                          style={{ cursor: "pointer" }}
+                        >
+                          Yes
+                        </label>
+                      </div>
+                    </div>
+                  </div>
 
-{/* NO CARD */}
-<div
-  className="card mb-3"
-  onClick={() => handleMedicationChange("no")}
-  style={{
-    borderColor: "#8E8E8E",
-    borderRadius: "6px",
-    height: "78px",
-    display: "flex",
-    justifyContent: "center",
-    cursor: "pointer",
-  }}
->
-  <div className="card-body p-3">
-    <div className="form-check">
-      <input
-        className="form-check-input custom-radio-button"
-        type="radio"
-        name="medication"
-        id="no"
-        value="no"
-        checked={formData.medication === "no"}
-        onChange={() => handleMedicationChange("no")}
-        onClick={(e) => e.stopPropagation()}
-      />
-      <label
-        className="form-check-label text0-clr"
-        htmlFor="no"
-        style={{ cursor: "pointer" }}
-      >
-        No
-      </label>
-    </div>
-  </div>
-</div>
+                  {/* NO CARD */}
+                  <div
+                    className="card mb-3"
+                    onClick={() => handleMedicationChange("no")}
+                    style={{
+                      borderColor: "#8E8E8E",
+                      borderRadius: "6px",
+                      height: "78px",
+                      display: "flex",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div className="card-body p-3">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input custom-radio-button"
+                          type="radio"
+                          name="medication"
+                          id="no"
+                          value="no"
+                          checked={formData.medication === "no"}
+                          onChange={() => handleMedicationChange("no")}
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                        <label
+                          className="form-check-label text0-clr"
+                          htmlFor="no"
+                          style={{ cursor: "pointer" }}
+                        >
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </>
               )}
             </div>
@@ -1158,97 +1200,217 @@ function StepperForm() {
       case 8:
         return (
           <>
-            {currentStep === 8 && (
-              <div className="product-selection-container">
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    onClick={() => handleProductSelect(product.id)}
-                    className={`card mb-3 rounded-4 shadow-sm  ${
-                      selectedProduct === product.id ? "selected-product" : ""
-                    }`}
-                  >
-                    <div className="container">
-                      <div className="row">
-                        <div
-                          className="col-4 flex justify-content-center align-items-center"
-                          style={{
-                            backgroundColor: "#E5F5F3",
-                            borderRadius: "16px",
-                            display: "flex",
-                          }}
-                        >
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="class-imgg justify-content-center align-items-center text-align-center"
-                          />
-                        </div>
-                        <div className="col-5 ">
-                          <h5 className="class-title-new">{product.title}</h5>
+            <h4 className="class-name-style">Select your Monthly Plan</h4>
+            <p className="all-start">
+              Choose your preferred monthly plan.
+              <br />
+              Lock in bigger savings with longer plans.
+            </p>
 
-                          <div className="bg-div-dark">{product.save}</div>
-                          <div className="flex-class-div gap-1">
+            <div className="bg-warning-clr text-center d-flex justify-content-center align-items-center">
+              <p className="m-0">
+                🎉 Code Activated: GLP200 - $200 OFF each bottle
+              </p>
+            </div>
+
+            {currentStep === 8 && (
+              <>
+                <div className="product-selection-container d-none d-lg-block">
+                  {products.map((product) => (
+                    <div
+                      key={product.id}
+                      onClick={() => handleProductSelect(product.id)}
+                      className={`card mb-3 rounded-4 shadow-sm  ${
+                        selectedProduct === product.id ? "selected-product" : ""
+                      }`}
+                    >
+                      <div className="container">
+                        <div className="row">
+                          <div
+                            className="col-4   "
+                            style={{
+                              backgroundColor: "#E5F5F3",
+                              borderRadius: "16px",
+                              display: "flex",
+                            }}
+                          >
                             <img
-                              src="/assets/images/SVG.svg"
-                              alt=""
-                              className="img-tick-set"
+                              src={product.image}
+                              alt={product.name}
+                              className="class-imgg justify-content-center align-items-center text-align-center"
                             />
-                            <p className="class-details">{product.para}</p>
                           </div>
-                          <div className="flex-class-div gap-1">
-                            <img
-                              src="/assets/images/SVG.svg"
-                              alt=""
-                              className="img-tick-set"
-                            />
-                            <p className="class-details">{product.para1}</p>
+                          <div className="col-5 ">
+                            <h5 className="class-title-new">{product.title}</h5>
+
+                            <div className="bg-div-dark">{product.save}</div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details">{product.para}</p>
+                            </div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details">{product.para1}</p>
+                            </div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details">{product.para2}</p>
+                            </div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details">{product.para3}</p>
+                            </div>
+                            <p className="class-details-new1">
+                              {product.para4}
+                            </p>
                           </div>
-                          <div className="flex-class-div gap-1">
-                            <img
-                              src="/assets/images/SVG.svg"
-                              alt=""
-                              className="img-tick-set"
-                            />
-                            <p className="class-details">{product.para2}</p>
+                          <div className="col-3 ">
+                            <p className="class-title-price">
+                              {product.price}
+                              <span className="class-title-price-1">
+                                {product.bottle}
+                              </span>
+                            </p>
+                            <div className="button-class-gray">
+                              <button
+                                className={`button-class-gray-text ${
+                                  selectedProduct === product.id
+                                    ? "selected-button-red"
+                                    : "default-color"
+                                }`}
+                              >
+                                {selectedProduct === product.id
+                                  ? "SELECTED"
+                                  : "SELECT PLAN"}
+                              </button>
+                            </div>
+                            <p className="cancel-class">{product.cancel}</p>
                           </div>
-                          <div className="flex-class-div gap-1">
-                            <img
-                              src="/assets/images/SVG.svg"
-                              alt=""
-                              className="img-tick-set"
-                            />
-                            <p className="class-details">{product.para3}</p>
-                          </div>
-                          <p className="class-details-new1">{product.para4}</p>
-                        </div>
-                        <div className="col-3">
-                          <p className="class-title-price">
-                            {product.price}
-                            <span className="class-title-price-1">
-                              {product.bottle}
-                            </span>
-                          </p>
-                          <div className="button-class-gray">
-                            <button
-                              className={`button-class-gray-text ${
-                                selectedProduct === product.id
-                                  ? "selected-button-red"
-                                  : "default-color"
-                              }`}
-                            >
-                              {selectedProduct === product.id
-                                ? "SELECTED"
-                                : "SELECT PLAN"}
-                            </button>
-                          </div>
-                          <p className="cancel-class">{product.cancel}</p>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+                {/* // ........................mobile-screen......................... */}
+
+                <div className="product-selection-container d-block d-lg-none">
+                  {productsMob.map((product) => (
+                    <div
+                      key={product.id}
+                      onClick={() => handleProductSelect(product.id)}
+                      className={`card mb-3 rounded-4 shadow-sm  ${
+                        selectedProduct === product.id ? "selected-product" : ""
+                      }`}
+                    >
+                      <div className="container">
+                        <div className="row">
+                          <div
+                            className="col-6 center-image   "
+                            style={{
+                              backgroundColor: "#E5F5F3",
+                              borderRadius: "16px",
+                            }}
+                          >
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="class-imgg "
+                            />
+                            <h5 className="class-title-new-mob">
+                              {product.title}
+                            </h5>
+                            <div className="bg-div-dark-mob">
+                              {product.save}
+                            </div>
+                          </div>
+                          <div className="col-6 ">
+                            <p className="class-title-price-mob">
+                              {product.price}
+                              <span className="class-title-price-1-mob">
+                                {product.bottle}
+                              </span>
+                            </p>
+                            <div className="button-class-gray">
+                              <button
+                                className={`button-class-gray-text ${
+                                  selectedProduct === product.id
+                                    ? "selected-button-red"
+                                    : "default-color"
+                                }`}
+                              >
+                                {selectedProduct === product.id
+                                  ? "SELECTED"
+                                  : "SELECT PLAN"}
+                              </button>
+                            </div>
+                            <p className="cancel-class-mob">{product.cancel}</p>
+
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details-mob">
+                                {product.para}
+                              </p>
+                            </div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details-mob">
+                                {product.para1}
+                              </p>
+                            </div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details-mob">
+                                {product.para2}
+                              </p>
+                            </div>
+                            <div className="flex-class-div gap-1">
+                              <img
+                                src="/assets/images/SVG.svg"
+                                alt=""
+                                className="img-tick-set"
+                              />
+                              <p className="class-details-mob">
+                                {product.para3}
+                              </p>
+                            </div>
+                            <p className="class-details-new1-mob">
+                              {product.para4}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
             )}
           </>
         );
@@ -1316,7 +1478,7 @@ function StepperForm() {
     <>
       <div className="container ptb-class">
         <div className="row justify-content-center">
-          <div className="col-md-6">
+          <div className="col-xl-7 col-xxl-6 col-12">
             <div className="card border-0">
               <div className="card-body padding-class">
                 {/* Header with back button and title in flex layout */}
@@ -1335,8 +1497,8 @@ function StepperForm() {
                     Back
                   </button>
                   <h6 className="text-center text-set-class m-0">
-    {stepHeadings[currentStep - 1] || ""}
-  </h6>
+                    {stepHeadings[currentStep - 1] || ""}
+                  </h6>
                   <span className="text-setting">
                     {currentStep}/{totalSteps}
                   </span>
@@ -1373,9 +1535,9 @@ function StepperForm() {
                         <button
                           type="submit"
                           className="btn btn-setting-class-custom rounded-pill py-3"
-                          disabled={selectedProduct === null} // Disable button if no product is selected
+                          disabled={selectedProduct === null}
                         >
-                          Continue
+                          Lock in Your Plan
                         </button>
                       </div>
                     ) : (
@@ -1465,7 +1627,7 @@ function StepperForm() {
       {(currentStep === 7 || currentStep === 8) && (
         <div className="mt-4 class-width-testimonials">
           <div className="row">
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 ">
               <div className=" testimonials-cards-style ">
                 <img
                   src="/assets/images/star.png"
@@ -1550,7 +1712,7 @@ function StepperForm() {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style ">
                 <img
                   src="/assets/images/star.png"
@@ -1591,7 +1753,7 @@ function StepperForm() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style-2 ">
                 <div className="position-relative d-inline-block">
                   <img
@@ -1635,7 +1797,7 @@ function StepperForm() {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style-2 ">
                 <div className="position-relative d-inline-block">
                   <img
@@ -1679,7 +1841,7 @@ function StepperForm() {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style ">
                 <img
                   src="/assets/images/star.png"
@@ -1720,7 +1882,7 @@ function StepperForm() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style-2 ">
                 <div className="position-relative d-inline-block">
                   <img
@@ -1764,7 +1926,7 @@ function StepperForm() {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style ">
                 <img
                   src="/assets/images/star.png"

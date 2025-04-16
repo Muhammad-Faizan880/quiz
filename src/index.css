@@ -148,8 +148,8 @@ body {
   border: 2px solid #2fbaac !important;
 }
 .ptb-class {
-  padding-bottom: 190px;
-  padding-top: 153px;
+  padding-bottom: 110px;
+  padding-top: 33px;
 }
 .class-name-style {
   color: #2f827a;
@@ -227,7 +227,7 @@ body {
   display: flex;
   align-items: center;
   gap: 40px !important; /* adjust as needed */
-  cursor: "pointer",
+  cursor: "pointer";
 }
 .class-bmi-1 {
   font-family: HelveticaNeueLight;
@@ -238,7 +238,7 @@ body {
   text-align: center;
   color: #000000;
 }
-.card-body{
+.card-body {
   flex: none;
 }
 .class-bmi {
@@ -315,6 +315,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 10px;
 }
 
 .img-width-hight-set {
@@ -335,6 +336,8 @@ body {
   font-size: 14px;
   line-height: 16px;
   color: white;
+  display: flex;
+  justify-content: end;
 }
 
 .class-primary {
@@ -444,6 +447,18 @@ body {
 
 .container-paddingt {
   padding-top: 40px;
+}
+.bg-warning-clr {
+  background-color: #ff9900;
+  color: white;
+  font-family: HelveticaNeue-Bold;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  border-radius: 9999px;
+  width: 82% !important;
+  height: 42px;
+  padding-left: 20px;
 }
 
 .all-start {
@@ -894,6 +909,7 @@ body {
 .class-imgg {
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
 .flex-div {
@@ -1037,7 +1053,7 @@ body {
 }
 
 .class-details {
-  font-family: HelveticaNeue-Bold;
+  font-family: HelveticaNeue-Medium;
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;
@@ -1098,7 +1114,7 @@ body {
   font-size: 11.42px;
   line-height: 20.7px;
   text-align: center;
-  width: 110px;
+  width: 100%;
 }
 .default-color {
   background-color: #cbcbcb;
@@ -1109,7 +1125,7 @@ body {
   font-size: 11.42px;
   line-height: 20.7px;
   text-align: center;
-  width: 110px;
+  width: 100%;
 }
 .checkk {
   font-family: HelveticaNeueLight;
@@ -1163,6 +1179,12 @@ body {
   animation: loadAnimation 3s infinite;
 }
 
+.center-image {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes loadAnimation {
   0% {
     width: 0%;
@@ -1191,6 +1213,138 @@ body {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .class-title-price-mob {
+    font-family: HelveticaNeue-Bold;
+    font-size: 32px;
+    line-height: 38px;
+    color: #2f827a !important;
+    margin-top: 8px;
+    margin-bottom: 2px;
+  }
+  .class-title-price-1-mob {
+    font-family: HelveticaNeue-Medium;
+    font-size: 25px;
+    line-height: 38px;
+    color: #2f827a !important;
+  }
+  .cancel-class-mob {
+    font-family: HelveticaNeueLight;
+    font-size: 8px;
+    line-height: 12px;
+    color: black;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .class-title-new-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+    margin-top: -20px;
+  }
+  .bg-div-dark-mob {
+    background-color: #2f827a !important;
+    font-family: HelveticaNeue-Medium;
+    font-size: 10px;
+    line-height: 14.03px;
+    letter-spacing: 0.23px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    border-radius: 50px;
+    width: 80%;
+    padding: 4px;
+    margin-top: -8px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: -15px;
+  }
+  .class-details-mob {
+    font-family: HelveticaNeue-Medium;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 12px;
+    text-align: start !important;
+    color: #000000;
+    padding-bottom: 5px;
+  }
+  .class-details-new1-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: start !important;
+    color: #000000;
+    padding-left: 16px;
+    margin-top: 9px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bg-warning-clr {
+    background-color: #ff9900;
+    color: white;
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    border-radius: 9999px;
+    width: 100% !important;
+    height: 42px;
+  }
+  .class-title-new {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 40px;
+    text-transform: uppercase;
+
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: -40px; */
+  }
+
+  .bg-div-dark-mob {
+    background-color: #2f827a !important;
+    font-family: HelveticaNeue-Medium;
+    font-size: 10px;
+    line-height: 14.03px;
+    letter-spacing: 0.23px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    border-radius: 50px;
+    width: 80%;
+    padding: 4px;
+    margin-top: -8px;
+    margin: auto;
+    margin-bottom: 10px;
+    /* margin-top: -45px; */
+  }
+
+  .class-title-new-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* .class-imgg {
+    padding-top: 20px;
+  } */
+}
+
 @media screen and (max-width: 575px) {
   .testimonials-cards-style {
     width: 100%;
@@ -1205,8 +1359,9 @@ body {
 }
 @media screen and (max-width: 545px) {
   .ptb-class {
-    padding-bottom: 80px;
-    padding-top: 80px;
+    padding-bottom: 60px;
+    margin-top: -40px;
+    padding-top: 40px;
   }
   .class-name-style {
     padding-top: 0px;
@@ -1250,9 +1405,6 @@ body {
     margin: auto;
     text-align: center;
   }
-  .bg-green-dynamic-div {
-    display: none;
-  }
 
   .CLR-WHITEW {
     font-weight: 500;
@@ -1275,6 +1427,50 @@ body {
     font-size: 20px;
     line-height: 32px;
     text-align: start;
+  }
+
+  .checkk {
+    font-family: HelveticaNeueLight;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+    text-align: center;
+    color: #000000;
+  }
+  .licensed {
+    font-family: HelveticaNeueLight;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+    text-align: center;
+    padding-top: 30px;
+  }
+  .licensed-1 {
+    font-family: HelveticaNeue-Bold;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+    text-align: center;
+    color: #2f766a;
+  }
+  .licensed-11 {
+    font-family: HelveticaNeueLight;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+    text-align: center;
+    padding-top: 20px;
+  }
+  .bg-warning-clr {
+    background-color: #ff9900;
+    color: white;
+    font-family: HelveticaNeue-Medium;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    border-radius: 9999px;
+    width: 100% !important;
+    height: 42px;
   }
 }
 @media screen and (max-width: 545px) {
@@ -1351,6 +1547,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     gap: 15px;
+    margin-top: -18px;
   }
   .class-title-4 {
     font-family: HelveticaNeueLight;
@@ -1371,5 +1568,161 @@ body {
     width: 100%;
     margin: auto;
     margin-top: 10px !important;
+  }
+  .text-center-divvv {
+    font-family: HelveticaNeueLight;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: white;
+    padding-top: 15px;
+    padding-left: 10px;
+  }
+  .class-name-style {
+    color: #2f827a;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.28px;
+    font-weight: 700;
+    padding-top: 10px;
+    text-align: start !important;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .bg-div-dark-mob {
+    background-color: #2f827a !important;
+    font-family: HelveticaNeue-Medium;
+    font-size: 10px;
+    line-height: 14.03px;
+    letter-spacing: 0.23px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    border-radius: 50px;
+    width: 80%;
+    padding: 4px;
+    margin-top: -8px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: -10px;
+  }
+
+  .class-title-new-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+    margin-top: -10px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .class-title-new {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 40px;
+    text-transform: uppercase;
+    text-align: start !important;
+    color: #333333;
+    margin-top: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .class-title-new-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .class-title-price-mob {
+    font-family: HelveticaNeue-Bold;
+    font-size: 28px;
+    line-height: 38px;
+    color: #2f827a !important;
+  }
+  .class-title-price-1-mob {
+    font-family: HelveticaNeue-Medium;
+    font-size: 22px;
+    line-height: 38px;
+    color: #2f827a !important;
+  }
+}
+
+@media screen and (max-width: 402px) {
+  .text-center-divvv {
+    font-family: HelveticaNeueLight;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+    color: white;
+    padding-top: 15px;
+    padding-left: 10px;
+  }
+
+  .class-title-new-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 388px) {
+  .bg-div-dark-mob {
+    background-color: #2f827a !important;
+    font-family: HelveticaNeue-Medium;
+    font-size: 10px;
+    line-height: 14.03px;
+    letter-spacing: 0.23px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    border-radius: 50px;
+    width: 80%;
+    padding: 4px;
+    margin-top: -8px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: -60px;
+  }
+
+  .class-title-new-mob {
+    font-family: HelveticaNeue-Bold;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+    margin-top: -10px;
+  }
+
+  .class-title-price-mob {
+    font-family: HelveticaNeue-Bold;
+    font-size: 26px;
+    line-height: 38px;
+    color: #2f827a !important;
+  }
+  .class-title-price-1-mob {
+    font-family: HelveticaNeue-Medium;
+    font-size: 20px;
+    line-height: 38px;
+    color: #2f827a !important;
   }
 }
