@@ -1,0 +1,167 @@
+import React from "react";
+import Slider from "react-slick";
+
+function Responsive() {
+  var settings = {
+    dots: false,
+    arrows: false,
+    infinite: false,
+    speed: 500,
+    centerPadding: "5px",
+    slidesToShow: 7,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1300, 
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3.2,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+  
+  return (
+    <div className="slider-container">
+      <Slider className="padding-slide" {...settings}>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluid"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+        <div className="padding-slider">
+        <div className="back-div-class">
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
+         <p className="class-tanya">Tanya, 28</p>
+         <p className="lost-class">Lost 40 pounds
+         in 4 months</p>
+         <div className="class-ease-flex">
+         <img src="/assets/images/ticky.svg" alt="" className="tick-img"/>
+         <p className="class-easee">EaseMD customer</p>
+         </div>
+        </div>
+        </div>
+      </Slider>
+    </div>
+  );
+}
+
+export default Responsive;

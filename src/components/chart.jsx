@@ -1,14 +1,16 @@
 import React from 'react';
 
-const WeightTrackerChart = () => {
+const WeightTrackerChart = ({formData }) => {
+
+  console.log(formData);
   // Data points for the weight tracking
   const weightData = [
    
-    { month: '1st month', weight: 238 },
-    { month: '2nd month', weight: 235 },
-    { month: '3rd month', weight: 225 },
-    { month: '4th month', weight: 215 },
-    { month: '5th month', weight: 200 }
+    { month: '1st month', weight: formData.weight },
+    { month: '2nd month', weight: formData.secondMonthGoal },
+    { month: '3rd month', weight: formData.thirdMonthGoal },
+    { month: '4th month', weight: formData.fourthMonthGoal },
+   
   ];
   
   // Chart dimensions - reduced padding
@@ -25,7 +27,8 @@ const WeightTrackerChart = () => {
   
   // Scale functions
   const getXPosition = (index) => {
-    return padding.left + (index * (graphWidth / (weightData.length - 1)));
+    const spacing = graphWidth / (weightData.length - 1); // spread across full graph
+    return padding.left + index * spacing;
   };
   
   const getYPosition = (weight) => {

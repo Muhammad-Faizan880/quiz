@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WeightTrackerChart from "../components/chart";
+import SimpleSlider from "../components/slider";
 
 function StepperForm() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -9,9 +10,48 @@ function StepperForm() {
     email: "",
     age: "",
     weightGoal: "",
+    weightGoalGraph: "",
     birthDate: "",
     zipCode: "",
+    weight: null,
+    heightFeet: null,
+    heightInches: null,
+    secondMonthGoal: null,
+    thirdMonthGoal: null,
+    fourthMonthGoal: null,
+    goalDate: null,
   });
+
+  // Watch for changes in weight
+  useEffect(() => {
+    if (formData.weight) {
+      const calculatedGoal = Math.round(formData.weight * 0.18);
+      const secondMonth = formData.weight - Math.round(calculatedGoal * 0.27);
+      const thirdMonth = formData.weight - Math.round(calculatedGoal * 0.67);
+      const fourthMonth = formData.weight - calculatedGoal;
+
+      // Calculate date after 3 months
+      const today = new Date();
+      const futureDate = new Date(today.setMonth(today.getMonth() + 3));
+
+      // Format MM/DD/YYYY
+      const formattedDate = `${(futureDate.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}/${futureDate
+        .getDate()
+        .toString()
+        .padStart(2, "0")}/${futureDate.getFullYear()}`;
+
+      setFormData((prev) => ({
+        ...prev,
+        weightGoalGraph: calculatedGoal,
+        secondMonthGoal: secondMonth,
+        thirdMonthGoal: thirdMonth,
+        fourthMonthGoal: fourthMonth,
+        goalDate: formattedDate,
+      }));
+    }
+  }, [formData.weight]);
 
   const [errors, setErrors] = useState({
     heightFeet: "",
@@ -176,6 +216,7 @@ function StepperForm() {
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
+      badge: "BEST VALUE",
     },
     {
       id: 2,
@@ -200,8 +241,6 @@ function StepperForm() {
       save: "Save $660 Instantly",
       para: "1 Bottle Only",
       para1: "Great for trying it out risk-free",
-      para2: "Includes: Personalized Diet Plans, ",
-      para3: "Workshops, Community Support ",
       image: "/assets/images/1.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -221,6 +260,7 @@ function StepperForm() {
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
+      badge: "BEST VALUE",
     },
     {
       id: 2,
@@ -245,8 +285,6 @@ function StepperForm() {
       save: "Save $660 Instantly",
       para: "1 Bottle Only",
       para1: "Great for trying it out risk-free",
-      para2: "Includes: Personalized Diet Plans, ",
-      para3: "Workshops, Community Support ",
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -710,33 +748,11 @@ function StepperForm() {
         return (
           <>
             <h4 className="class-name-style">
-              {formData.fullName
-                ? `${formData.fullName}, we can help you lose up to 45 pounds by 06/21/2025!`
-                : "We can help you lose up to 45 pounds by 06/21/2025!"}
+              {formData.fullName}, we can help you lose up to{" "}
+              {formData.weightGoalGraph} pounds by {formData.goalDate}!
             </h4>
 
-            <WeightTrackerChart />
-
-            <div className="container my-4">
-              <div class="bg-lady">
-                <div class="flex-container">
-                  <div class="image-section">
-                    <img
-                      src="/assets/images/lady.png"
-                      alt="lady"
-                      class="img-fluid img-width-hight-set"
-                    />
-                  </div>
-
-                  <div class="text-section">
-                    <h3 class="CLR-WHITEW mb-0">Thanks to EaseMD,</h3>
-                    <h4 class="CLR-WHITEW mb-2">I lost weight effortlessly!</h4>
-                    <p class="CLR-WHITEW8 mb-0">Anna B, 43</p>
-                    <p class="CLR-WHITEW8 mb-0">Los Angeles, CA</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <WeightTrackerChart formData={formData} />
           </>
         );
       case 5:
@@ -808,7 +824,7 @@ function StepperForm() {
                           }`}
                           id="email"
                           name="email"
-                          placeholder="e.g. John Smith@gmail.com"
+                          placeholder="e.g. Jane Smith@gmail.com"
                           onChange={handleChange}
                         />
                       </div>
@@ -1246,19 +1262,41 @@ function StepperForm() {
 
             {currentStep === 8 && (
               <>
-                <div className="product-selection-container  d-none d-lg-block">
+                <div className="product-selection-container d-none d-lg-block">
                   {products.map((product) => (
                     <div
                       key={product.id}
                       onClick={() => handleProductSelect(product.id)}
-                      className={`card mb-3  rounded-4 shadow-sm  ${
+                      className={`card mb-3 rounded-4 shadow-sm ${
                         selectedProduct === product.id ? "selected-product" : ""
                       }`}
+                      style={{ position: "relative" }} // ✅ Needed for absolute badge positioning
                     >
-                      <div className="container ">
-                        <div className="row ">
+                      {/* ✅ Badge rendering */}
+                      {product.badge && (
+                        <div
+                          className="some-add-text"
+                          style={{
+                            position: "absolute",
+                            top: "-23px",
+                            left: "16px",
+                            backgroundColor: "#3C4B9E",
+                            color: "white",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            padding: "4px 12px",
+
+                            zIndex: 10,
+                          }}
+                        >
+                          {product.badge}
+                        </div>
+                      )}
+
+                      <div className="container">
+                        <div className="row">
                           <div
-                            className="col-4   "
+                            className="col-4"
                             style={{
                               backgroundColor: "#E5F5F3",
                               borderRadius: "16px",
@@ -1271,10 +1309,10 @@ function StepperForm() {
                               className="class-imgg justify-content-center align-items-center text-align-center"
                             />
                           </div>
-                          <div className="col-5 ">
+                          <div className="col-5">
                             <h5 className="class-title-new">{product.title}</h5>
-
                             <div className="bg-div-dark">{product.save}</div>
+
                             <div className="flex-class-div gap-1">
                               <img
                                 src="/assets/images/SVG.svg"
@@ -1291,27 +1329,32 @@ function StepperForm() {
                               />
                               <p className="class-details">{product.para1}</p>
                             </div>
-                            <div className="flex-class-div gap-1">
-                              <img
-                                src="/assets/images/SVG.svg"
-                                alt=""
-                                className="img-tick-set"
-                              />
-                              <p className="class-details">{product.para2}</p>
-                            </div>
-                            <div className="flex-class-div gap-1">
-                              <img
-                                src="/assets/images/SVG.svg"
-                                alt=""
-                                className="img-tick-set"
-                              />
-                              <p className="class-details">{product.para3}</p>
-                            </div>
+                            {product.para2 && (
+                              <div className="flex-class-div gap-1">
+                                <img
+                                  src="/assets/images/SVG.svg"
+                                  alt=""
+                                  className="img-tick-set"
+                                />
+                                <p className="class-details">{product.para3}</p>
+                              </div>
+                            )}
+                            {product.para3 && (
+                              <div className="flex-class-div gap-1">
+                                <img
+                                  src="/assets/images/SVG.svg"
+                                  alt=""
+                                  className="img-tick-set"
+                                />
+                                <p className="class-details">{product.para3}</p>
+                              </div>
+                            )}
                             <p className="class-details-new1">
                               {product.para4}
                             </p>
                           </div>
-                          <div className="col-3 ">
+
+                          <div className="col-3">
                             <p className="class-title-price">
                               {product.price}
                               <span className="class-title-price-1">
@@ -1338,6 +1381,7 @@ function StepperForm() {
                     </div>
                   ))}
                 </div>
+
                 {/* // ........................mobile-screen......................... */}
 
                 <div className="product-selection-container d-block d-lg-none">
@@ -1348,7 +1392,27 @@ function StepperForm() {
                       className={`card mb-3 rounded-4 shadow-sm  ${
                         selectedProduct === product.id ? "selected-product" : ""
                       }`}
+                      style={{ position: "relative" }}
                     >
+                      {product.badge && (
+                        <div
+                          className="some-add-text"
+                          style={{
+                            position: "absolute",
+                            top: "-23px",
+                            left: "16px",
+                            backgroundColor: "#3C4B9E",
+                            color: "white",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            padding: "4px 12px",
+
+                            zIndex: 10,
+                          }}
+                        >
+                          {product.badge}
+                        </div>
+                      )}
                       <div className="container">
                         <div className="row">
                           <div
@@ -1412,26 +1476,17 @@ function StepperForm() {
                                 {product.para1}
                               </p>
                             </div>
-                            <div className="flex-class-div gap-1">
-                              <img
-                                src="/assets/images/SVG.svg"
-                                alt=""
-                                className="img-tick-set"
-                              />
-                              <p className="class-details-mob">
-                                {product.para2}
-                              </p>
-                            </div>
-                            <div className="flex-class-div gap-1">
-                              <img
-                                src="/assets/images/SVG.svg"
-                                alt=""
-                                className="img-tick-set"
-                              />
-                              <p className="class-details-mob">
-                                {product.para3}
-                              </p>
-                            </div>
+                            {product.para3 && (
+                              <div className="flex-class-div gap-1">
+                                <img
+                                  src="/assets/images/SVG.svg"
+                                  alt=""
+                                  className="img-tick-set"
+                                />
+                                <p className="class-details">{product.para3}</p>
+                              </div>
+                            )}
+
                             <p className="class-details-new1-mob">
                               {product.para4}
                             </p>
@@ -1515,7 +1570,7 @@ function StepperForm() {
                 {/* Header with back button and title in flex layout */}
                 <div className="d-flex justify-content-between align-items-center mb-3 ">
                   {currentStep === 1 ? (
-                    <div style={{ width: "100px" }} /> 
+                    <div style={{ width: "100px" }} />
                   ) : (
                     <button
                       type="button"
@@ -1657,6 +1712,12 @@ function StepperForm() {
           </div>
         </div>
       </div>
+
+      {currentStep === 4 && (
+        <>
+          <SimpleSlider />
+        </>
+      )}
 
       {(currentStep === 7 || currentStep === 8) && (
         <div className="mt-4 class-width-testimonials">
