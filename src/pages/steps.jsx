@@ -1205,35 +1205,111 @@ function StepperForm() {
                     {[
                       {
                         title: "Details",
+                        heading: "Licensed Pharmacies",
                         content:
-                          "This product is compounded for effective weight loss.",
+                          "All of our semaglutide is sourced from licensed USA based compounding pharmacies. All batches go through stringent testing to ensure quality.",
+                        heading1: "Free Online Vetting",
+                        content1:
+                          "Our nurses and providers view your intake form to ensure you meet the requirements for Semaglutide. Your safety is our top concern.",
+                        heading2: "Personalized Plan",
+                        content2:
+                          "After viewing your intake form our EaseMD nurses will offer a personalized dosage plan catering to your specific needs.",
+                        heading3: "24/7 Support & Care",
+                        content3:
+                          "Our care team is available 24/7 to answer any questions or concerns you may have.",
                       },
                       {
                         title: "Active Ingredients",
-                        content: "Semaglutide (1mg/mL), Preserved Saline, B12.",
+                        heading: "Important Safety Information",
+                        content:
+                          "Prescription products require an online evaluation with a licensed medical professional who will determine if a prescription is appropriate. Plans are offered as a subscription service which can be canceled at any time. Actual product packaging may appear differently than shown. Physicians may prescribe compounded medications as needed to meet patient requirements or address drug shortages.",
+                        content1:
+                          "*The FDA does not review or approve any compounded medications for safety or effectiveness. Prices are subject to change based on dosage increases.",
                       },
                       {
                         title: "Why Injectable Semaglutide?",
+                        heading: "Efficacy",
                         content:
-                          "Injection delivers the compound directly into the bloodstream for faster absorption and better results.",
+                          " The injectable form allows for better absorption and bioavailability, enhancing its effectiveness in managing weight and blood sugar.",
+                        heading1: "Dosing Convenience",
+                        content1:
+                          "It's typically administered once a week, making it easier for patients to incorporate into their routines compared to daily medications.",
+                        heading2: "Stability",
+                        content2:
+                          "The injectable formulation maintains the stability of the active ingredient, ensuring it remains effective over time.",
+                        heading3: "Controlled Release",
+                        content3:
+                          "The injection allows for a controlled release of the medication, providing consistent therapeutic effects.",
                       },
-                    ].map(({ title, content }, index) => (
+                    ].map((item, index) => (
                       <div key={index} className="border-top py-2">
                         <div
                           onClick={(e) => {
                             e.stopPropagation();
-                            toggleAccordion(title);
+                            toggleAccordion(item.title);
                           }}
                           className="d-flex justify-content-between align-items-center"
                           style={{ cursor: "pointer" }}
                         >
-                          <span className="detail-class">{title}</span>
+                          <span className="detail-class">{item.title}</span>
                           <span className="plus-minus">
-                            {accordionOpen === title ? "−" : "+"}
+                            {accordionOpen === item.title ? "−" : "+"}
                           </span>
                         </div>
-                        {accordionOpen === title && (
-                          <div className="mt-2 class-content">{content}</div>
+
+                        {accordionOpen === item.title && (
+                          <div className="mt-2 class-content">
+                            {(() => {
+                              const sections = [];
+                              let count = 1;
+
+                              Object.keys(item).forEach((key) => {
+                                if (key.startsWith("heading")) {
+                                  const contentKey =
+                                    key === "heading"
+                                      ? "content"
+                                      : "content" + key.slice(7);
+
+                                  const headingText = `${item[key]}`;
+                                  const contentText = item[contentKey];
+
+                                  // Only apply numbered bullets in third object
+                                  if (index === 2) {
+                                    sections.push(
+                                      <div key={key}>
+                                        <p className="class-text-dropdown">
+                                          {count++}. {headingText}:
+                                        </p>
+                                        <p className="classs-text-content">
+                                          {contentText}
+                                        </p>
+                                      </div>
+                                    );
+                                  } else {
+                                    // Default (no numbering)
+                                    sections.push(
+                                      <div key={key}>
+                                        <p className="class-text-dropdown">
+                                          {headingText}
+                                        </p>
+                                        <p className="classs-text-content">
+                                          {contentText}
+                                        </p>
+                                      </div>
+                                    );
+                                  }
+                                }
+                              });
+
+                              if (sections.length === 0 && item.content) {
+                                sections.push(
+                                  <p key="only-content">{item.content}</p>
+                                );
+                              }
+
+                              return sections;
+                            })()}
+                          </div>
                         )}
                       </div>
                     ))}
@@ -1634,6 +1710,9 @@ function StepperForm() {
                         <button
                           type="submit"
                           className="btn btn-setting-class-custom rounded-pill py-3"
+                          disabled={
+                            medicationAnswer === "yes" && !selectedOption
+                          }
                         >
                           {/* Conditional button text based on step */}
                           {currentStep === 3 || currentStep === 5
@@ -1722,7 +1801,7 @@ function StepperForm() {
       {(currentStep === 7 || currentStep === 8) && (
         <div className="mt-4 class-width-testimonials">
           <div className="row">
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 ">  
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 ">
               <div className=" testimonials-cards-style ">
                 <img
                   src="/assets/images/star.png"

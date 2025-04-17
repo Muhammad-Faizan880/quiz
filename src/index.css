@@ -1105,6 +1105,29 @@ line-height: 8px;
 .class-content {
   text-align: start;
 }
+.class-text-dropdown{
+  font-family: HelveticaNeue-Bold;
+font-weight: 700;
+font-size: 15px;
+line-height: 24px;
+letter-spacing: -0.21px;
+vertical-align: middle;
+color: #68696B;
+
+}
+.classs-text-content{
+  font-family: HelveticaNeue-Medium;
+font-weight: 500;
+font-size: 15px;
+line-height: 24px;
+letter-spacing: -0.21px;
+vertical-align: middle;
+color: #68696B;
+
+}
+
+
+
 
 .CLASS-WIDTH-FULL {
   width: 100%;
