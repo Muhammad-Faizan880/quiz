@@ -5,7 +5,7 @@ const Navbar = () => {
     <>
       <nav
         className="navbar navbar-expand-lg "
-        style={{ backgroundColor: "#2FBAAC", width:"100%", height:"80px" }}
+        style={{ backgroundColor: "#2FBAAC", width:"100%", height:"70px" }}
       >
         <div className="container d-flex justify-content-center">
           <a className="navbar-brand mx-auto" href="#">

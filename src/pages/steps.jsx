@@ -839,7 +839,7 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="date"
-                          max={new Date().toISOString().split("T")[0]} // restrict future dates
+                          max={new Date().toISOString().split("T")[0]} 
                           className={`form-control input-style ${
                             errors.birthDate ? "border-danger" : ""
                           }`}
@@ -1437,7 +1437,7 @@ function StepperForm() {
                                 {product.bottle}
                               </span>
                             </p>
-                            <div className="button-class-gray">
+                            <div className="button-class-gray" >
                               <button
                                 className={`button-class-gray-text ${
                                   selectedProduct === product.id
@@ -1644,7 +1644,7 @@ function StepperForm() {
             <div className="card border-0">
               <div className="card-body padding-class">
                 {/* Header with back button and title in flex layout */}
-                <div className="d-flex justify-content-between align-items-center mb-3 ">
+                <div className="class-goals mb-3 ">
                   {currentStep === 1 ? (
                     <div style={{ width: "100px" }} />
                   ) : (
