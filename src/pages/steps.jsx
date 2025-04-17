@@ -166,6 +166,8 @@ function StepperForm() {
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    console.log(name);
     setFormData({
       ...formData,
       [name]: value,
@@ -398,6 +400,8 @@ function StepperForm() {
         }
       }
 
+
+      console.log(formData)
       // Validate zipcode
       if (
         !formData.zipCode ||
@@ -802,9 +806,7 @@ function StepperForm() {
 
                 <div className="tab-content" id="myTabsContent">
                   <div
-                    className={`tab-pane fade ${
-                      activeTab === "home" ? "show active" : ""
-                    }`}
+                    className={`tab-pane fade show active`}
                     id="home"
                     role="tabpanel"
                     aria-labelledby="home-tab"
@@ -858,20 +860,21 @@ function StepperForm() {
                         Zip Code
                       </label>
                       <div className="position-relative">
-                        <input
+                      <input
                           type="text"
                           className={`form-control pe-5 input-style ${
                             errors.zipCode ? "border-danger" : ""
                           }`}
                           id="zipCode"
                           name="zipCode"
-                          placeholder="####"
+                          placeholder="#####"
+                          maxLength={5}
                           onChange={handleChange}
                         />
                       </div>
                     </div>
                   </div>
-                  <div
+                  {/* <div
                     className={`tab-pane fade ${
                       activeTab === "profile" ? "show active" : ""
                     }`}
@@ -940,7 +943,7 @@ function StepperForm() {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -950,9 +953,12 @@ function StepperForm() {
       case 6:
         return (
           <>
-            <h4 className="class-name-style">
+
+
+          {!formData.medication && (<h4 className="class-name-style">
               Are you taking any prescription medication?
-            </h4>
+            </h4>)}
+            
             <div className="medication-step-container">
               {loading ? (
                 <div className="text-center my-4">

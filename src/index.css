@@ -167,7 +167,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 1.4px;
-  padding-right: 36px;
+  padding-right: 46px;
 }
 .class-goals{
   display: flex;
@@ -1562,6 +1562,15 @@ color: black;
 }
 
 @media screen and (max-width: 768px) {
+  .loader {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    height: 16px;
+    background: #e0e0e0;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
   .bg-warning-clr {
     background-color: #ff9900;
     color: white;
