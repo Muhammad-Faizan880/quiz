@@ -32,7 +32,7 @@ const Footer = () => {
 
             <div className="hide-none-class">
               <p className="excellent">Excellent 4.8</p>
-              <img src="/public/assets/images/trust-star.png" alt="" />
+              <img src="/assets/images/trust-star.png" alt="" />
               <p className="footer-mob">
                 50,000+ <span className="color-change">happy customers</span>
               </p>
