@@ -21,8 +21,8 @@ const Footer = () => {
 
             <div className="footer-second-flex block-none-class">
               <div className="footer-second-flex">
-                <img src="/public/assets/images/trust1.png" alt="" />
-                <img src="/public/assets/images/trust-star.png" alt="" />
+                <img src="/assets/images/trust1.png" alt="" />
+                <img src="/assets/images/trust-star.png" alt="" />
               </div>
               <p className="mb-0 footer-text">
                 4.8 <span className="footer-span-1">out of 5 based on</span>{" "}
