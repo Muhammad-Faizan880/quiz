@@ -1722,7 +1722,7 @@ function StepperForm() {
       {(currentStep === 7 || currentStep === 8) && (
         <div className="mt-4 class-width-testimonials">
           <div className="row">
-            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 ">
+            <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 ">  
               <div className=" testimonials-cards-style ">
                 <img
                   src="/assets/images/star.png"

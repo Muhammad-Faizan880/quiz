@@ -11,12 +11,12 @@ const Footer = () => {
           <div className="footer-flex-class">
             <div className="footer-start-flex">
               <img
-                src="/public/assets/images/footer-img3.png"
+                src="/assets/images/footer-img3.png"
                 alt=""
                 style={{ width: "32px", height: "32px" }}
               />
-              <img src="/public/assets/images/footer-img2.png" alt="" />
-              <img src="/public/assets/images/footer-img.png" alt="" />
+              <img src="/assets/images/footer-img2.png" alt="" />
+              <img src="/assets/images/footer-img.png" alt="" />
             </div>
 
             <div className="footer-second-flex block-none-class">
