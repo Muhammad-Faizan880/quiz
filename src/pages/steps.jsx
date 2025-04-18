@@ -981,11 +981,11 @@ function StepperForm() {
       case 6:
         return (
           <>
-          {!formData.medication && !loading && (
-  <h4 className="class-name-style">
-    Are you taking any prescription medication?
-  </h4>
-)}
+            {!formData.medication && !loading && (
+              <h4 className="class-name-style">
+                Are you taking any prescription medication?
+              </h4>
+            )}
 
             <div className="medication-step-container">
               {loading ? (

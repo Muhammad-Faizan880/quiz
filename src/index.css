@@ -1683,6 +1683,7 @@ color: black;
   .ptb-class {
     padding-bottom: 60px;
     padding-top: 40px;
+    margin-bottom: 50px;
   }
   .class-name-style {
     padding-top: 0px;
@@ -1888,7 +1889,7 @@ color: black;
     height: auto;
     border-radius: 12px;
     width: 100%;
-    margin-top: 50px;
+    
   }
   .class-width-testimonials container {
     width: 100%;
