@@ -55,7 +55,7 @@ function Responsive() {
       <Slider className="padding-slide" {...settings}>
         <div className="padding-slider">
         <div className="back-div-class">
-         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluid"/>
+         <img src="/assets/images/slide1.png" alt="" className="img-radius img-fluidd"/>
          <p className="class-tanya">Tanya, 28</p>
          <p className="lost-class">Lost 40 pounds
          in 4 months</p>
