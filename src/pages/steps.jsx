@@ -66,9 +66,7 @@ function StepperForm() {
   });
 
   const [activeTab, setActiveTab] = useState("home");
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [accordionOpen, setAccordionOpen] = useState(null);
-
   const [medicationAnswer, setMedicationAnswer] = useState(null);
 
   const [isOpen, setIsOpen] = useState(false); // To control dropdown visibility
@@ -983,11 +981,11 @@ function StepperForm() {
       case 6:
         return (
           <>
-            {!formData.medication && (
-              <h4 className="class-name-style">
-                Are you taking any prescription medication?
-              </h4>
-            )}
+          {!formData.medication && !loading && (
+  <h4 className="class-name-style">
+    Are you taking any prescription medication?
+  </h4>
+)}
 
             <div className="medication-step-container">
               {loading ? (

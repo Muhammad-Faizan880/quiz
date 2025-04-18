@@ -47,10 +47,10 @@ const WeightTrackerChart = ({formData }) => {
 
   return (
     <div className="container p-0">
-      <div className="card ">
+      <div className="border-custom">
         <div className="card-body p-0">
           <h5 className="text-center class-primary mb-2">Your Weight (LBS)</h5>
-          
+          <div className='chart-width'>
           <svg width="100%" height={chartHeight} viewBox={`0 0 ${chartWidth} ${chartHeight}`}>
             {/* Horizontal grid lines */}
             {[...Array(4)].map((_, i) => (
@@ -130,7 +130,7 @@ const WeightTrackerChart = ({formData }) => {
             
           
           </svg>
-          
+          </div>
           <div className="text-center mt-class">
             <span className="d-inline-flex align-items-center">
               <span className="badge rounded-circle bg-primary me-2" style={{width: "12px", height: "12px"}}></span>

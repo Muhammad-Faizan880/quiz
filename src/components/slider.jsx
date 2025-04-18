@@ -43,7 +43,7 @@ function Responsive() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 1
         }
       }
