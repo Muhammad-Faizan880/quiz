@@ -167,7 +167,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 1.4px;
-  padding-right: 46px;
+  
 }
 .class-goals{
   display: flex;
@@ -215,7 +215,7 @@ body {
   line-height: 32px;
   letter-spacing: -0.28px;
   font-weight: 700;
-  padding-top: 10px;
+  
   padding-bottom: 18px;
   text-align: start !important;
 }
@@ -544,6 +544,10 @@ line-height: 8px;
 .container-paddingt {
   padding-top: 40px;
 }
+
+
+
+
 .bg-warning-clr {
   background-color: #ff9900;
   color: white;
@@ -552,12 +556,18 @@ line-height: 8px;
   font-size: 16px;
   line-height: 21px;
   border-radius: 9999px;
-  width: 82% !important;
-  height: 42px;
-  padding-left: 20px;
+  padding: 10px;
   margin-top: 31px;
-  margin-bottom: 44px;
+  width: fit-content;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap; /* Prevent wrapping */
+  margin-bottom: 20px;
 }
+
+
+
+
 
 .all-start {
   font-family: HelveticaNeueLight;
@@ -584,7 +594,7 @@ line-height: 8px;
 }
 
 .text-center-divvv {
-  font-family: HelveticaNeueLight;
+  font-family: HelveticaNeue-Bold;
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
@@ -1008,7 +1018,7 @@ line-height: 8px;
 
 .class-imgg {
   width: 100%;
-  height: auto;
+  height: 80px;
   object-fit: contain;
 }
 
@@ -1070,23 +1080,23 @@ line-height: 8px;
 
 .class-color {
   color: #ff9900;
-  font-family: HelveticaNeueLight;
+  font-family: HelveticaNeue-Bold;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
 }
 .class-current {
-  font-family: HelveticaNeueLight;
-  font-weight: 700;
+  font-family: HelveticaNeue-Bold;
   font-size: 18px;
   line-height: 24px;
   color: #4a4a4a;
 }
 .class-original {
   font-family: HelveticaNeueLight;
-  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  color: #4a4a4a;
+
 }
 .text-inter-class {
   font-family: "Inter", sans-serif;
@@ -1145,7 +1155,7 @@ color: #68696B;
 }
 
 .img-tick-set {
-  width: 12px !important;
+  width: 10px !important;
   height: 12px !important;
 }
 
@@ -1157,7 +1167,6 @@ color: #68696B;
   text-transform: uppercase;
   text-align: start !important;
   color: #333333;
-  margin-top: 25px;
 }
 .bg-div-dark {
   background-color: #2f827a !important;
@@ -1170,7 +1179,7 @@ color: #68696B;
   vertical-align: middle;
   color: white;
   border-radius: 50px;
-  width: 60%;
+  width: 75%;
   padding: 4px;
   margin-top: -8px;
 }
@@ -1178,10 +1187,11 @@ color: #68696B;
 .class-details {
   font-family: HelveticaNeue-Medium;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 9px;
   line-height: 12px;
   text-align: start !important;
   color: #000000;
+  margin-bottom: 10px;
 }
 .class-details-new {
   font-family: HelveticaNeue-Bold;
@@ -1213,7 +1223,7 @@ color: #68696B;
   font-size: 24px;
   line-height: 28px;
   color: #2f827a !important;
-  margin-top: 25px;
+  margin-top: 7px;
 }
 .class-title-price-1 {
   font-family: HelveticaNeue-Bold;
@@ -1227,6 +1237,7 @@ color: #68696B;
   line-height: 12px;
   color: black;
   margin-top: 5px;
+  text-align: center;
 }
 .selected-button-red {
   background-color: #2fbaac;
@@ -1238,6 +1249,7 @@ color: #68696B;
   line-height: 20.7px;
   text-align: center;
   width: 100%;
+  height: 26px;
   padding-top: 2px !important;
 }
 .default-color {
@@ -1250,6 +1262,7 @@ color: #68696B;
   line-height: 20.7px;
   text-align: center;
   width: 100%;
+  height: 26px;
   padding-top: 2px !important;
 
 }
@@ -1401,8 +1414,16 @@ color: black;
   padding-bottom: 39px;
 }
 
-
-
+.card-height{
+  height: 150px;
+}
+.class-height-custom {
+  padding-top: 5px;
+  display: grid;
+  /* justify-content: center; */
+  align-items: center;
+  padding-left: 26px;
+}
 
 @keyframes loadAnimation {
   0% {
@@ -1499,6 +1520,7 @@ color: black;
     color: black;
     margin-top: 5px;
     text-align: center;
+    margin-bottom: -6px;
   }
 
   .class-title-new-mob {
@@ -1509,7 +1531,6 @@ color: black;
     text-transform: uppercase;
     color: #333333;
     text-align: center;
-    margin-top: -20px;
   }
   .bg-div-dark-mob {
     background-color: #2f827a !important;
@@ -1521,12 +1542,12 @@ color: black;
     vertical-align: middle;
     color: white;
     border-radius: 50px;
-    width: 80%;
+    width: 100%;
     padding: 4px;
     margin-top: -8px;
     margin: auto;
     margin-bottom: 10px;
-    margin-top: -15px;
+
   }
   .class-details-mob {
     font-family: HelveticaNeue-Medium;
@@ -1535,7 +1556,8 @@ color: black;
     line-height: 12px;
     text-align: start !important;
     color: #000000;
-    padding-bottom: 5px;
+    margin-bottom: 9px;
+
   }
   .class-details-new1-mob {
     font-family: HelveticaNeue-Bold;
@@ -1571,17 +1593,7 @@ color: black;
     border-radius: 9999px;
     overflow: hidden;
   }
-  .bg-warning-clr {
-    background-color: #ff9900;
-    color: white;
-    font-family: HelveticaNeue-Bold;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    border-radius: 9999px;
-    width: 100% !important;
-    height: 42px;
-  }
+
   .class-title-new {
     font-family: HelveticaNeue-Bold;
     font-weight: 700;
@@ -1757,16 +1769,13 @@ color: black;
     text-align: center;
     padding-top: 20px;
   }
+
+
   .bg-warning-clr {
-    background-color: #ff9900;
-    color: white;
-    font-family: HelveticaNeue-Medium;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 21px;
-    border-radius: 9999px;
-    width: 100% !important;
-    height: 42px;
+    white-space: normal; /* allow wrap */
+    width: auto;
+    font-size: 14px;
+    font-family: HelveticaNeueLight;
   }
 }
 @media screen and (max-width: 545px) {
@@ -1970,7 +1979,7 @@ color: black;
 
 @media screen and (max-width: 402px) {
   .text-center-divvv {
-    font-family: HelveticaNeueLight;
+    font-family: HelveticaNeue-Bold;
     font-weight: 400;
     font-size: 10px;
     line-height: 16px;
@@ -1994,7 +2003,7 @@ color: black;
   .bg-div-dark-mob {
     background-color: #2f827a !important;
     font-family: HelveticaNeue-Medium;
-    font-size: 10px;
+    font-size: 8px;
     line-height: 14.03px;
     letter-spacing: 0.23px;
     text-align: center;
@@ -2006,7 +2015,7 @@ color: black;
     margin-top: -8px;
     margin: auto;
     margin-bottom: 10px;
-    margin-top: -60px;
+    margin-top: -10px;
   }
 
   .class-title-new-mob {
@@ -2017,7 +2026,6 @@ color: black;
     text-transform: uppercase;
     color: #333333;
     text-align: center;
-    margin-top: -10px;
   }
 
   .class-title-price-mob {

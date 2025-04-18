@@ -24,7 +24,6 @@ function StepperForm() {
     selectedDose: null,
     selectedProduct: null,
   });
-  
 
   // Watch for changes in weight
   useEffect(() => {
@@ -181,15 +180,13 @@ function StepperForm() {
     }, 3000);
   };
 
- 
-
   // Total number of steps
   const totalSteps = 8;
 
   // Handle tab input changes
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-  
+
     // Update formData with selected sex
     if (tab === "home") {
       setFormData({
@@ -203,7 +200,6 @@ function StepperForm() {
       });
     }
   };
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -244,11 +240,11 @@ function StepperForm() {
       title: "6 Month Plan",
       price: "$149",
       bottle: "/bottle",
-      save: "Save $660 Instantly",
-      para: "3 bottles shipped every 3 months",
+      save: "Save $1,500 Instantly",
+      para: "6 Bottles. 3 bottles shipped every 3 mos.",
       para1: "Access to Dr. Sam’s VIP Community",
       para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "Save an EXTRA 10%",
+      para3: "Save an EXTRA 25%",
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -262,9 +258,8 @@ function StepperForm() {
       save: "Save $660 Instantly",
       para: "3 bottles shipped every 3 months",
       para1: "Access to Dr. Sam’s VIP Community",
-      para2: "Includes: Personalized Diet Plans, ",
-      para3: "Workshops, Community Support ",
-      para4: "Save an EXTRA 10%",
+      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
+      para3: "Save an EXTRA 10%",
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
@@ -274,10 +269,11 @@ function StepperForm() {
       title: "1 Month Plan",
       price: "$199",
       bottle: "/bottle",
-      save: "Save $660 Instantly",
-      para: "1 Bottle Only",
+      save: "Save $200 Instantly",
+      para: "1 Bottle. Shipped every month",
       para1: "Great for trying it out risk-free",
-      image: "/assets/images/1.png",
+      para2: "",
+      image: "/assets/images/67.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
     },
@@ -288,11 +284,11 @@ function StepperForm() {
       title: "6 Month Plan",
       price: "$149",
       bottle: "/bottle",
-      save: "Save $660 Instantly",
+      save: "Save $1,500 Instantly",
       para: "3 bottles shipped every 3 months",
       para1: "Access to Dr. Sam’s VIP Community",
       para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "Save an EXTRA 10%",
+      para3: "Save an EXTRA 25%",
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -306,9 +302,8 @@ function StepperForm() {
       save: "Save $660 Instantly",
       para: "3 bottles shipped every 3 months",
       para1: "Access to Dr. Sam’s VIP Community",
-      para2: "Includes: Personalized Diet Plans, ",
-      para3: "Workshops, Community Support ",
-      para4: "Save an EXTRA 10%",
+      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
+      para3: "Save an EXTRA 10%",
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
@@ -318,10 +313,10 @@ function StepperForm() {
       title: "1 Month Plan",
       price: "$199",
       bottle: "/bottle",
-      save: "Save $660 Instantly",
-      para: "1 Bottle Only",
+      save: "Save $200 Instantly",
+      para: "1 Bottle. Shipped every month",
       para1: "Great for trying it out risk-free",
-      image: "/assets/images/6.png",
+      image: "/assets/images/67.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
     },
@@ -342,14 +337,13 @@ function StepperForm() {
   //   setAccordionOpen(null);
   // };
 
-
   const handleProductSelect = (productId) => {
-    console.log("Selected Product ID:", productId); 
+    console.log("Selected Product ID:", productId);
     setFormData((prev) => ({
       ...prev,
       selectedProduct: productId,
     }));
-    setAccordionOpen(null); 
+    setAccordionOpen(null);
   };
   //product end
   const toggleAccordion = (section) => {
@@ -465,7 +459,6 @@ function StepperForm() {
     } else {
       nextStep();
     }
-
   };
 
   // Render form content based on current step
@@ -1373,26 +1366,42 @@ function StepperForm() {
               Lock in bigger savings with longer plans.
             </p>
 
-            <div className="bg-warning-clr text-center d-flex justify-content-center align-items-center">
-              <p className="m-0">
+            <div>
+              <div className="bg-warning-clr">
                 🎉 Code Activated: GLP200 - $200 OFF each bottle
-              </p>
+              </div>
             </div>
 
             {currentStep === 8 && (
               <>
                 <div className="product-selection-container d-none d-lg-block">
+                  <div
+                    className="some-add-text"
+                    style={{
+                      backgroundColor: "#3C4B9E",
+                      color: "white",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      padding: "4px 12px",
+                      marginLeft: "18px",
+                      zIndex: 10,
+                    }}
+                  >
+                    BEST VALUE
+                  </div>
                   {products.map((product) => (
                     <div
                       key={product.id}
                       onClick={() => handleProductSelect(product.id)}
-                      className={`card mb-3 rounded-4 shadow-sm ${
-                        formData.selectedProduct === product.id ? "selected-product" : ""
+                      className={`card card-height mb-3 rounded-4 shadow-sm ${
+                        formData.selectedProduct === product.id
+                          ? "selected-product"
+                          : ""
                       }`}
-                      style={{ position: "relative" }} // ✅ Needed for absolute badge positioning
+                      style={{ position: "relative", overflow: "hidden" }} // ✅ Needed for absolute badge positioning
                     >
                       {/* ✅ Badge rendering */}
-                      {product.badge && (
+                      {/* {product.badge && (
                         <div
                           className="some-add-text"
                           style={{
@@ -1410,7 +1419,7 @@ function StepperForm() {
                         >
                           {product.badge}
                         </div>
-                      )}
+                      )} */}
 
                       <div className="container">
                         <div className="row">
@@ -1420,6 +1429,10 @@ function StepperForm() {
                               backgroundColor: "#E5F5F3",
                               borderRadius: "16px",
                               display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              height: "148px",
+                              overflow: "hidden",
                             }}
                           >
                             <img
@@ -1428,7 +1441,7 @@ function StepperForm() {
                               className="class-imgg justify-content-center align-items-center text-align-center"
                             />
                           </div>
-                          <div className="col-5">
+                          <div className="col-5 class-height-custom">
                             <h5 className="class-title-new">{product.title}</h5>
                             <div className="bg-div-dark">{product.save}</div>
 
@@ -1448,26 +1461,32 @@ function StepperForm() {
                               />
                               <p className="class-details">{product.para1}</p>
                             </div>
-                            {product.para2 && (
-                              <div className="flex-class-div gap-1">
-                                <img
-                                  src="/assets/images/SVG.svg"
-                                  alt=""
-                                  className="img-tick-set"
-                                />
-                                <p className="class-details">{product.para3}</p>
-                              </div>
-                            )}
-                            {product.para3 && (
-                              <div className="flex-class-div gap-1">
-                                <img
-                                  src="/assets/images/SVG.svg"
-                                  alt=""
-                                  className="img-tick-set"
-                                />
-                                <p className="class-details">{product.para3}</p>
-                              </div>
-                            )}
+                            {typeof product.para2 === "string" &&
+                              product.para2.trim() !== "" && (
+                                <div className="flex-class-div gap-1">
+                                  <img
+                                    src="/assets/images/SVG.svg"
+                                    alt=""
+                                    className="img-tick-set"
+                                  />
+                                  <p className="class-details">
+                                    {product.para2}
+                                  </p>
+                                </div>
+                              )}
+                            {typeof product.para3 === "string" &&
+                              product.para3.trim() !== "" && (
+                                <div className="flex-class-div gap-1">
+                                  <img
+                                    src="/assets/images/SVG.svg"
+                                    alt=""
+                                    className="img-tick-set"
+                                  />
+                                  <p className="class-details">
+                                    {product.para3}
+                                  </p>
+                                </div>
+                              )}
                             <p className="class-details-new1">
                               {product.para4}
                             </p>
@@ -1509,7 +1528,9 @@ function StepperForm() {
                       key={product.id}
                       onClick={() => handleProductSelect(product.id)}
                       className={`card mb-3 rounded-4 shadow-sm  ${
-                        selectedProduct === product.id ? "selected-product" : ""
+                        formData.selectedProduct === product.id
+                          ? "selected-product"
+                          : ""
                       }`}
                       style={{ position: "relative" }}
                     >
@@ -1539,6 +1560,9 @@ function StepperForm() {
                             style={{
                               backgroundColor: "#E5F5F3",
                               borderRadius: "16px",
+                              display: "grid",
+                              justifyContent: "center",
+                              alignItems: "center",
                             }}
                           >
                             <img
@@ -1563,12 +1587,12 @@ function StepperForm() {
                             <div className="button-class-gray">
                               <button
                                 className={`button-class-gray-text ${
-                                  selectedProduct === product.id
+                                  formData.selectedProduct === product.id
                                     ? "selected-button-red"
                                     : "default-color"
                                 }`}
                               >
-                                {selectedProduct === product.id
+                                {formData.selectedProduct === product.id
                                   ? "SELECTED"
                                   : "SELECT PLAN"}
                               </button>
@@ -1704,7 +1728,12 @@ function StepperForm() {
                       Back
                     </button>
                   )}
-                  <h6 className="text-center text-set-class m-0">
+                  <h6
+                    className="text-center text-set-class m-0"
+                    style={{
+                      paddingRight: currentStep === 1 ? "80px" : "40px",
+                    }}
+                  >
                     {stepHeadings[currentStep - 1] || ""}
                   </h6>
                   <span className="text-setting">
