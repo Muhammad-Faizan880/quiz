@@ -8,7 +8,6 @@ function StepperForm() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    age: "",
     weightGoal: "",
     weightGoalGraph: "",
     birthDate: "",
@@ -20,7 +19,12 @@ function StepperForm() {
     thirdMonthGoal: null,
     fourthMonthGoal: null,
     goalDate: null,
+    sex: null,
+    medicationAnswer: null,
+    selectedDose: null,
+    selectedProduct: null,
   });
+  
 
   // Watch for changes in weight
   useEffect(() => {
@@ -80,7 +84,13 @@ function StepperForm() {
 
   const handleSelect = (option) => {
     setSelectedOption(option);
-    setIsOpen(false); // Close dropdown after selection
+    setIsOpen(false); // Close dropdown
+
+    // Also update formData
+    setFormData((prev) => ({
+      ...prev,
+      selectedDose: option, // ✅ Add selected dose in formData
+    }));
   };
 
   // BMI Calculation
@@ -146,24 +156,55 @@ function StepperForm() {
     "Semaglutide 2.5 mg/wk for $XXX",
   ];
 
+  const handleMedicationChange = (value) => {
+    handleChange({
+      target: { name: "medication", value },
+    });
+    handleSelection(value);
+  };
+
+  // Handle medication selection and step progress
   const handleSelection = (answer) => {
     setMedicationAnswer(answer);
-    setLoading(true); // show loading
+
+    // Update formData with medicationAnswer
+    setFormData((prev) => ({
+      ...prev,
+      medicationAnswer: answer,
+    }));
+
+    setLoading(true);
 
     setTimeout(() => {
-      setLoading(false); // hide loading
-      setCurrentStep(7); // move to next step
-    }, 3000); // 5 seconds
+      setLoading(false);
+      setCurrentStep(7);
+    }, 3000);
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
+ 
 
   // Total number of steps
   const totalSteps = 8;
 
-  // Handle input changes
+  // Handle tab input changes
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  
+    // Update formData with selected sex
+    if (tab === "home") {
+      setFormData({
+        ...formData,
+        sex: "Male", // Male selected
+      });
+    } else if (tab === "profile") {
+      setFormData({
+        ...formData,
+        sex: "Female", // Female selected
+      });
+    }
+  };
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -196,13 +237,6 @@ function StepperForm() {
   };
 
   //product start//
-
-  const handleMedicationChange = (value) => {
-    handleChange({
-      target: { name: "medication", value },
-    });
-    handleSelection(value); // if you have any other logic
-  };
 
   const products = [
     {
@@ -308,12 +342,15 @@ function StepperForm() {
   //   setAccordionOpen(null);
   // };
 
-  const handleProductSelect = (productId) => {
-    const product = products.find((product) => product.id === productId);
-    setSelectedProduct(product.id); // store just the id
-    setAccordionOpen(null); // if needed
-  };
 
+  const handleProductSelect = (productId) => {
+    console.log("Selected Product ID:", productId); 
+    setFormData((prev) => ({
+      ...prev,
+      selectedProduct: productId,
+    }));
+    setAccordionOpen(null); 
+  };
   //product end
   const toggleAccordion = (section) => {
     setAccordionOpen((prev) => (prev === section ? null : section));
@@ -400,8 +437,7 @@ function StepperForm() {
         }
       }
 
-
-      console.log(formData)
+      console.log(formData);
       // Validate zipcode
       if (
         !formData.zipCode ||
@@ -429,6 +465,7 @@ function StepperForm() {
     } else {
       nextStep();
     }
+
   };
 
   // Render form content based on current step
@@ -841,7 +878,7 @@ function StepperForm() {
                       <div className="position-relative">
                         <input
                           type="date"
-                          max={new Date().toISOString().split("T")[0]} 
+                          max={new Date().toISOString().split("T")[0]}
                           className={`form-control input-style ${
                             errors.birthDate ? "border-danger" : ""
                           }`}
@@ -860,7 +897,7 @@ function StepperForm() {
                         Zip Code
                       </label>
                       <div className="position-relative">
-                      <input
+                        <input
                           type="text"
                           className={`form-control pe-5 input-style ${
                             errors.zipCode ? "border-danger" : ""
@@ -953,12 +990,12 @@ function StepperForm() {
       case 6:
         return (
           <>
+            {!formData.medication && (
+              <h4 className="class-name-style">
+                Are you taking any prescription medication?
+              </h4>
+            )}
 
-
-          {!formData.medication && (<h4 className="class-name-style">
-              Are you taking any prescription medication?
-            </h4>)}
-            
             <div className="medication-step-container">
               {loading ? (
                 <div className="text-center my-4">
@@ -1350,7 +1387,7 @@ function StepperForm() {
                       key={product.id}
                       onClick={() => handleProductSelect(product.id)}
                       className={`card mb-3 rounded-4 shadow-sm ${
-                        selectedProduct === product.id ? "selected-product" : ""
+                        formData.selectedProduct === product.id ? "selected-product" : ""
                       }`}
                       style={{ position: "relative" }} // ✅ Needed for absolute badge positioning
                     >
@@ -1443,15 +1480,15 @@ function StepperForm() {
                                 {product.bottle}
                               </span>
                             </p>
-                            <div className="button-class-gray" >
+                            <div className="button-class-gray">
                               <button
                                 className={`button-class-gray-text ${
-                                  selectedProduct === product.id
+                                  formData.selectedProduct === product.id
                                     ? "selected-button-red"
                                     : "default-color"
                                 }`}
                               >
-                                {selectedProduct === product.id
+                                {formData.selectedProduct === product.id
                                   ? "SELECTED"
                                   : "SELECT PLAN"}
                               </button>
@@ -1706,7 +1743,7 @@ function StepperForm() {
                         <button
                           type="submit"
                           className="btn btn-setting-class-custom rounded-pill py-3"
-                          disabled={selectedProduct === null}
+                          disabled={formData.selectedProduct === null}
                         >
                           Lock in Your Plan
                         </button>
@@ -1720,7 +1757,6 @@ function StepperForm() {
                             medicationAnswer === "yes" && !selectedOption
                           }
                         >
-                          {/* Conditional button text based on step */}
                           {currentStep === 3 || currentStep === 5
                             ? "Next"
                             : currentStep === totalSteps
