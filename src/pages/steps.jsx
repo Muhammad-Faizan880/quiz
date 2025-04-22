@@ -242,7 +242,7 @@ function StepperForm() {
       para: "6 Bottles. 3 bottles shipped every 3 mos.",
       para1: "Access to Dr. Sam’s VIP Community",
       para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "Save an EXTRA 25%",
+      para3: "63% TOTAL SAVINGS",
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -257,7 +257,7 @@ function StepperForm() {
       para: "3 bottles shipped every 3 months",
       para1: "Access to Dr. Sam’s VIP Community",
       para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "Save an EXTRA 10%",
+      para3: "55% TOTAL SAVINGS",
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
@@ -271,6 +271,7 @@ function StepperForm() {
       para: "1 Bottle. Shipped every month",
       para1: "Great for trying it out risk-free",
       para2: "",
+      para3: "50% TOTAL Savings",
       image: "/assets/images/67.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -286,7 +287,7 @@ function StepperForm() {
       para: "3 bottles shipped every 3 months",
       para1: "Access to Dr. Sam’s VIP Community",
       para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "Save an EXTRA 25%",
+      para3: "63% TOTAL SAVINGS",
       image: "/assets/images/6.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
@@ -301,7 +302,7 @@ function StepperForm() {
       para: "3 bottles shipped every 3 months",
       para1: "Access to Dr. Sam’s VIP Community",
       para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "Save an EXTRA 10%",
+      para3: "55% TOTAL SAVINGS",
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
@@ -314,26 +315,22 @@ function StepperForm() {
       save: "Save $200 Instantly",
       para: "1 Bottle. Shipped every month",
       para1: "Great for trying it out risk-free",
+      para3: "50% TOTAL Savings",
       image: "/assets/images/67.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
     },
   ];
   const stepHeadings = [
-    "GOALS", // Step 1
-    "GOALS", // Step 2
-    "GOALS", // Step 3
-    "GOALS", // Step 4
-    "ELIGIBILITY", // Step 5
-    "GOALS", // Step 6
-    "CHOOSE MEDICATION", // Step 7Package Selection
-    "PACKAGE SELECTION", // Step 7Package Selection
+    "GOALS",
+    "GOALS",
+    "GOALS",
+    "GOALS",
+    "ELIGIBILITY",
+    "GOALS",
+    "CHOOSE MEDICATION",
+    "PACKAGE SELECTION",
   ];
-  // const handleProductSelect = (productId) => {
-  //   const product = products.find((product) => product.id === productId);
-  //   setSelectedProduct(product);
-  //   setAccordionOpen(null);
-  // };
 
   const handleProductSelect = (productId) => {
     console.log("Selected Product ID:", productId);
@@ -453,7 +450,7 @@ function StepperForm() {
     // ✅ For other steps, just move forward or submit
     if (currentStep === totalSteps) {
       console.log("Form submitted:", formData);
-      alert("Form submitted successfully!");
+      // alert("Form submitted successfully!");
     } else {
       nextStep();
     }
@@ -1396,29 +1393,8 @@ function StepperForm() {
                           ? "selected-product"
                           : ""
                       }`}
-                      style={{ position: "relative", overflow: "hidden" }} // ✅ Needed for absolute badge positioning
+                      style={{ position: "relative", overflow: "hidden" }}
                     >
-                      {/* ✅ Badge rendering */}
-                      {/* {product.badge && (
-                        <div
-                          className="some-add-text"
-                          style={{
-                            position: "absolute",
-                            top: "-23px",
-                            left: "16px",
-                            backgroundColor: "#3C4B9E",
-                            color: "white",
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            padding: "4px 12px",
-
-                            zIndex: 10,
-                          }}
-                        >
-                          {product.badge}
-                        </div>
-                      )} */}
-
                       <div className="container">
                         <div className="row">
                           <div
@@ -1480,7 +1456,7 @@ function StepperForm() {
                                     alt=""
                                     className="img-tick-set"
                                   />
-                                  <p className="class-details">
+                                  <p className="class-details-color">
                                     {product.para3}
                                   </p>
                                 </div>
@@ -1617,6 +1593,19 @@ function StepperForm() {
                                 {product.para1}
                               </p>
                             </div>
+                            {product.para2 && (
+                              <div className="flex-class-div gap-1">
+                                <img
+                                  src="/assets/images/SVG.svg"
+                                  alt=""
+                                  className="img-tick-set"
+                                />
+                                <p className="class-details-mob">
+                                  {product.para2}
+                                </p>
+                              </div>
+                            )}
+
                             {product.para3 && (
                               <div className="flex-class-div gap-1">
                                 <img
@@ -1624,7 +1613,9 @@ function StepperForm() {
                                   alt=""
                                   className="img-tick-set"
                                 />
-                                <p className="class-details">{product.para3}</p>
+                                <p className="class-details-color">
+                                  {product.para3}
+                                </p>
                               </div>
                             )}
 
@@ -1797,9 +1788,9 @@ function StepperForm() {
                   {currentStep === 5 && (
                     <div className="mt-3">
                       <div className="container container-paddingt">
-                        <div className="d-flex   gap-3 justify-content-center align-items-center">
+                        <div className="flex-container-3-images ">
                           <div
-                            className="d-flex flex-column align-items-center"
+                            className=" align-items-center"
                             style={{ width: "33.33%" }}
                           >
                             <img
@@ -1816,7 +1807,7 @@ function StepperForm() {
                           </div>
 
                           <div
-                            className="d-flex flex-column align-items-center"
+                            className=" align-items-center"
                             style={{ width: "33.33%" }}
                           >
                             <img
@@ -1833,7 +1824,7 @@ function StepperForm() {
                           </div>
 
                           <div
-                            className="d-flex flex-column align-items-center"
+                            className=" align-items-center"
                             style={{ width: "33.33%" }}
                           >
                             <img

@@ -413,6 +413,7 @@ body {
   height: auto;
   width: 100%;
 }
+
 .CLR-WHITEW8 {
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 500;
@@ -539,7 +540,9 @@ line-height: 8px;
   line-height: 20px;
   color: #1c1c1c;
   padding-top: 27px;
-  text-align: center;
+  width: 70%;
+  
+
 }
 
 .texty-paragrq1 {
@@ -549,13 +552,12 @@ line-height: 8px;
   line-height: 20px;
   color: #1c1c1c;
   padding-top: 27px;
-  width: 90%;
-  margin: auto;
-  text-align: center;
+ 
 }
 
 .container-paddingt {
   padding-top: 40px;
+  padding-left: 40px;
 }
 
 
@@ -570,15 +572,18 @@ line-height: 8px;
   line-height: 21px;
   border-radius: 9999px;
   padding: 10px;
-  margin-top: 31px;
+  margin-top: 11px;
   width: fit-content;
   display: inline-block;
   text-align: center;
-  white-space: nowrap; /* Prevent wrapping */
+  white-space: nowrap; 
   margin-bottom: 20px;
 }
 
-
+.flex-container-3-images{
+  display: flex;
+  justify-content: start;
+}
 
 
 
@@ -1168,7 +1173,7 @@ color: #68696B;
 }
 
 .img-tick-set {
-  width: 10px !important;
+  width: 12px !important;
   height: 12px !important;
 }
 
@@ -1204,6 +1209,15 @@ color: #68696B;
   line-height: 12px;
   text-align: start !important;
   color: #000000;
+  margin-bottom: 10px;
+}
+.class-details-color {
+  font-family: HelveticaNeue-Medium;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: start !important;
+  color: #2F827A;
   margin-bottom: 10px;
 }
 .class-details-new {
@@ -1438,6 +1452,15 @@ color: black;
   padding-left: 26px;
 }
 
+.text-extra{
+  color: red !important;
+}
+
+.class-flex-start{
+ 
+align-items: flex-start !important;
+}
+
 @keyframes loadAnimation {
   0% {
     width: 0%;
@@ -1565,7 +1588,7 @@ color: black;
   .class-details-mob {
     font-family: HelveticaNeue-Medium;
     font-weight: 500;
-    font-size: 8px;
+    font-size: 9px;
     line-height: 12px;
     text-align: start !important;
     color: #000000;
@@ -1713,7 +1736,7 @@ color: black;
     line-height: 17px;
     color: #1c1c1c;
     padding-top: 27px;
-    text-align: center;
+   
   }
 
   .texty-paragrq1 {
@@ -1723,9 +1746,8 @@ color: black;
     line-height: 17px;
     color: #1c1c1c;
     padding-top: 27px;
-    width: 90%;
-    margin: auto;
-    text-align: center;
+  
+   
   }
 
   .CLR-WHITEW {
@@ -1743,14 +1765,7 @@ color: black;
     color: white;
     padding-top: -40px;
   }
-  .class-compound {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 32px;
-    text-align: start;
-  }
-
+ 
   .checkk {
     font-family: HelveticaNeueLight;
     font-size: 22px;
@@ -1786,10 +1801,10 @@ color: black;
 
 
   .bg-warning-clr {
-    white-space: normal; /* allow wrap */
+    white-space: normal; 
     width: auto;
     font-size: 14px;
-    font-family: HelveticaNeueLight;
+    font-family: HelveticaNeue-Medium;
   }
 
   .border-custom{
@@ -1799,6 +1814,11 @@ color: black;
     border-radius: 40px;
     padding: 0px 6px 0px;
   }
+
+
+
+
+
 }
 @media screen and (max-width: 545px) {
   .class-compound {
@@ -1945,7 +1965,24 @@ color: black;
     text-align: center;
     margin-top: -10px;
   }
+  .class-compound {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: start;
+  }
+
 }
+
+
+@media screen and (max-width: 438px) {
+  /* .texty-paragr{
+    height: 30px;
+  } */
+}
+
+
 
 @media screen and (max-width: 420px) {
   .class-title-new {
@@ -1970,6 +2007,12 @@ color: black;
     text-transform: uppercase;
     color: #333333;
     text-align: center;
+  }
+  .bg-warning-clr {
+    white-space: normal; 
+    width: auto;
+    font-size: 12px;
+    font-family: HelveticaNeue-Medium;
   }
 }
 
@@ -1997,6 +2040,10 @@ color: black;
   text-align: center;
   
   }
+  .container-paddingt {
+   
+    padding-left: 20px;
+  }
   }
 
 @media screen and (max-width: 402px) {
@@ -2018,6 +2065,13 @@ color: black;
     text-transform: uppercase;
     color: #333333;
     text-align: center;
+  }
+  .class-compound {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: start;
   }
 }
 
