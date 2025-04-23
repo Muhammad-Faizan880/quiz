@@ -450,7 +450,7 @@ function StepperForm() {
     // ✅ For other steps, just move forward or submit
     if (currentStep === totalSteps) {
       console.log("Form submitted:", formData);
-      alert("Form submitted successfully!");
+      // alert("Form submitted successfully!");
     } else {
       nextStep();
     }
