@@ -1975,15 +1975,6 @@ align-items: flex-start !important;
 
 }
 
-
-@media screen and (max-width: 438px) {
-  /* .texty-paragr{
-    height: 30px;
-  } */
-}
-
-
-
 @media screen and (max-width: 420px) {
   .class-title-new {
     font-family: HelveticaNeue-Bold;

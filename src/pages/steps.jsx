@@ -247,6 +247,7 @@ function StepperForm() {
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
       badge: "BEST VALUE",
+      redirectUrl: "https://checkout.ease-md.com/i/51",
     },
     {
       id: 2,
@@ -261,6 +262,7 @@ function StepperForm() {
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
+      redirectUrl: "https://checkout.ease-md.com/i/42",
     },
     {
       id: 3,
@@ -275,6 +277,7 @@ function StepperForm() {
       image: "/assets/images/67.png",
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
+      redirectUrl: "https://checkout.ease-md.com/i/29",
     },
   ];
   const productsMob = [
@@ -1633,60 +1636,6 @@ function StepperForm() {
           </>
         );
 
-      // case 9:
-      //   return (
-      //     <>
-      //       {currentStep === 9 && selectedProduct && (
-      //         <div className="product-selection-container">
-      //           <div
-      //             className="mb-3 p-3 rounded-4"
-      //             style={{ cursor: "pointer", transition: "all 0.3s ease" }}
-      //           >
-      //             <div>
-      //               <div className="text-center mb-3">
-      //                 <img
-      //                   src={
-      //                     selectedProduct.expandedImage ||
-      //                     "/assets/images/big-bg.png"
-      //                   }
-      //                   alt="Selected Product"
-      //                   className="img-fluid CLASS-WIDTH-FULL"
-      //                 />
-      //               </div>
-
-      //               <h5 className="class-compound">{selectedProduct.name}</h5>
-
-      //               <div className="class-flex-expand mb-2">
-      //                 <span className="class-current">
-      //                   {selectedProduct.currentPrice}
-      //                 </span>
-      //                 <span className="class-original text-decoration-line-through">
-      //                   {selectedProduct.originalPrice}
-      //                 </span>
-      //               </div>
-
-      //               <div className="class-stock gap-2 mb-2">
-      //                 <span className="bg-sett">● In Stock</span>
-      //                 <span className="code-class">
-      //                   Code Activated:{" "}
-      //                   <span className="class-color">
-      //                     {selectedProduct.code}
-      //                   </span>
-      //                 </span>
-      //               </div>
-
-      //               <p className="text-inter-class">
-      //                 Discover the power of Semaglutide, the active ingredient
-      //                 in Ozempic® & WeGovy® for a fraction of the cost. All
-      //                 customers also receive free expedited shipping.
-      //               </p>
-      //             </div>
-      //           </div>
-      //         </div>
-      //       )}
-      //     </>
-      //   );
-
       default:
         return null;
     }
@@ -1759,9 +1708,17 @@ function StepperForm() {
                     (currentStep === 8 ? (
                       <div className="d-flex justify-content-center mt-4">
                         <button
-                          type="submit"
+                          type="button"
                           className="btn btn-setting-class-custom rounded-pill py-3"
                           disabled={formData.selectedProduct === null}
+                          onClick={() => {
+                            const selected = products.find(
+                              (p) => p.id === formData.selectedProduct
+                            );
+                            if (selected?.redirectUrl) {
+                              window.location.href = selected.redirectUrl;
+                            }
+                          }}
                         >
                           Lock in Your Plan
                         </button>
