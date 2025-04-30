@@ -641,7 +641,7 @@ line-height: 8px;
 .testimonials-cards-style {
   background-color: white;
   padding: 25px;
-  min-height: auto;
+  min-height: 396px;
   border-radius: 12px;
   width: 100%;
   
@@ -1484,7 +1484,7 @@ align-items: flex-start !important;
 @media (max-width: 1700px) {
 
   .testimonials-cards-style{
-    min-height: auto;
+    min-height: 396px;
   }
 
 
