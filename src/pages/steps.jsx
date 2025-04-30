@@ -1217,9 +1217,9 @@ function StepperForm() {
                   )}
 
                   <div className="class-flex-expand mb-2">
-                    <span className="class-current">$199</span>
+                    <span className="class-current">$279</span>
                     <span className="class-original text-decoration-line-through">
-                      $399
+                      $479
                     </span>
                   </div>
 
