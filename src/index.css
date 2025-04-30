@@ -1187,7 +1187,7 @@ color: #68696B;
   color: #333333;
 }
 .bg-div-dark {
-  background-color: #2f827a !important;
+  background-color: #FFE993 !important;
   font-family: HelveticaNeue-Medium;
 
   font-size: 10px;
@@ -1195,7 +1195,7 @@ color: #68696B;
   letter-spacing: 0.23px;
   text-align: center;
   vertical-align: middle;
-  color: white;
+  color: black;
   border-radius: 50px;
   width: 75%;
   padding: 4px;
@@ -1569,14 +1569,14 @@ align-items: flex-start !important;
     text-align: center;
   }
   .bg-div-dark-mob {
-    background-color: #2f827a !important;
+    background-color: #FFE993 !important;
     font-family: HelveticaNeue-Medium;
     font-size: 10px;
     line-height: 14.03px;
     letter-spacing: 0.23px;
     text-align: center;
     vertical-align: middle;
-    color: white;
+    color: black;
     border-radius: 50px;
     width: 100%;
     padding: 4px;
@@ -1645,14 +1645,14 @@ align-items: flex-start !important;
   }
 
   .bg-div-dark-mob {
-    background-color: #2f827a !important;
+    background-color: #FFE993 !important;
     font-family: HelveticaNeue-Medium;
     font-size: 10px;
     line-height: 14.03px;
     letter-spacing: 0.23px;
     text-align: center;
     vertical-align: middle;
-    color: white;
+    color: black;
     border-radius: 50px;
     width: 80%;
     padding: 4px;
@@ -1938,14 +1938,14 @@ align-items: flex-start !important;
 
 @media screen and (max-width: 460px) {
   .bg-div-dark-mob {
-    background-color: #2f827a !important;
+    background-color: #FFE993 !important;
     font-family: HelveticaNeue-Medium;
     font-size: 10px;
     line-height: 14.03px;
     letter-spacing: 0.23px;
     text-align: center;
     vertical-align: middle;
-    color: white;
+    color: black;
     border-radius: 50px;
     width: 80%;
     padding: 4px;
@@ -2068,14 +2068,14 @@ align-items: flex-start !important;
 
 @media screen and (max-width: 388px) {
   .bg-div-dark-mob {
-    background-color: #2f827a !important;
+    background-color: #FFE993 !important;
     font-family: HelveticaNeue-Medium;
     font-size: 8px;
     line-height: 14.03px;
     letter-spacing: 0.23px;
     text-align: center;
     vertical-align: middle;
-    color: white;
+    color: black;
     border-radius: 50px;
     width: 80%;
     padding: 4px;
