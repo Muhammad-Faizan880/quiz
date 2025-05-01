@@ -204,7 +204,7 @@ body {
   height: 70px;
   background-color: #f5d552;
   color: black;
-  font-family: HelveticaNeueLight;
+  font-family: HelveticaNeue-Bold;
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
@@ -672,7 +672,8 @@ line-height: 8px;
   line-height: 24px;
   color: #2f766a;
   width: 80%;
-  padding-bottom: 24px;
+  height: 144px;
+  /* padding-bottom: 24px; */
 }
 
 .clas-flex-img-client {
@@ -691,7 +692,7 @@ line-height: 8px;
   margin-top: -14px;
 }
 .class-lindsay {
-  font-family: HelveticaNeueLight;
+  font-family: HelveticaNeue-Bold;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -1610,7 +1611,7 @@ align-items: flex-start !important;
     line-height: 12px;
     text-align: start !important;
     color: #000000;
-    margin-bottom: 9px;
+    margin-bottom: 14px;
 
   }
   .class-details-new1-mob {
@@ -1672,7 +1673,7 @@ align-items: flex-start !important;
     vertical-align: middle;
     color: black;
     border-radius: 50px;
-    width: 80%;
+    width: 100%;
     padding: 4px;
     margin-top: -8px;
     margin: auto;
@@ -2095,7 +2096,7 @@ align-items: flex-start !important;
     vertical-align: middle;
     color: black;
     border-radius: 50px;
-    width: 80%;
+    width: 100%;
     padding: 4px;
     margin-top: -8px;
     margin: auto;
