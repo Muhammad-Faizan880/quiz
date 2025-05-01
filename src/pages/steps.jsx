@@ -2128,7 +2128,7 @@ function StepperForm() {
 
                 <div className="clas-flex-img-client gap-3">
                   <img
-                    src="assets/images/pic2.svg"
+                    src="assets/images/pic3.svg"
                     alt="Client"
                     className="rounded-circle"
                     style={{ width: "48px", height: "48px" }}
